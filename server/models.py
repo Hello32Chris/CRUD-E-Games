@@ -17,14 +17,13 @@ class Item(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     type = db.Column(db.String)
-    thc_perc = db.Column(db.Float)
     desc = db.Column(db.Sting)
     quantity = db.Column(db.Integer)
     price = db.Column(db.Float)
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
 
     def __repr__(self):
-        pass
+        return f''
 
 
 class Cart(db.Model, SerializerMixin):
@@ -36,7 +35,7 @@ class Cart(db.Model, SerializerMixin):
     item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
 
     def __repr__(self):
-        pass
+        return f''
 
 
 class Customer(db.Model, SerializerMixin):
@@ -46,10 +45,11 @@ class Customer(db.Model, SerializerMixin):
     name = db.Column(db.String)
     password = db.Column(db.String)
     email = db.Column(db.String)
-    medical = db.Column(db.Boolean, default = False)
+    age = db.Column(db.Integer)
+    membership = db.Column(db.Boolean, default = False)
 
     def __repr__(self):
-        pass
+        return f''
 
 
 class Store(db.Model, SerializerMixin):
@@ -63,5 +63,5 @@ class Store(db.Model, SerializerMixin):
     hours = db.Column(db.Integer)
 
     def __repr__(self):
-        pass
+        return f''
 
