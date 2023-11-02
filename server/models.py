@@ -10,3 +10,58 @@ metadata = MetaData(
 )
 
 db = SQLAlchemy(metadata=metadata)
+
+class Item(db.Model, SerializerMixin):
+    __tablename__ = 'items'
+
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String)
+    type = db.Column(db.String)
+    thc_perc = db.Column(db.Float)
+    desc = db.Column(db.Sting)
+    quantity = db.Column(db.Integer)
+    price = db.Column(db.Float)
+    store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
+
+    def __repr__(self):
+        pass
+
+
+class Cart(db.Model, SerializerMixin):
+    __tablename__ = 'carts'
+
+
+    id = db.Column(db.Integer, primary_key = True)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
+    item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
+
+    def __repr__(self):
+        pass
+
+
+class Customer(db.Model, SerializerMixin):
+    __tablename__ = 'customers'
+
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String)
+    password = db.Column(db.String)
+    email = db.Column(db.String)
+    medical = db.Column(db.Boolean, default = False)
+
+    def __repr__(self):
+        pass
+
+
+class Store(db.Model, SerializerMixin):
+    __tablename__ = 'stores'
+
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String)
+    password = db.Column(db.String)
+    email = db.Column(db.String)
+    location = db.Column(db.String)
+    hours = db.Column(db.Integer)
+
+    def __repr__(self):
+        pass
+
