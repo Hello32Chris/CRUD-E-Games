@@ -1,16 +1,7 @@
-from flask import Flask, make_response, jsonify, request
-from flask_migrate import Migrate
+from flask import make_response, request
+from models import Item, Cart, Customer, Store #, checkout
 
-from models import db, Item, Cart, Customer, Store #, checkout
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-migrate = Migrate(app, db)
-
-db.init_app(app)
-
+from config import db, app#.route()
 
 @app.route('/')
 def home():
