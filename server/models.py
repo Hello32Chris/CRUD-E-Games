@@ -3,6 +3,8 @@ from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 
+from faker import Faker
+
 metadata = MetaData(
     naming_convention={
         "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -17,7 +19,7 @@ class Item(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     type = db.Column(db.String)
-    desc = db.Column(db.Sting)
+    desc = db.Column(db.String)
     quantity = db.Column(db.Integer)
     price = db.Column(db.Float)
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
@@ -33,6 +35,7 @@ class Cart(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
     item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
+    
 
     def __repr__(self):
         return f''
