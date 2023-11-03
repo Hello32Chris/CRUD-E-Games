@@ -14,7 +14,7 @@ for i in range(5):  # Seed 10 fake users in this example
         name=fake.name(),
         password=fake.password(),
         email=fake.email(),
-        age=fake.age(min=14, max=80),
+        age=next(fake.random_int, min=5, max=80),
         membership=fake.membership(chance_of_getting_true = 50)
         # You can set other attributes as needed
     )
@@ -40,4 +40,15 @@ for i in range(10):
         store_id = fake.store_id(min=1, max=3)
     )
     db.session.add(item)
+    db.session.commit()
+
+for i in range(3):
+    store = Store(
+        name = fake.name(),
+        password = fake.password(),
+        email = fake.email(),
+        location = fake.location(),
+        hours = fake.hours(min=0, max=24)
+    )
+    db.session.add(store)
     db.session.commit()
