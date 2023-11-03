@@ -30,13 +30,22 @@ def store_ids(id):
     store = Store.query.filter_by(id = id).first()
     if store:
         if request.method == 'GET':
-            resp = make_response(store.to_dict(rules = ('-carts')), 200)
+            resp = make_response(store.to_dict(rules = ()), 200)
     else:
         resp = make_response({"error": "Store not found"})
     return resp
 
-# @app.routes('/carts/<int:id>')
-# pass
+
+
+@app.route('/carts/<int:id>', methods=['GET'])
+def cart(id):
+    cart_id = Cart.query.filter_by(id = id).first()
+    if cart_id:
+        if request.method == 'GET':
+            resp = make_response(cart_id.to_dict(rules = ()), 200)
+    else:
+        resp = make_response({ "error": "No Cart Found!"})
+    return resp
 
 
 if __name__ == '__main__':
