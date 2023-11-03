@@ -24,6 +24,10 @@ class Item(db.Model, SerializerMixin):
     price = db.Column(db.Float)
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
 
+    # relationships
+    cart = db.relationship('Cart', back_populates = 'items')
+    store = db.realtionship('Store', back_populates = 'items')
+
     def __repr__(self):
         return f''
 
@@ -35,6 +39,12 @@ class Cart(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
     item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
+
+    # relationships
+    customer = db.relationship('Customer', back_populates = 'carts')
+    items = db.relationship('Item', back_populates = 'cart', cascade ='all, delete-orphan')
+    checkout = db.relationship('Checkout', back_populates = 'cart')
+
     
 
     def __repr__(self):
@@ -51,6 +61,11 @@ class Customer(db.Model, SerializerMixin):
     age = db.Column(db.Integer)
     membership = db.Column(db.Boolean, default = False)
 
+    # relationships
+    carts = db.relationship('Cart', back_populates = 'customer', cascade = 'all, delete-orphan')
+
+
+
     def __repr__(self):
         return f''
 
@@ -64,6 +79,25 @@ class Store(db.Model, SerializerMixin):
     email = db.Column(db.String)
     location = db.Column(db.String)
     hours = db.Column(db.Integer)
+
+    # relationships
+    items = db.relationship('Items', back_populates = 'store')
+
+    def __repr__(self):
+        return f''
+
+
+class Checkout(db.Model, SerializerMixin):
+    __tablename__ = 'checkouts'
+
+    id = db.Column(db.Integer, primary_key = True)
+    store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
+    cart_id = db.Column(db.Integer, db.ForeignKey('carts.id'))
+
+    # relationships
+    cart = db.relationship('Cart', back_populates = 'checkout', cascade = 'all, delete-orphan')
+
+    # serialization
 
     def __repr__(self):
         return f''
