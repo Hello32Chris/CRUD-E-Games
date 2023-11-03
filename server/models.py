@@ -3,6 +3,7 @@ from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
+import re
 
 from faker import Faker
 
@@ -35,6 +36,26 @@ class Item(db.Model, SerializerMixin):
     serialize_rules = ('-cart.items', '-store.items')
 
     # validations
+    @validates('name')
+    def validates_name(self, key, name):
+        if 3 <= len(name) <= 50:
+            return name
+        else:
+            raise ValueError('name must be between 3 and 50 characters, incusive!')
+    
+    @validates('type')
+    def validates_type(self, key, type):
+        if type:
+            return type
+        else:
+            raise ValueError('')
+    
+    @validates('price')
+    def validates_price(self, key, price):
+        if price:
+            return price
+        else:
+            raise ValueError('')
 
     def __repr__(self):
         return f''
@@ -70,7 +91,7 @@ class Customer(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     password = db.Column(db.String)
-    email = db.Column(db.String)
+    email = db.Column(db.String, unique = True)
     age = db.Column(db.Integer)
     membership = db.Column(db.Boolean, default = False)
 
@@ -86,8 +107,35 @@ class Customer(db.Model, SerializerMixin):
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        pass
-
+        if 3 <= len(name) <= 15:
+            return name
+        else:
+            raise ValueError('name must be between 3 and 15 characters, incusive!')
+        
+    @validates('password')
+    def validates_password(self, key, password):
+        if len(password) < 8:
+            raise ValueError("Make sure your password is at lest 8 letters")
+        elif re.search('[0-9]',password) is None:
+            raise ValueError("Make sure your password has a number in it")
+        elif re.search('[A-Z]',password) is None: 
+            raise ValueError("Make sure your password has a capital letter in it")
+        else:
+            return password
+    @validates('email')
+    def validates_email(self, key, email):
+        if 3 <= len(email) <= 15:
+            return email
+        else:
+            raise ValueError('email must be between 3 and 15 characters, incusive!')
+        
+    @validates('age')
+    def validates_age(self, key, age):
+        if 13 <= age <= 80:
+            return age
+        else:
+            raise ValueError('age must be between 3 and 80, incusive!')
+    
 
     def __repr__(self):
         return f''
@@ -99,7 +147,7 @@ class Store(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     password = db.Column(db.String)
-    email = db.Column(db.String)
+    email = db.Column(db.String, unique = True)
     location = db.Column(db.String)
     hours = db.Column(db.Integer)
 
@@ -113,6 +161,30 @@ class Store(db.Model, SerializerMixin):
     serialize_rules = ('-items.store', '-checkouts.store')
 
     # validations
+    @validates('name')
+    def validates_name(self, key, name):
+        if 3 <= len(name) <= 15:
+            return name
+        else:
+            raise ValueError('name must be between 3 and 15 characters, incusive!')
+
+    @validates('password')
+    def validates_password(self, key, password):
+        if len(password) < 8:
+            raise ValueError("Make sure your password is at lest 8 letters")
+        elif re.search('[0-9]',password) is None:
+            raise ValueError("Make sure your password has a number in it")
+        elif re.search('[A-Z]',password) is None: 
+            raise ValueError("Make sure your password has a capital letter in it")
+        else:
+            return password
+    
+    @validates('email')
+    def validates_email(self, key, email):
+        if 3 <= len(email) <= 15:
+            return email
+        else:
+            raise ValueError('email must be between 3 and 15 characters, incusive!')
 
 
     def __repr__(self):
