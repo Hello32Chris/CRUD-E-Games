@@ -65,3 +65,9 @@ class Store(db.Model, SerializerMixin):
     def __repr__(self):
         return f''
 
+class Checkout(db.Model, SerializerMixin):
+    __tablename__ = 'checkouts'
+
+    id = db.Column(db.Integer, primary_key = True)
+    store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
+    cart_id = db.Column(db.Integer, db.ForeignKey('carts.id'))
