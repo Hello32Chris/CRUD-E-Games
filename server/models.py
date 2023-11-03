@@ -84,7 +84,8 @@ class Customer(db.Model, SerializerMixin):
 
     # validations
     @validates('name')
-    def validates_name():
+    def validates_name(self, key, name):
+        pass
 
 
     def __repr__(self):
