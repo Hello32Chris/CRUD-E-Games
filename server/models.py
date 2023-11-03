@@ -17,7 +17,7 @@ class Item(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     type = db.Column(db.String)
-    desc = db.Column(db.Sting)
+    desc = db.Column(db.String)
     quantity = db.Column(db.Integer)
     price = db.Column(db.Float)
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
