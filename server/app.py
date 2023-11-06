@@ -1,7 +1,7 @@
 from flask import make_response, request
 from models import Item, Cart, Customer, Store #, checkout
 
-from config import db, app#.route()
+from config import db, app
 
 @app.route('/')
 def home():
