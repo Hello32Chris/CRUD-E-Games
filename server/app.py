@@ -1,7 +1,13 @@
-from flask import Flask, make_response, jsonify, request
+from flask import Flask, make_response, request
 from flask_migrate import Migrate
 
 from models import db, Item, Cart, Customer, Store #, checkout
+
+import os
+
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATABASE = os.environ.get(
+    "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'

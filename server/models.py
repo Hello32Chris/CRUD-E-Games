@@ -5,8 +5,6 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 import re
 
-from faker import Faker
-
 metadata = MetaData(
     naming_convention={
         "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -28,17 +26,17 @@ class Item(db.Model, SerializerMixin):
 
     # relationships
     cart = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
-    store = db.realtionship('Store', back_populates = 'items')
+    store = db.relationship('Store', back_populates = 'items')
 
     # association proxy
 
     # serialization
-    serialize_rules = ('-cart.items', '-store.items')
+    serialize_rules = ('-store.items', )
 
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        if 3 <= len(name) <= 50:
+        if name:
             return name
         else:
             raise ValueError('name must be between 3 and 50 characters, incusive!')
@@ -67,7 +65,7 @@ class Cart(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
-    item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
+    # item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
 
     # relationships
     customer = db.relationship('Customer', back_populates = 'carts')
@@ -107,7 +105,7 @@ class Customer(db.Model, SerializerMixin):
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        if 3 <= len(name) <= 15:
+        if 3 <= len(name):
             return name
         else:
             raise ValueError('name must be between 3 and 15 characters, incusive!')
@@ -124,7 +122,7 @@ class Customer(db.Model, SerializerMixin):
             return password
     @validates('email')
     def validates_email(self, key, email):
-        if 3 <= len(email) <= 15:
+        if 3 <= len(email):
             return email
         else:
             raise ValueError('email must be between 3 and 15 characters, incusive!')
@@ -152,7 +150,7 @@ class Store(db.Model, SerializerMixin):
     hours = db.Column(db.Integer)
 
     # relationships
-    items = db.relationship('Items', back_populates = 'store', cascade ='all, delete-orphan')
+    items = db.relationship('Item', back_populates = 'store', cascade ='all, delete-orphan')
     checkouts = db.relationship('Checkout', back_populates = 'store', cascade ='all, delete-orphan')
 
     # association proxy
@@ -163,10 +161,10 @@ class Store(db.Model, SerializerMixin):
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        if 3 <= len(name) <= 15:
+        if 3 <= len(name) :
             return name
         else:
-            raise ValueError('name must be between 3 and 15 characters, incusive!')
+            raise ValueError('name must be between 3 and 15 characters, inclusive!')
 
     @validates('password')
     def validates_password(self, key, password):
@@ -181,17 +179,14 @@ class Store(db.Model, SerializerMixin):
     
     @validates('email')
     def validates_email(self, key, email):
-        if 3 <= len(email) <= 15:
+        if 3 <= len(email):
             return email
         else:
-            raise ValueError('email must be between 3 and 15 characters, incusive!')
+            raise ValueError('email must be between 3 and 15 characters, inclusive!')
 
 
     def __repr__(self):
         return f''
-
-class Checkout(db.Model, SerializerMixin):
-    __tablename__ = 'checkouts'
 
 class Checkout(db.Model, SerializerMixin):
     __tablename__ = 'checkouts'
@@ -216,10 +211,3 @@ class Checkout(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f''
-
-class Checkout(db.Model, SerializerMixin):
-    __tablename__ = 'checkouts'
-
-    id = db.Column(db.Integer, primary_key = True)
-    store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
-    cart_id = db.Column(db.Integer, db.ForeignKey('carts.id'))
