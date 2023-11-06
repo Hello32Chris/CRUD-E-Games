@@ -1,5 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm import validates
 
 from config import db
 
@@ -16,13 +17,13 @@ class Item(db.Model, SerializerMixin):
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
 
     # relationships
-    cart = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
+    # cart = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
     store = db.relationship('Store', back_populates = 'items')
 
     # association proxy
 
     # serialization
-    serialize_rules = ('-cart.items', '-store.items')
+    serialize_rules = ('-store.items', )
 
     # validations
     @validates('name')
@@ -56,17 +57,19 @@ class Cart(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
-    item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
+    # item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
 
     # relationships
     customer = db.relationship('Customer', back_populates = 'carts')
-    items = db.relationship('Item', back_populates = 'cart')
+    # items = db.relationship('Item', back_populates = 'cart')
     checkout = db.relationship('Checkout', back_populates = 'cart', cascade ='all, delete-orphan')
 
     # association proxy
 
     # serialization
-    serialize_rules = ('-customer.carts', '-items.cart', '-checkout.cart')
+    serialize_rules = ('-customer.carts',
+                        #'-items.cart', 
+                        '-checkout.cart')
     
     # validations
 
@@ -140,7 +143,7 @@ class Store(db.Model, SerializerMixin):
     location = db.Column(db.String)
     hours = db.Column(db.Integer)
     # relationships
-    items = db.relationship('Items', back_populates = 'store', cascade ='all, delete-orphan')
+    items = db.relationship('Item', back_populates = 'store', cascade ='all, delete-orphan')
     checkouts = db.relationship('Checkout', back_populates = 'store', cascade ='all, delete-orphan')
 
     # association proxy
@@ -177,7 +180,6 @@ class Store(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f''
-
 
 class Checkout(db.Model, SerializerMixin):
     __tablename__ = 'checkouts'
