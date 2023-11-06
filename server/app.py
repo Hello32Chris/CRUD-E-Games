@@ -14,7 +14,7 @@ def home():
 #----------------------------------------
 @app.route('/items', methods=['GET'])
 def items():
-    
+
 # ---------------- GET -----------------------
     if request.method == 'GET':
         items = Item.query.all()
@@ -44,6 +44,7 @@ def item_by_id(id):
                     description = form_data['description'],
                     quantity = form_data['quantity'],
                     price = form_data['price']
+                    ###  add some functionality to automatically mark which store id  ###
                 )
                 db.session.add(new_item_obj)
                 db.session.commit()
