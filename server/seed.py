@@ -101,10 +101,16 @@ with app.app_context():
 
         db.session.commit()
 
+    def longer_name(min_length):
+        while True:
+            name = fake.name()
+            if len(name) > min_length:
+                return name
+
     def seed_customers(num_customers=5):
         for _ in range(num_customers):
             customer = Customer(
-                name=fake.name(),
+                name=longer_name(3),
                 password=fake.password(),
                 email=fake.email(),
                 age=fake.random_int(min=13, max=80),

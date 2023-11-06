@@ -7,20 +7,24 @@ from config import db, app
 def home():
     return '<h1 align="center">Welcome!!</h1>'
 
-@app.route('/stores', methods=['GET'])
-def stores():
 
+
+#----------------------------------------
+# ALL ITEMS
+#----------------------------------------
+@app.route('/items', methods=['GET'])
+def items():
+    
 # ---------------- GET -----------------------
     if request.method == 'GET':
-        stores = Store.query.all()
-        store_dict = [store.to_dict() for store in stores]
-        resp = make_response(store_dict, 200)
-    return resp
+        items = Item.query.all()
+    return make_response([item.to_dict(rules=('-store_id', )) for item in items], 200)
 
 
 
-
-
+#----------------------------------------
+# ITEMS BY ID
+#----------------------------------------
 @app.route('/items/<int:id>', methods=['GET', 'POST', 'PATCH', 'DELETE'])
 def item_by_id(id):
     item_by_id = Item.query.filter_by(id = id).first()
@@ -69,11 +73,24 @@ def item_by_id(id):
     return resp
 
 
+#----------------------------------------
+# ALL CUSTOMERS
+#----------------------------------------
+@app.route('/customers', methods=['GET'])
+def customers():
+    customers = Customer.query.all()
+
+# ---------------- GET -----------------------
+    if request.method == 'GET':
+        return make_response([customer.to_dict(rules=('-password', '-carts' )) for customer in customers], 200)
+    
 
 
 
-
-@app.route('/customer/<int:id>', methods=['GET', 'POST', 'PATCH', 'DELETE'])
+#----------------------------------------
+# CUSTOMERS BY ID
+#----------------------------------------
+@app.route('/customers/<int:id>', methods=['GET', 'POST', 'PATCH', 'DELETE'])
 def customer_by_id(id):
     customer = Customer.query.filter_by(id = id).first()
     if customer:
@@ -91,7 +108,7 @@ def customer_by_id(id):
                     password = form_data['password'],
                     email = form_data['email'],
                     age = form_data['age'],
-                    membership = form_data['memebership']
+                    membership = form_data['membership']
                 )
                 db.session.add(new_customer_obj)
                 db.session.commit()
@@ -120,8 +137,23 @@ def customer_by_id(id):
         resp = make_response({"error" : "No Customer Found!"}, 404)    
     return resp
 
+#----------------------------------------
+# ALL STORES
+#----------------------------------------
+@app.route('/stores', methods=['GET'])
+def stores():
+
+# ---------------- GET -----------------------
+    if request.method == 'GET':
+        stores = Store.query.all()
+        store_dict = [store.to_dict() for store in stores]
+        resp = make_response(store_dict, 200)
+    return resp
 
 
+#----------------------------------------
+# STORES BY ID
+#----------------------------------------
 @app.route('/stores/<int:id>', methods = ['GET', 'PATCH'])
 def store_by_id(id):
     store_by_id = Store.query.filter_by(id = id).first()

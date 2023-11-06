@@ -1,8 +1,10 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
+import re
 
 from config import db
+
 
 
 class Item(db.Model, SerializerMixin):
@@ -94,7 +96,7 @@ class Customer(db.Model, SerializerMixin):
     items = association_proxy('Cart', 'items')
 
     # serialization
-    serialize_rules = ('-carts.customer')
+    serialize_rules = ('-carts.customer', )
 
     # validations
     @validates('name')
@@ -169,7 +171,7 @@ class Store(db.Model, SerializerMixin):
             raise ValueError("Make sure your password has a capital letter in it")
         else:
             return password
-    
+        
     @validates('email')
     def validates_email(self, key, email):
         if 3 <= len(email):
