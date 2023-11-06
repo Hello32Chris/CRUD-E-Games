@@ -4,6 +4,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 import re
+# from email_validator import validate_email, EmailNotValidError
 
 from faker import Faker
 
@@ -28,7 +29,7 @@ class Item(db.Model, SerializerMixin):
 
     # relationships
     cart = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
-    store = db.realtionship('Store', back_populates = 'items')
+    store = db.relationship('Store', back_populates = 'items')
 
     # association proxy
 
@@ -38,10 +39,10 @@ class Item(db.Model, SerializerMixin):
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        if 3 <= len(name) <= 50:
+        if 3 <= len(name):
             return name
         else:
-            raise ValueError('name must be between 3 and 50 characters, incusive!')
+            raise ValueError('name must be between 3 and 50 characters, inclusive!')
     
     @validates('type')
     def validates_type(self, key, type):
@@ -107,10 +108,10 @@ class Customer(db.Model, SerializerMixin):
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        if 3 <= len(name) <= 15:
+        if 3 <= len(name):
             return name
         else:
-            raise ValueError('name must be between 3 and 15 characters, incusive!')
+            raise ValueError('name must be between 3 and 15 characters, inclusive!')
         
     @validates('password')
     def validates_password(self, key, password):
@@ -124,17 +125,17 @@ class Customer(db.Model, SerializerMixin):
             return password
     @validates('email')
     def validates_email(self, key, email):
-        if 3 <= len(email) <= 15:
+        if 3 <= len(email):
             return email
         else:
-            raise ValueError('email must be between 3 and 15 characters, incusive!')
+            raise ValueError('email must be between 3 and 15 characters, inclusive!')
         
     @validates('age')
     def validates_age(self, key, age):
-        if 13 <= age <= 80:
+        if 13 <= age:
             return age
         else:
-            raise ValueError('age must be between 3 and 80, incusive!')
+            raise ValueError('age must be between 3 and 80, inclusive!')
     
 
     def __repr__(self):
@@ -163,10 +164,10 @@ class Store(db.Model, SerializerMixin):
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        if 3 <= len(name) <= 15:
+        if 3 <= len(name):
             return name
         else:
-            raise ValueError('name must be between 3 and 15 characters, incusive!')
+            raise ValueError('name must be between 3 and 15 characters, inclusive!')
 
     @validates('password')
     def validates_password(self, key, password):
@@ -181,10 +182,10 @@ class Store(db.Model, SerializerMixin):
     
     @validates('email')
     def validates_email(self, key, email):
-        if 3 <= len(email) <= 15:
+        if 3 <= len(email):
             return email
         else:
-            raise ValueError('email must be between 3 and 15 characters, incusive!')
+            raise ValueError('email must be between 3 and 15 characters, inclusive!')
 
 
     def __repr__(self):
