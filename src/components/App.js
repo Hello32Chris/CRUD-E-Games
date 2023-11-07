@@ -11,8 +11,8 @@ function App() {
 
 
     const [games, setGames] = useState([]);
-    const [customerArr, setCustomer] = useState([]);
     const [stores, setStores] = useState([])
+    const [customerArr, setCustomer] = useState([]);
 
     useEffect(() => {
         fetch('/customers')
@@ -20,7 +20,7 @@ function App() {
             .then(setCustomer);
     }, []);
     // console.log(customerArr)
-    // console.log(customerArr)
+    console.log(customerArr)
 
     useEffect(() => {
         fetch('/items')
