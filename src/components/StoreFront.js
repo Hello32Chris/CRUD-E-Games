@@ -1,7 +1,7 @@
 import React from "react";
 
 function StoreFront() {
-    return <></>
+    return <div>Hi</div>
 }
 
 export default StoreFront

@@ -13,6 +13,7 @@ importlib-metadata = "6.0.0"
 importlib-resources = "5.10.0"
 Faker = "14.2.0"
 sqlalchemy-serializer = "*"
+flask-cors = "*"
 
 [dev-packages]
 

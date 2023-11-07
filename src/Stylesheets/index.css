@@ -1,0 +1,19 @@
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  css * {
+    font-family: "MetSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  /* Setting a background color or image for the website */
+  body {
+    background-image: url(../Images/lion.jpg);
+  }
+  
+  .about {
+    text-align: center;
+    font-family: "MetSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  

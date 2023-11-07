@@ -1,30 +1,45 @@
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
+import Navbar from './Navbar';
+import Login from './Login';
+import StoreFront from './StoreFront';
+import Inventory from './Inventory';
 
-import React from "react";
 
 function App() {
 
 
-    const [tomato, tumato] = useState([]);
-  
+    const [vomato, vumato] = useState([]);
+
     useEffect(() => {
-      fetch('http://localhost:3001/deeznuts')
-      .then((res) => res.json())
-      .then((data) => tumato(data));
+        fetch('/customers')
+            .then((resp) => resp.json())
+            .then(vumato);
     }, []);
+
+    console.log(vomato)
+    const [tomato, tumato] = useState([]);
+
+    useEffect(() => {
+        fetch('/items')
+            .then((resp) => resp.json())
+            .then(tumato);
+    }, []);
+
+    console.log(tomato)
 
 
     return (
         <div>
             <h1>We Out Here</h1>
-            <Router>
-                <Navbar />
+            <Navbar />
+            <Switch>
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/storefront" element={<StoreFront />} />
-                <Route exact path="" element={<Inventory />} />
-            </Router>
+                <Route exact path="/games" element={<Inventory />} />
+            </Switch>
         </div>
-)};
+    )
+};
 
 export default App;
