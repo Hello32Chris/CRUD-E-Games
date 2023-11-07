@@ -84,6 +84,7 @@ class Customer(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
+    user_name = db.Column(db.String, unique = True)
     password = db.Column(db.String)
     email = db.Column(db.String, unique = True)
     age = db.Column(db.Integer)
@@ -105,6 +106,13 @@ class Customer(db.Model, SerializerMixin):
             return name
         else:
             raise ValueError('name must be between 3 and 15 characters, inclusive!')
+        
+    @validates('user_name')
+    def validates_username(self, key, user_name):
+        if 2 < len(user_name):
+            return user_name
+        else:
+            raise ValueError('Username must be more than 2 Characters!')
         
     @validates('password')
     def validates_password(self, key, password):

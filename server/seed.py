@@ -46,6 +46,7 @@ with app.app_context():
         for _ in range(num_customers):
             customer = Customer(
                 name=longer_name(3),
+                user_name=fake.user_name(),
                 password=fake.password(),
                 email=fake.email(),
                 age=fake.random_int(min=13, max=80),
