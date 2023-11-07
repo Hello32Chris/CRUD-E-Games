@@ -2,10 +2,10 @@ body, h1, h2, h3, p{
     margin: 0;
     padding: 0;
   }
-  nav {
+  /* nav {
     width: 25vw;
     height: 100vh;
-  }
+  } */
   /* #navbar{
     margin: 0 auto;
     border: thin 2px;
@@ -17,14 +17,22 @@ body, h1, h2, h3, p{
     justify-content: space-between;
   } */
 
+  .card-container{
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .card{
-    width: 450px;
+    width: 150px;
     border: 1px solid violet;
     border-radius: 15px;
     padding: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    height: fit-content;
+    height: 350px;
     padding: 5px;
     background-color: rgb(70, 57, 70);
     transition: transform .4s; /* Animation */

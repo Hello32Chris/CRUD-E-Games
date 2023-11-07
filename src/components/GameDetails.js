@@ -2,7 +2,7 @@ import React from "react";
 
 function GameDetails( {description, name, price, quantity, store, type } ){
 
-    // console.log(description)
+    console.log(store)
 
 
 
