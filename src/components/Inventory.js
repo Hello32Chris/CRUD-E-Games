@@ -1,10 +1,9 @@
 import React from "react";
 
 function Inventory({ gamesArr }) {
-    const mappedGamesArr = gamesArr.map(game=>(
+    const mappedGamesArr = gamesArr.map((game) => {
     console.log(game)
-
-    ))
+})
 
 
 
