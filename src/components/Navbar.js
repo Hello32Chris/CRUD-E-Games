@@ -8,6 +8,7 @@ function Navbar() {
       <NavLink to="/Games" activeClassName="active" >Games</NavLink>
       <NavLink to="/Search" activeClassName="active" >Search</NavLink>
       <NavLink to="/About" activeClassName="active" >About</NavLink>
+      <NavLink to="/customers" activeClassName="active" >Custys</NavLink>
     </nav>
   );
 }
