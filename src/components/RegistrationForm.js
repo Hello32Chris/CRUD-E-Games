@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function RegistrationForm() {
 
@@ -11,7 +11,23 @@ function RegistrationForm() {
 
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleRegister = () => {
+    const [customers, setCustomers] = useState([])
+    const [newuser, setNewUser] = useState({
+        name : "",
+        username : "",
+        password : "",
+        email : "",
+        age : ""
+    })
+
+
+    useEffect(() => {
+        fetch('http://127.0.0.1:5555/customers')
+            .then(resp => resp.json())
+            .then(data => setCustomers(data))
+    }, [])
+
+    const handleRegister = (e) => {
         const userData = { name, username, password, email, age };
 
         fetch('http://127.0.0.1:5555/customers', {
@@ -21,60 +37,61 @@ function RegistrationForm() {
             },
             body: JSON.stringify(userData),
         })
-            .then((resp) => {
-                if (resp.status === 201) {
-                    setRegistrationStatus('Validation Errors');
-                }
-            })
-            .catch((error) => {
-                console.error('Registration error:', error);
-            });
-    }
+            .then((resp) => (resp.json())
+            )
+            .then(newUser => setNewUser([...customers, newUser]))
+            e.target.name.value = ""
+            e.target.username.value = ""
+            e.target.password.value = ""
+            e.target.email.value = ""
+            e.target.age.value = ""
+    };
 
 
-    function handleShowPassword() {
-        setShowPassword(!showPassword)
-    }
+
+function handleShowPassword() {
+    setShowPassword(!showPassword)
+}
 
 
-    return (
-        <div>
-            <h2>Reister New Account!</h2>
-            <input
-                type="text"
-                placeholder='Name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder='Username'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-                type={showPassword ? "text" : "password"}
-                placeholder='Password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button id="showPasswrd" onClick={handleShowPassword}>show password</button>
-            <input
-                type="text"
-                placeholder='Email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder='Age'
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-            />
-            <button id="register" onClick={handleRegister}>Register</button>
-            {registrationStatus && <p>{registrationStatus}</p>}
-           
-        </div>
+return (
+    <div>
+        <h2>Reister New Account!</h2>
+        <input
+            type="text"
+            placeholder='Name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+        />
+        <input
+            type="text"
+            placeholder='Username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+            type={showPassword ? "text" : "password"}
+            placeholder='Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+        />
+        <button id="showPasswrd" onClick={handleShowPassword}>show password</button>
+        <input
+            type="text"
+            placeholder='Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+            type="number"
+            placeholder='Age'
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+        />
+        <button id="register" onClick={handleRegister}>Register</button>
+        {registrationStatus && <p>{registrationStatus}</p>}
+
+    </div>
     )
 }
 
