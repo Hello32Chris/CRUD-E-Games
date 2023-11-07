@@ -53,6 +53,9 @@ body, h1, h2, h3, p{
     height: 50px;
     width: 80px;
   }
+  .login-button:hover{
+    background-color: rgb(216, 210, 210);
+  }
 
   #login-container{
     width: 125px;
@@ -93,4 +96,13 @@ body, h1, h2, h3, p{
   color: white;
   padding: 10px 15px;
   border: none;
+}
+
+#showPasswrd{
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#register{
+  cursor: pointer;
 }

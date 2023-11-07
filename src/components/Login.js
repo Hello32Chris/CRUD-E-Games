@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LoginStatus from "./LoginStatus";
 import StoreLogins from "./StoreLogins"
+import RegistrationForm from "./RegistrationForm";
 
 
 function Login() {
@@ -9,6 +10,7 @@ function Login() {
     const [loginStore, setLoginStore] = useState(false)
     const [customers, setCustomer] = useState([]);
     const [stores, setStores] = useState([]);
+    const [showRegistrationForm, setShowRegistrationForm] = useState(false)
 
     useEffect(() => {
         fetch('/customers')
@@ -29,18 +31,27 @@ function Login() {
     }
     console.log(customers)
 
-    const storeLog = (loginStore ? <StoreLogins stores = {stores} /> : null)
+    const storeLog = (loginStore ? <StoreLogins stores={stores} /> : null)
 
-    const logMeIn = (loginState ? <LoginStatus customers ={customers} /> : null)
+    const logMeIn = (loginState ? <LoginStatus customers={customers} /> : null)
 
-    return <div id = 'login-container'>
-        <span >
-            <button className="login-button" onClick={enterLogin}>Login</button>
-            {logMeIn}
-            <button className="login-button" onClick={storeLogin}>StoreLogin</button>
-            {storeLog}
-        </span>
-    </div>
-}
+    const registrationForm = showRegistrationForm ? <RegistrationForm /> : null;
+
+    const enterRegister = () => {
+        setShowRegistrationForm(!showRegistrationForm)
+    }
+
+    return (
+        <div id='login-container'>
+            <span >
+                <button className="login-button" onClick={enterLogin}>Login</button>
+                {logMeIn}
+                <button className="login-button" onClick={storeLogin}>StoreLogin</button>
+                {storeLog}
+                <button className="login-button" onClick={enterRegister}>Register New Account</button>
+                {registrationForm}
+            </span>
+        </div>
+)};
 
 export default Login
