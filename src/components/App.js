@@ -12,13 +12,14 @@ function App() {
 
     const [games, setGames] = useState([]);
     const [customerArr, setCustomer] = useState([]);
+    const [stores, setStores] = useState([])
 
     useEffect(() => {
         fetch('/customers')
             .then((resp) => resp.json())
             .then(setCustomer);
     }, []);
-    console.log(customerArr)
+    // console.log(customerArr)
 
     useEffect(() => {
         fetch('/items')
@@ -26,6 +27,14 @@ function App() {
             .then(setGames);
     }, []);
     // console.log(games)
+
+    useEffect(() => {
+        fetch('/stores')
+            .then((resp) => resp.json())
+            .then(setStores)
+    }, [])
+
+    console.log(stores)
 
 
     return (
@@ -37,7 +46,7 @@ function App() {
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/storefront" element={<StoreFront />} />
                 <Route exact path="/games" element={<Inventory gamesArr = {games}/>} />
-                <Route exact path="/customers"><Account customerArr = {customerArr}/></ Route> 
+                <Route exact path="/customers"><Account customerArr = {customerArr} stores = {stores} /></ Route> 
             </Switch>
             <div id='container-1'></div>
             <div id='container-2'></div>

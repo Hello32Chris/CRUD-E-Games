@@ -7,10 +7,10 @@ function CustomerView( { name, email, age, membership } ) {
     return (
     <div>
         <br/>
-        <div>Name: {name}</div>
-        <p><div className="custy">Email:</div> {email}</p>
-        <p><div className="custy">Age:</div> {age}</p>
-        <p><div className="custy">Membership:</div> {membership ? "Im a Member!" : "Not a member yet!"}</p>
+        <b>Name: {name}</b>
+        <p><b>Email:</b> {email}</p>
+        <p><b>Age:</b> {age}</p>
+        <p><b>Membership:</b> {membership ? "Im a Member!" : "Not a member yet!"}</p>
         <br/>
     </div>
 )};

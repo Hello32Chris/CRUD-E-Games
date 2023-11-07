@@ -1,7 +1,8 @@
 import React from "react";
 import CustomerView from "./CustomerVIew";
+import StoreBack from "./StoreBack";
 
-function Account( {customerArr} ) {
+function Account( {customerArr, stores} ) {
 
     const customerView = customerArr.map((customer) => {
         return <CustomerView key={customer.id}
@@ -11,11 +12,20 @@ function Account( {customerArr} ) {
           membership = {customer.membership}
         />
     })
-    console.log(customerView)
+    // console.log(customerView)
+
+    const storeMap = stores.map((store) => {
+      return <StoreBack key={store.id}
+        name = {store.name}
+        email = {store.id}
+        location = {store.location}
+        />
+    })
 
     return (
     <div id='customerview'>
         {customerView}
+        {storeMap}
     </div>
   );
 }

@@ -2,8 +2,11 @@ body, h1, h2, h3, p {
     margin: 0;
     padding: 0;
   }
-
-  #navbar{
+  nav {
+    width: 25vw;
+    height: 100vh;
+  }
+  /* #navbar{
     margin: 0 auto;
     border: thin 2px;
     width: 50%;
@@ -12,7 +15,7 @@ body, h1, h2, h3, p {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
+  } */
 
 
   #container-1{
@@ -50,3 +53,37 @@ body, h1, h2, h3, p {
     height: 50px;
     width: 50px;
   }
+
+  .navbar {
+    height: 200px;
+    width: 75px;
+    position: fixed;
+    z-index: 1;
+    /* Stay on top */
+    margin-top: 25px;
+    padding-top: 5px;
+    top: 10px;
+    left: 10px;
+    background-color: #68001a;
+    overflow-x: hidden;
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidebar */
+}
+
+.link {
+  padding: 8px 8px 8px 8px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.navbutton {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
