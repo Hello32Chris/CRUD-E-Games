@@ -1,11 +1,46 @@
-from flask import make_response, request
+from flask import make_response, request, render_template, redirect, url_for, flash
 from models import Item, Cart, Customer, Store #, checkout
-
+from flask_login import LoginManager, login_user, current_user, login_required, logout_user, login_manager
 from config import db, app
 
-@app.route('/')
+
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+
+
+@app.route('/', endpoint='home')
 def home():
     return '<h1 align="center">Welcome!!</h1>'
+
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Customer.query.get(int(user_id))
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("home"))
+    if request.method == 'GET':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        user = Customer.query.filter_by(username=username).first()
+
+        if user and user.check_password(password):
+            login_user(user)
+            return redirect(url_for("storefront"))
+        else:
+            return flash("Invalid Username or Password", "danger")
+        
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
+
+
 
 
 
@@ -83,7 +118,7 @@ def customers():
 
 # ---------------- GET -----------------------
     if request.method == 'GET':
-        return make_response([customer.to_dict(rules=('-password', '-carts' )) for customer in customers], 200)
+        return make_response([customer.to_dict(rules=('-carts', )) for customer in customers], 200)
     
 
 
