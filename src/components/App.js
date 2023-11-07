@@ -20,6 +20,7 @@ function App() {
             .then(setCustomer);
     }, []);
     // console.log(customerArr)
+    // console.log(customerArr)
 
     useEffect(() => {
         fetch('/items')
@@ -43,9 +44,9 @@ function App() {
             <Navbar />
             <Login />
             <Switch>
-                <Route exact path="/" element={<Login />} />
-                <Route exact path="/storefront" element={<StoreFront />} />
-                <Route exact path="/games" element={<Inventory gamesArr = {games}/>} />
+                <Route exact path="/"><Login /></Route>
+                <Route exact path="/storefront"><StoreFront/></Route>
+                <Route exact path="/games" ><Inventory gamesArr = {games}/></Route>
                 <Route exact path="/customers"><Account customerArr = {customerArr} stores = {stores} /></ Route> 
             </Switch>
             <div id='container-1'></div>
