@@ -17,16 +17,15 @@ function App() {
             .then(vumato);
     }, []);
 
-    console.log(vomato)
-    const [tomato, tumato] = useState([]);
+    // console.log(vomato)
+    const [games, setGames] = useState([]);
 
     useEffect(() => {
         fetch('/items')
             .then((resp) => resp.json())
-            .then(tumato);
+            .then(setGames);
     }, []);
-
-    console.log(tomato)
+    // console.log(games)
 
 
     return (
@@ -36,13 +35,14 @@ function App() {
             <Switch>
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/storefront" element={<StoreFront />} />
-                <Route exact path="/games" element={<Inventory />} />
+                <Route exact path="/games" element={<Inventory gamesArr = {games}/>} />
             </Switch>
             <div id='container-1'></div>
             <div id='container-2'></div>
             <div id='container-3'></div>
             <div id='container-4'></div>
         </div>
+
     )
 };
 
