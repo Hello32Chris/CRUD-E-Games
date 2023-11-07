@@ -3,17 +3,30 @@ body, h1, h2, h3, p {
     padding: 0;
   }
 
+  #navbar{
+    margin: 0 auto;
+    border: thin 2px;
+    width: 50%;
+    text-align: center;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
 
   #container-1{
     border: solid blue;
     height: 500px;
     width: 200px
   }
+
   #container-2{
     border: dashed green;
     height: 500px;
     width: 200px
   }
+
   #container-3{
     border: double red 20px;
     height: 200px;
@@ -21,9 +34,19 @@ body, h1, h2, h3, p {
     display: flex;
     flex-wrap: wrap-reverse;
   }
+
   #container-4{
     border: dotted yellow;
     height: 500px;
     width: 200px
   }
   
+  #login-button{
+    border: solid thin;
+    background-color: grey;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 50px;
+    width: 50px;
+  }

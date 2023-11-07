@@ -33,6 +33,7 @@ function App() {
         <div>
             <h1>We Out Here</h1>
             <Navbar />
+            <Login />
             <Switch>
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/storefront" element={<StoreFront />} />
