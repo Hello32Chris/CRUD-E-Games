@@ -11,7 +11,7 @@ function Account( {customerArr} ) {
           membership = {customer.membership}
         />
     })
-    console.log(customerView)
+    // console.log(customerView)
 
     return (
     <div id='customerview'>

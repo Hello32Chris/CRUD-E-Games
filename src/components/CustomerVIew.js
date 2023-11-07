@@ -2,7 +2,7 @@ import React from "react";
 
 function CustomerView( { name, email, age, membership } ) {
     
-    console.log(name, email, age, membership)
+    // console.log(name, email, age, membership)
 
     return (
     <div>
