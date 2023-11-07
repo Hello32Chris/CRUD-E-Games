@@ -22,11 +22,7 @@ metadata = MetaData(naming_convention={
 
 
 db = SQLAlchemy(metadata=metadata)
-
-
-
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
-
 migrate = Migrate(app, db)
-
 db.init_app(app)
+
+CORS(app)
