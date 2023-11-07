@@ -38,6 +38,10 @@ function App() {
                 <Route exact path="/storefront" element={<StoreFront />} />
                 <Route exact path="/games" element={<Inventory />} />
             </Switch>
+            <div id='container-1'></div>
+            <div id='container-2'></div>
+            <div id='container-3'></div>
+            <div id='container-4'></div>
         </div>
     )
 };
