@@ -27,7 +27,7 @@ function App() {
             .then((resp) => resp.json())
             .then(setGames);
     }, []);
-    // console.log(games)
+    console.log(games)
 
     useEffect(() => {
         fetch('/stores')
@@ -49,10 +49,6 @@ function App() {
                 <Route exact path="/games" ><Inventory gamesArr = {games}/></Route>
                 <Route exact path="/customers"><Account customerArr = {customerArr} stores = {stores} /></ Route> 
             </Switch>
-            <div id='container-1'></div>
-            <div id='container-2'></div>
-            <div id='container-3'></div>
-            <div id='container-4'></div>
         </div>
 
     )

@@ -2,20 +2,6 @@ body, h1, h2, h3, p{
     margin: 0;
     padding: 0;
   }
-  /* nav {
-    width: 25vw;
-    height: 100vh;
-  } */
-  /* #navbar{
-    margin: 0 auto;
-    border: thin 2px;
-    width: 50%;
-    text-align: center;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  } */
 
   .card-container{
     margin: auto;
@@ -60,40 +46,19 @@ body, h1, h2, h3, p{
     box-shadow: 5px 5px 10px 5px rgba(161, 134, 204, 0.733);
     transform: scale(1.07);
   }
-  /* #container-1{
-    border: solid blue;
-    height: 500px;
-    width: 200px
-  }
-
-  #container-2{
-    border: dashed green;
-    height: 500px;
-    width: 200px
-  }
-
-  #container-3{
-    border: double red 20px;
-    height: 200px;
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap-reverse;
-  }
-
-  #container-4{
-    border: dotted yellow;
-    height: 500px;
-    width: 200px
-  } */
   
-  #login-button{
+  .login-button{
     border: solid thin;
     background-color: grey;
+    height: 50px;
+    width: 80px;
+  }
+
+  #login-container{
+    width: 125px;
     position: absolute;
     top: 10px;
     right: 10px;
-    height: 50px;
-    width: 50px;
   }
 
   .navbar {
