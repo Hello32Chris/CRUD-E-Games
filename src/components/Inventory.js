@@ -6,6 +6,7 @@ export default function Inventory( { gamesArr } ) {
     const mappedGamesArr = gamesArr.map((game) => {
         return <GameDetails 
         key={game.id}
+        gId={game.id}
         description={game.description}
         name={game.name}
         price={game.price}
@@ -18,17 +19,18 @@ export default function Inventory( { gamesArr } ) {
 
 //------------------use states------------------------
     const [cart, setCart] = useState([]);
-    const [cartItems, setCartItems] = useState({});
+    const [cartItems, setCartItems] = useState([]);
 
+    console.log(gamesArr.id)
 
-
-    function addItemToCart(itemId)  {
+    function addItemToCart()  {
+        const gId = gamesArr.id
         // Check if the item is already in the cart using cartItems.
-        if (!cartItems[itemId]) {
+        if (cartItems.id === gId) {
             // Update the cart state locally.
-            const updatedCart = [...cart, itemId];
+            const updatedCart = [...cart, gId];
             setCart(updatedCart);
-            setCartItems({ ...cartItems, [itemId]: true });
+            setCartItems([ ...cartItems, [gId]]);
             return cartItems;
             //write a code that increments the quantity up if item does exist in cart
         }

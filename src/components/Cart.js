@@ -35,9 +35,9 @@ function Cart({ cart, setCart }) {
                 <div className="cart-container">
                     <h2>Cart</h2>
                     <ul>
-                        {cart.map(itemId => (
+                        {getItemsId.map(itemId => (
                             <li key={itemId}>
-                                {itemId ? `Item ID: ${itemId}` : [itemId]}
+                                {getItemsId.find(item => item.id === itemId)?.name() || "Item not found"}
                             </li>
                         ))}
                     </ul>
