@@ -22,12 +22,13 @@ function GameDetails( {description, name, price, quantity, store, type, img } ){
                 <div className="card-front">
                     <img src ={img} alt = {name}/>
                     <h2>{name}</h2>
-                    <img src={img} alt="" />
+                </div>
+                <div className="card-back">
+                    <p>{name}</p>
                     <p>{description}</p>
                     <p>{price}</p>
                     <p>{quantity}</p>
                     <p>{type}</p>
-                    {/* <p>{store}</p> Uncomment this line to display the store information */}
                     {inCart ? (
                         <button onClick={addToCart}>Remove from Cart</button>
                     ) : (

@@ -43,12 +43,6 @@ function App() {
 
     return (
         <>
-        <header>
-            <img src="./images/updatedheader.png"></img>
-        </header>
-        <div>
-            <h1>We Out Here</h1>
-        </div>
             <header>
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
