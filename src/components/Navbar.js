@@ -23,7 +23,7 @@ function Navbar() {
       </div>
     </nav>)
 
-  console.log(toggle)
+  // console.log(toggle)
 
   return (
     <div>

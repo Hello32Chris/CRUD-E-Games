@@ -3,7 +3,10 @@ from flask_migrate import Migrate
 from sqlalchemy import MetaData
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS  # Import the CORS module
+
 import os
+
+
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.environ.get(
@@ -11,6 +14,9 @@ DATABASE = os.environ.get(
 
 
 app = Flask(__name__)
+app.secret_key = 'CRUDboyz'
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False

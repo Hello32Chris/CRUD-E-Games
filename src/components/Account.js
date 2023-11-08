@@ -12,7 +12,7 @@ function Account( {customerArr, stores} ) {
           membership = {customer.membership}
         />
     })
-    // console.log(customerView)
+    console.log(customerArr)
 
     const storeMap = stores.map((store) => {
       return <StoreBack key={store.id}

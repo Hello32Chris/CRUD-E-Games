@@ -5,6 +5,11 @@ import re
 
 from config import db
 
+cart_items = db.Table(
+    'cart_items',
+    db.Column('cart_id', db.Integer, db.ForeignKey('carts.id'), primary_key=True),
+    db.Column('item_id', db.Integer, db.ForeignKey('items.id'), primary_key=True)
+)
 
 
 class Item(db.Model, SerializerMixin):
@@ -63,7 +68,7 @@ class Cart(db.Model, SerializerMixin):
 
     # relationships
     customer = db.relationship('Customer', back_populates = 'carts')
-    # items = db.relationship('Item', back_populates = 'cart')
+    items = db.relationship('Item', secondary=cart_items, backref = 'carts')
     checkout = db.relationship('Checkout', back_populates = 'cart', cascade ='all, delete-orphan')
 
     # association proxy
@@ -84,6 +89,7 @@ class Customer(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
+    user_name = db.Column(db.String, unique = True)
     password = db.Column(db.String)
     email = db.Column(db.String, unique = True)
     age = db.Column(db.Integer)
@@ -105,6 +111,13 @@ class Customer(db.Model, SerializerMixin):
             return name
         else:
             raise ValueError('name must be between 3 and 15 characters, inclusive!')
+        
+    @validates('user_name')
+    def validates_username(self, key, user_name):
+        if 2 < len(user_name):
+            return user_name
+        else:
+            raise ValueError('Username must be more than 2 Characters!')
         
     @validates('password')
     def validates_password(self, key, password):
@@ -206,3 +219,4 @@ class Checkout(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f''
+

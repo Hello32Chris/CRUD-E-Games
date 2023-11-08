@@ -1,12 +1,7 @@
-from flask import make_response, request
+from flask import make_response, request, render_template, redirect, url_for, flash
 from models import Item, Cart, Customer, Store #, checkout
-
+# from flask_login import LoginManager, login_user, current_user, login_required, logout_user, login_manager
 from config import db, app
-
-@app.route('/')
-def home():
-    return '<h1 align="center">Welcome!!</h1>'
-
 
 
 #----------------------------------------
@@ -77,14 +72,31 @@ def item_by_id(id):
 #----------------------------------------
 # ALL CUSTOMERS
 #----------------------------------------
-@app.route('/customers', methods=['GET'])
+@app.route('/customers', methods=['GET', 'POST'])
 def customers():
     customers = Customer.query.all()
 
 # ---------------- GET -----------------------
     if request.method == 'GET':
-        return make_response([customer.to_dict(rules=('-password', '-carts' )) for customer in customers], 200)
+        return make_response([customer.to_dict(rules=('-carts', )) for customer in customers], 200)
     
+    elif request.method == 'POST':
+        form_data = request.get_json()
+        try:
+            new_customer_obj = Customer(
+                name = form_data['name'],
+                user_name = form_data['username'],
+                password = form_data['password'],
+                email = form_data['email'],
+                age = form_data['age']
+            )
+            db.session.add(new_customer_obj)
+            db.session.commit()
+            resp = make_response(new_customer_obj.to_dict(), 201)
+            return resp
+        except ValueError:
+            resp = make_response({ "errors": ["Validation Errors!"]}, 400)
+    return resp
 
 
 
@@ -186,7 +198,7 @@ def cart_by_id(id):
 
 # ---------------- GET -----------------------
         if request.method == 'GET':
-            resp = make_response(cart_by_id.to_dict(rules = ()), 200)
+            resp = make_response(cart_by_id.to_dict(rules = ('-checkout.store.password','-customer.password', '-checkout.store.items')), 200)
 
 # ---------------- POST -----------------------
         elif request.method == 'POST':
@@ -216,7 +228,33 @@ def cart_by_id(id):
         resp = make_response({ "error": "No Cart Found!"}, 404)
     return resp
 
-        
+@app.route('/cart_items', methods = ['POST'])
+def add_to_cart():
+    try:
+        data = request.get_json()
+        cart_id = data['cart_id']
+        item_id = data['item_id']
+
+        # Perform the necessary operations, e.g., add the item to the cart_items
+        # Ensure validation and error handling
+
+        return make_response({'message': 'Item added to cart successfully'}, 201)
+    except Exception as e:
+        return make_response({'error': str(e)}, 400)
+    
+@app.route('/remove_from_cart', methods=['POST'])
+def remove_from_cart():
+    try:
+        data = request.get_json()
+        cart_id = data['cart_id']
+        item_id = data['item_id']
+
+        # Perform the necessary operations, e.g., remove the item from the cart_items
+        # Ensure validation and error handling
+
+        return make_response({'message': 'Item removed from cart successfully'})
+    except Exception as e:
+        return make_response({'error': str(e)}, 400)
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
