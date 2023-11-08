@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function CustomerView( { name, email, age, membership } ) {
-    
-    // console.log(name, email, age, membership)
+function CustomerView( { id, name, email, age, membership } ) {
+   
+    const [customers, setCustomers] = useState([]);
+
+      
+      function handleDeleteCustomer(id) {
+        fetch(`/customers/${id}`, { method: "DELETE" }).then((resp) => {
+          if (resp.ok) {
+            setCustomers((customerArr) =>
+              customerArr.filter((cust) => cust.id !== id)
+            );
+            window.location.reload();
+            alert(`Customer ${name} Deleted!`)
+          }
+        });
+      }
+
 
     return (
     <div>
@@ -11,6 +25,8 @@ function CustomerView( { name, email, age, membership } ) {
         <p><b>Email:</b> {email}</p>
         <p><b>Age:</b> {age}</p>
         <p><b>Membership:</b> {membership ? "Im a Member!" : "Not a member yet!"}</p>
+        <br/>
+        <button onClick={() => handleDeleteCustomer(id)}>Delete</button>
         <br/>
     </div>
 )};
