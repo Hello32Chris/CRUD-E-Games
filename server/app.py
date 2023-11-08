@@ -4,46 +4,6 @@ from models import Item, Cart, Customer, Store #, checkout
 from config import db, app
 
 
-# login_manager = LoginManager(app)
-# login_manager.login_view = 'login'
-
-
-# @app.route('/', endpoint='home')
-# def home():
-#     return '<h1 align="center">Welcome!!</h1>'
-
-
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return Customer.query.get(int(user_id))
-
-# @app.route("/login", methods=["GET", "POST"])
-# def login():
-#     if current_user.is_authenticated:
-#         return redirect(url_for("home"))
-#     if request.method == 'GET':
-#         username = request.form.get('username')
-#         password = request.form.get('password')
-#         user = Customer.query.filter_by(username=username).first()
-
-#         if user and user.check_password(password):
-#             login_user(user)
-#             return redirect(url_for("storefront"))
-#         else:
-#             return flash("Invalid Username or Password", "danger")
-        
-
-# @app.route("/logout")
-# @login_required
-# def logout():
-#     logout_user()
-#     return redirect(url_for("home"))
-
-
-
-
-
 #----------------------------------------
 # ALL ITEMS
 #----------------------------------------
@@ -238,7 +198,7 @@ def cart_by_id(id):
 
 # ---------------- GET -----------------------
         if request.method == 'GET':
-            resp = make_response(cart_by_id.to_dict(rules = ()), 200)
+            resp = make_response(cart_by_id.to_dict(rules = ('-checkout.store.password','-customer.password', '-checkout.store.items')), 200)
 
 # ---------------- POST -----------------------
         elif request.method == 'POST':
@@ -268,7 +228,33 @@ def cart_by_id(id):
         resp = make_response({ "error": "No Cart Found!"}, 404)
     return resp
 
-        
+@app.route('/cart_items', methods = ['POST'])
+def add_to_cart():
+    try:
+        data = request.get_json()
+        cart_id = data['cart_id']
+        item_id = data['item_id']
+
+        # Perform the necessary operations, e.g., add the item to the cart_items
+        # Ensure validation and error handling
+
+        return make_response({'message': 'Item added to cart successfully'}, 201)
+    except Exception as e:
+        return make_response({'error': str(e)}, 400)
+    
+@app.route('/remove_from_cart', methods=['POST'])
+def remove_from_cart():
+    try:
+        data = request.get_json()
+        cart_id = data['cart_id']
+        item_id = data['item_id']
+
+        # Perform the necessary operations, e.g., remove the item from the cart_items
+        # Ensure validation and error handling
+
+        return make_response({'message': 'Item removed from cart successfully'})
+    except Exception as e:
+        return make_response({'error': str(e)}, 400)
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

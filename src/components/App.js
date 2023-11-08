@@ -31,6 +31,7 @@ function App() {
             .then((resp) => resp.json())
             .then(setStores)
     }, [])
+    console.log(stores)
 
 
 
