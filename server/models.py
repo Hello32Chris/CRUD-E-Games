@@ -1,18 +1,17 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 import re
 
-metadata = MetaData(
-    naming_convention={
-        "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-    }
+from config import db
+
+cart_items = db.Table(
+    'cart_items',
+    db.Column('cart_id', db.Integer, db.ForeignKey('carts.id'), primary_key=True),
+    db.Column('item_id', db.Integer, db.ForeignKey('items.id'), primary_key=True)
 )
 
-db = SQLAlchemy(metadata=metadata)
-
+#------------------------------------------------------------- CLASS ITEM-----------------------------------------
 class Item(db.Model, SerializerMixin):
     __tablename__ = 'items'
 
@@ -22,10 +21,11 @@ class Item(db.Model, SerializerMixin):
     description = db.Column(db.String)
     quantity = db.Column(db.Integer)
     price = db.Column(db.Float)
+    img = db.Column(db.String)
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
 
     # relationships
-    cart = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
+    # carts = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
     store = db.relationship('Store', back_populates = 'items')
 
     # association proxy
@@ -58,7 +58,7 @@ class Item(db.Model, SerializerMixin):
     def __repr__(self):
         return f''
 
-
+#------------------------------------------------------------- CLASS CART-----------------------------------------
 class Cart(db.Model, SerializerMixin):
     __tablename__ = 'carts'
 
@@ -69,7 +69,7 @@ class Cart(db.Model, SerializerMixin):
 
     # relationships
     customer = db.relationship('Customer', back_populates = 'carts')
-    items = db.relationship('Item', back_populates = 'cart')
+    # items = db.relationship('Item', back_populates = 'cart')
     checkout = db.relationship('Checkout', back_populates = 'cart', cascade ='all, delete-orphan')
 
     # association proxy
@@ -82,12 +82,13 @@ class Cart(db.Model, SerializerMixin):
     def __repr__(self):
         return f''
 
-
+#------------------------------------------------------------- CLASS CUSTOMER-----------------------------------------
 class Customer(db.Model, SerializerMixin):
     __tablename__ = 'customers'
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
+    user_name = db.Column(db.String, unique = True)
     password = db.Column(db.String)
     email = db.Column(db.String, unique = True)
     age = db.Column(db.Integer)
@@ -139,6 +140,7 @@ class Customer(db.Model, SerializerMixin):
         return f''
 
 
+#------------------------------------------------------------- CLASS STORE-----------------------------------------
 class Store(db.Model, SerializerMixin):
     __tablename__ = 'stores'
 
@@ -188,6 +190,7 @@ class Store(db.Model, SerializerMixin):
     def __repr__(self):
         return f''
 
+#------------------------------------------------------------- CLASS CHECKOUT-----------------------------------------
 class Checkout(db.Model, SerializerMixin):
     __tablename__ = 'checkouts'
 
