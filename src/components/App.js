@@ -36,6 +36,10 @@ function App() {
 
 
     return (
+        <>
+        <header>
+            <img src="./images/updatedheader.png"></img>
+        </header>
         <div>
             <h1>We Out Here</h1>
             <Navbar />
@@ -47,7 +51,7 @@ function App() {
                 <Route exact path="/customers"><Account customerArr = {customerArr} stores = {stores} /></ Route> 
             </Switch>
         </div>
-
+        </>
     )
 };
 

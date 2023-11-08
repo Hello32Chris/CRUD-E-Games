@@ -2,6 +2,7 @@ import React from "react";
 import GameDetails from "./GameDetails";
 
 function Inventory( { gamesArr } ) {
+    
     const mappedGamesArr = gamesArr.map((game) => {
         return <GameDetails 
         key={game.id}
