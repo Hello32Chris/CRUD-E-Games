@@ -236,20 +236,6 @@ border-radius: 5px;
   overflow-x: hidden;
   transition: 0.5s;
   /* 0.5 second transition effect to slide in the sidebar */
-.navbar {
-  height: 200px;
-  width: 75px;
-  position: fixed;
-  z-index: 1;
-  /* Stay on top */
-  margin-top: 25px;
-  padding-top: 5px;
-  top: 10px;
-  left: 10px;
-  background-color: #68001a;
-  overflow-x: hidden;
-  transition: 0.5s;
-  /* 0.5 second transition effect to slide in the sidebar */
 }
 
 .link {

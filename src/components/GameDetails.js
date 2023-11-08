@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-function GameDetails( {description, name, price, quantity, store, type, img } ){
+function GameDetails({ description, name, price, quantity, store, type, img }) {
 
     // console.log(store)
     const [isFlipped, setIsFlipped] = useState(false);
@@ -14,15 +14,15 @@ function GameDetails( {description, name, price, quantity, store, type, img } ){
     const cardToggle = isFlipped ? "flipped" : '';
 
     const addToCart = () => {
-        setInCart(!inCart);        
-    
+        setInCart(!inCart);
+
     }
 
     return (
         <div className={`card ${cardToggle}`} onClick={flipCard}>
             <div className="card-inner">
                 <div className="card-front">
-                    <img src ={img} alt = {name}/>
+                    <img src={img} alt={name} />
                     <h2>{name}</h2>
                 </div>
                 <div className="card-back">
@@ -36,10 +36,11 @@ function GameDetails( {description, name, price, quantity, store, type, img } ){
                     ) : (
                         <button onClick={addToCart}>Add to Cart</button>
                     )}
+                </div>
             </div>
         </div>
-    );
+            );
 }
 
-export default GameDetails
+            export default GameDetails
 
