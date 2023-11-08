@@ -120,7 +120,37 @@ with app.app_context():
                 img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBpM_DJjXMJbmnv5G--AWUwQQB7Zk882uUew&usqp=CAU',
                 store_id = 1,
             )
-            db.session.add(item, item1, item2, item3, item4, item5, item6, item7, item8, item9,item10,item11)
+            item12 = Item(
+                name = 'Madden NFL 24',
+                type = 'Sports',
+                description = 'Experience the newest iteration of FieldSENSE™ in Madden NFL 24. More realistic character movement and smarter AI gives you control to play out your gameplay strategy with the confidence to dominate any opponent.',
+                quantity = 20,
+                price = 70,
+                img = 'https://image.api.playstation.com/vulcan/ap/rnd/202307/1222/609e9a7cba2efa5084585bbc4d6da809d3d444e6da87612c.jpg',
+                store_id = 1,
+            )
+            item13 = Item(
+                name = 'Madden NFL 24',
+                type = 'Sports',
+                description = 'Experience the newest iteration of FieldSENSE™ in Madden NFL 24. More realistic character movement and smarter AI gives you control to play out your gameplay strategy with the confidence to dominate any opponent.',
+                quantity = 20,
+                price = 70,
+                img = 'https://image.api.playstation.com/vulcan/ap/rnd/202307/1222/609e9a7cba2efa5084585bbc4d6da809d3d444e6da87612c.jpg',
+                store_id = 1,
+            )
+            item14 = Item(
+                name = 'Slime Rancher 2',
+                type = 'Advneture',
+                description = 'https://upload.wikimedia.org/wikipedia/en/5/5b/Mortal_Kombat_1_key_art.jpeg',
+                quantity = 20,
+                price = 30,
+                img = 'https://cdn1.epicgames.com/offer/4f09ede568514ca6ad487f9c22a66b81/EGS_SlimeRancher2_MonomiPark_S1_2560x1440-e2797b687003d40372c129182591b2e6_2560x1440-e2797b687003d40372c129182591b2e6',
+                store_id = 1
+            )
+
+            
+            db.session.add(item, item1, item2, item3, item4, item5, item6, item7, item8, item9,item10,item11,
+            item12,item13,item14)
 
             db.session.commit()
 
