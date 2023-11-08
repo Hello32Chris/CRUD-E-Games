@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Login from './Login';
 import StoreFront from './StoreFront';
 import Inventory from './Inventory';
+import Cart from './Cart';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     const [games, setGames] = useState([]);
     const [stores, setStores] = useState([])
     const [customerArr, setCustomer] = useState([]);
+    const [loggedInID, setLoggedInID] = useState(1)
 
     useEffect(() => {
         fetch('/customers')
@@ -31,26 +33,30 @@ function App() {
             .then((resp) => resp.json())
             .then(setStores)
     }, [])
-    console.log(stores)
+
+    const filteredCustomerIDs = customerArr.filter((customer) => customer.id === loggedInID).map((customer) => customer.id);
+
+    console.log(filteredCustomerIDs)
 
 
 
     return (
         <>
-        <header>
-            <img src="./images/updatedheader.png"></img>
-        </header>
-        <div>
-            <h1>We Out Here</h1>
-            <Navbar />
-            <Login />
-            <Switch>
-                <Route exact path="/"><Login /></Route>
-                <Route exact path="/storefront"><StoreFront/></Route>
-                <Route exact path="/games" ><Inventory gamesArr = {games}/></Route>
-                <Route exact path="/customers"><Account customerArr = {customerArr} stores = {stores} /></ Route> 
-            </Switch>
-        </div>
+            <header>
+                <img src="./images/updatedheader.png" alt=''></img>
+            </header>
+            <div>
+                <h1>We Out Here</h1>
+                <Navbar />
+                <Login />
+                <Cart customer_id = {filteredCustomerIDs}/>
+                <Switch>
+                    <Route exact path="/"><Login /></Route>
+                    <Route exact path="/storefront"><StoreFront /></Route>
+                    <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
+                    <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
+                </Switch>
+            </div>
         </>
     )
 };
