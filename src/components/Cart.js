@@ -20,6 +20,26 @@ function Cart({ customer_id }) {
             })
     }, [customer_id])
 
+   const createNewCart = async (customer_id) => {
+    try {
+        const resp = await fetch('/carts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ customer_id }),
+        });
+        if (resp.ok) {
+            const data = await resp.json();
+            console.log(data)
+        } else {
+            console.error('Failed to create a new cart')
+        }
+    } catch (error) {
+        console.error(error)
+    }
+   }
+
     console.log(cart)
 
 

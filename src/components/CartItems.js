@@ -1,7 +1,7 @@
 import React from "react";
 
 function CartItems({ items, customer }) {
-    console.log(items)
+    // console.log(items)
 
 
     return (

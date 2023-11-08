@@ -14,7 +14,7 @@ function App() {
     const [games, setGames] = useState([]);
     const [stores, setStores] = useState([])
     const [customerArr, setCustomer] = useState([]);
-    const [loggedInID, setLoggedInID] = useState(1)
+    const [loggedInID, setLoggedInID] = useState(23)
 
     useEffect(() => {
         fetch('/customers')
