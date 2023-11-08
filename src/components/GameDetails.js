@@ -19,7 +19,7 @@ function GameDetails( {description, name, price, quantity, store, type, img } ){
         <div className={`card ${cardToggle}`} onClick={flipCard}>
             <div className="card-inner">
                 <div className="card-front">
-                    <img src = {img} alt = {name}/>
+                    <img src = "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg" alt = {name}/>
                     <h2>{name}</h2>
                 </div>
                 <div className="card-back">
