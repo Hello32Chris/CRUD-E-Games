@@ -116,23 +116,6 @@ def customer_by_id(id):
         if request.method == 'GET':
             resp = make_response(customer.to_dict(), 200)
 
-#----------------- POST-----------------------
-        # elif request.method == 'POST':
-        #     form_data = request.get_json()
-        #     try:
-        #         new_customer_obj = Customer(
-        #             name = form_data['name'],
-        #             password = form_data['password'],
-        #             email = form_data['email'],
-        #             age = form_data['age'],
-        #             membership = form_data['membership']
-        #         )
-        #         db.session.add(new_customer_obj)
-        #         db.session.commit()
-        #         resp = make_response(new_customer_obj.to_dict(), 201)
-        #     except ValueError:
-        #         resp = make_response({ "errors": ["Validation Errors!"]}, 400)
-
 #---------------- PATCH-----------------------
         elif request.method == 'PATCH':
             form_data = request.get_json()
