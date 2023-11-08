@@ -2,22 +2,12 @@ body, h1, h2, h3, p{
     margin: 0;
     padding: 0;
   }
-  /* nav {
-    width: 25vw;
-    height: 100vh;
-  } */
-  /* #navbar{
-    margin: 0 auto;
-    border: thin 2px;
-    width: 50%;
-    text-align: center;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  } */
+  
   *{
     background-image: url('https://wallpapertag.com/wallpaper/full/a/1/8/116102-popular-dark-grey-background-1920x1200-for-tablet.jpg');
+  }
+  h1{
+    width: 200px;
   }
   header{
     text-align: center;
@@ -43,7 +33,7 @@ body, h1, h2, h3, p{
     margin-bottom: 10px;
     height: 350px;
     padding: 5px;
-    background-color: rgb(70, 57, 70);
+    background-color: rgb(255, 0, 0);
     transition: transform .7s; /* Animation */
     perspective: 220px;
     cursor: pointer;
@@ -66,9 +56,12 @@ body, h1, h2, h3, p{
   height:120px;
   border-radius: 5px;
   }
+  .card-inner h2{
+    display: flex
+  }
   /* ---------------enzo---testing---section------------------ */
   .card:hover {
-    box-shadow: 5px 5px 10px 5px rgba(161, 134, 204, 0.733);
+    box-shadow: 5px 5px 10px 5px rgba(71, 47, 82, 0.87);
     transform: scale(1.07); 
   }
 /* Position the front and back side */
@@ -76,7 +69,7 @@ body, h1, h2, h3, p{
   background-color: transparent;
   width: 300px;
   height: 200px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid violet;
   perspective: 220px; /* Remove this if you don't want the 3D effect */
 }
 .card-front, .card-back {
@@ -86,12 +79,17 @@ body, h1, h2, h3, p{
   backface-visibility: hidden;
   border-radius: 15px;
 } 
+.card-front h2{
+  width: 55px;
+  background-color: transparent;
+  flex-wrap: wrap;
+}
 
 .card.flipped{
   border-color: violet;
   width: 170px;
   height: 350px;
-  background-color: rgb(70, 57, 70);
+  background-color: rgb(250, 0, 0);
   transform: rotateY(180deg);
   perspective: 220px;
   transform-style: preserve-3d;
@@ -104,82 +102,122 @@ body, h1, h2, h3, p{
   transition: transform .7s;
   /* transform: rotateY(180deg); */
 }
-
-/* Style the back side */
-/* .card-inner{
-  transform: rotateY(180deg);
-} */
 .card-back {
-  background-color: rgb(70, 57, 70);
-  color: white;
+  background-color: rgb(255, 0, 255);
+  color: rgb(255, 255, 255);
   transform: rotateY(180deg);
   position: absolute;
 }
+.home-game-container{
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: transparent;
+  /* border: 1px solid transparent; */
+  justify-content: space-between;
+  width: 600px;
+  height: 1000px;
+}
+.home-game-card{
+  width: 600px;
+  height: 150px;
+  border: 1px solid violet;
+  border-radius: 15px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: rgb(255, 0, 0);
+  transition: transform .7s; /* Animation */
+  perspective: 220px;
+  cursor: pointer;
+} 
+.home-game-card:hover{
+  box-shadow: 5px 5px 10px 5px rgba(71, 47, 82, 0.87);
+  transform: scale(1.07);
+}
+.home-game-info{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.home-game-info p {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  height: 50px;
+}
+.home-game-info img{
+width:200px;
+height:130px;
+border-radius: 5px;
+}
+.home-game-info h1{
+  display: flex;
+  height: 50px;
+  width: 70px;
+  align-self: top;
+  padding-left: 30px;
+}
+.home-game-info h4{
+  display: flex;
+  height: 50px;
+  width: 70px;
+  align-self: center;
+  padding-right: 100px;
+  text-orientation: mixed;
+}
+.home-game-info h6{
+  /* display: flex; */
+  height: 20px;
+  width: 20px;
+  align-self: bottom;
+  /* padding-right: 100px;
+  text-orientation: mixed; */
+}
+#login-container{
+  width: 75px;
+  height: 140px;
+}
 
+.login-button{
+  border: solid thin;
+  background-color: grey;
+  height: 50px;
+  width: 80px;
+}
+.login-button:hover{
+  background-color: rgb(216, 210, 210);
+}
 
+#login-container{
+  width: 125px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
-
-
-
-
-
-  /* #container-1{
-    border: solid blue;
-    height: 500px;
-    width: 200px
-  }
-
-  #container-2{
-    border: dashed green;
-    height: 500px;
-    width: 200px
-  }
-
-  #container-3{
-    border: double red 20px;
-    height: 200px;
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap-reverse;
-  }
-
-  #container-4{
-    border: dotted yellow;
-    height: 500px;
-    width: 200px
-  } */
-  
-  .login-button{
-    border: solid thin;
-    background-color: grey;
-    height: 50px;
-    width: 80px;
-  }
-  .login-button:hover{
-    background-color: rgb(216, 210, 210);
-  }
-
-  #login-container{
-    width: 125px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-
-  .navbar {
-    height: 200px;
-    width: 75px;
-    position: fixed;
-    z-index: 1;
-    /* Stay on top */
-    margin-top: 25px;
-    padding-top: 5px;
-    top: 10px;
-    left: 10px;
-    background-color: #68001a;
-    overflow-x: hidden;
-    transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidebar */
+.navbar {
+  height: 200px;
+  width: 75px;
+  position: fixed;
+  z-index: 1;
+  /* Stay on top */
+  margin-top: 25px;
+  padding-top: 5px;
+  top: 10px;
+  left: 10px;
+  background-color: #68001a;
+  overflow-x: hidden;
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidebar */
 }
 
 .link {
@@ -208,3 +246,42 @@ body, h1, h2, h3, p{
 #register{
   cursor: pointer;
 }
+/* nav {
+    width: 25vw;
+    height: 100vh;
+  } */
+  /* #navbar{
+    margin: 0 auto;
+    border: thin 2px;
+    width: 50%;
+    text-align: center;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  } */
+  /* #container-1{
+    border: solid blue;
+    height: 500px;
+    width: 200px
+  }
+
+  #container-2{
+    border: dashed green;
+    height: 500px;
+    width: 200px
+  }
+
+  #container-3{
+    border: double red 20px;
+    height: 200px;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+
+  #container-4{
+    border: dotted yellow;
+    height: 500px;
+    width: 200px
+  } */

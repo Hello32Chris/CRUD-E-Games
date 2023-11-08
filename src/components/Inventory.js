@@ -1,5 +1,6 @@
 import React from "react";
 import GameDetails from "./GameDetails";
+import StoreFront from "./StoreFront";
 
 function Inventory( { gamesArr } ) {
     
@@ -12,6 +13,7 @@ function Inventory( { gamesArr } ) {
         quantitiy={game.quantitiy}
         store={game.store}
         type={game.type}
+        img={game.img}
         
         
         />
@@ -21,7 +23,6 @@ function Inventory( { gamesArr } ) {
         <div className="card-container">
             {mappedGamesArr}
         </div>
-
     )
 }
 
