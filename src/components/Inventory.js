@@ -29,6 +29,7 @@ function Inventory( { gamesArr } ) {
             const updatedCart = [...cart, key];
             setCart(updatedCart);
             setCartItems({ ...cartItems, [key]: true });
+            return cartItems;
         }
     }
     return(
