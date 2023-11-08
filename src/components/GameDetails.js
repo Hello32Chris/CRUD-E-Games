@@ -14,8 +14,8 @@ function GameDetails( {description, name, price, quantity, store, type, img } ){
     const cardToggle = isFlipped ? "flipped" : '';
 
     const addToCart = () => {
-        setInCart(!inCart);
-        
+        setInCart(!inCart);        
+    
     }
 
     return (
