@@ -21,6 +21,7 @@ class Item(db.Model, SerializerMixin):
     description = db.Column(db.String)
     quantity = db.Column(db.Integer)
     price = db.Column(db.Float)
+    img = db.Column(db.String)
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
 
     # relationships
@@ -157,7 +158,6 @@ class Store(db.Model, SerializerMixin):
     password = db.Column(db.String)
     email = db.Column(db.String, unique = True)
     location = db.Column(db.String)
-    hours = db.Column(db.Integer)
     # relationships
     items = db.relationship('Item', back_populates = 'store', cascade ='all, delete-orphan')
     checkouts = db.relationship('Checkout', back_populates = 'store', cascade ='all, delete-orphan')

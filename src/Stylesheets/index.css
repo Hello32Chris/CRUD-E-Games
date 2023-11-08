@@ -1,13 +1,15 @@
-body, h1, h2, h3, p {
-  margin: 0;
-  padding: 0;
-}
+body, h1, h2, h3, p{
+    margin: 0;
+    padding: 0;
+  }
+<<<<<<<<< Temporary merge branch 1
 
-/* nav {
+=========
+  /* nav {
     width: 25vw;
     height: 100vh;
   } */
-/* #navbar{
+  /* #navbar{
     margin: 0 auto;
     border: thin 2px;
     width: 50%;
@@ -17,25 +19,23 @@ body, h1, h2, h3, p {
     flex-wrap: wrap;
     justify-content: space-between;
   } */
-* {
-  background-image: url('https://wallpapertag.com/wallpaper/full/a/1/8/116102-popular-dark-grey-background-1920x1200-for-tablet.jpg');
-}
-
-header {
-  text-align: center;
-}
-
-.card-container {
-  margin: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: transparent;
-  border: 1px solid #f1f1f1;
-  justify-content: space-between;
-}
+  *{
+    background-image: url('https://wallpapertag.com/wallpaper/full/a/1/8/116102-popular-dark-grey-background-1920x1200-for-tablet.jpg');
+  }
+  header{
+    text-align: center;
+  }
+  .card-container{
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    border: 1px solid #f1f1f1;
+    justify-content: space-between;
+  }
 
 .card {
   width: 170px;
@@ -72,15 +72,12 @@ header {
   width: 150px;
   height: 120px;
   border-radius: 5px;
-}
-
-
-/* ---------------enzo---testing---section------------------ */
-.card:hover {
-  box-shadow: 5px 5px 10px 5px rgba(161, 134, 204, 0.733);
-  transform: scale(1.07);
-}
-
+  }
+  /* ---------------enzo---testing---section------------------ */
+  .card:hover {
+    box-shadow: 5px 5px 10px 5px rgba(161, 134, 204, 0.733);
+    transform: scale(1.07); 
+  }
 /* Position the front and back side */
 .card.flipped {
   background-color: transparent;
@@ -115,13 +112,8 @@ header {
   height: 330px;
   transform-style: preserve-3d;
   transition: transform .7s;
-  /* transform: rotateY(180deg); */
 }
 
-/* Style the back side */
-/* .card-inner{
-  transform: rotateY(180deg);
-} */
 .card-back {
   background-color: rgb(70, 57, 70);
   color: white;
@@ -130,6 +122,22 @@ header {
 }
 
 
+
+  .login-button{
+    border: solid thin;
+    background-color: grey;
+    height: 50px;
+    width: 80px;
+  }
+  .login-button:hover{
+    background-color: rgb(216, 210, 210);
+  }
+  #login-container{
+    width: 125px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 #login-container {
   width: 125px;
   position: absolute;
