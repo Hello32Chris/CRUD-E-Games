@@ -2,7 +2,20 @@ body, h1, h2, h3, p{
     margin: 0;
     padding: 0;
   }
-  
+  /* nav {
+    width: 25vw;
+    height: 100vh;
+  } */
+  /* #navbar{
+    margin: 0 auto;
+    border: thin 2px;
+    width: 50%;
+    text-align: center;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  } */
   *{
     background-image: url('https://wallpapertag.com/wallpaper/full/a/1/8/116102-popular-dark-grey-background-1920x1200-for-tablet.jpg');
   }
@@ -24,36 +37,40 @@ body, h1, h2, h3, p{
     justify-content: space-between;
   }
 
-  .card{
-    width: 170px;
-    border: 1px solid violet;
-    border-radius: 15px;
-    padding: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    height: 350px;
-    padding: 5px;
-    background-color: rgb(255, 0, 0);
-    transition: transform .7s; /* Animation */
-    perspective: 220px;
-    cursor: pointer;
-  } 
-  .card-inner{
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-  .card-inner p {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  .card-inner img{
-  width:150px;
-  height:120px;
+.card {
+  width: 170px;
+  border: 1px solid violet;
+  border-radius: 15px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 350px;
+  padding: 5px;
+  background-color: rgb(70, 57, 70);
+  transition: transform .7s;
+  /* Animation */
+  perspective: 220px;
+  cursor: pointer;
+}
+
+.card-inner {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.card-inner p {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.card-inner img {
+  width: 150px;
+  height: 120px;
   border-radius: 5px;
   }
   .card-inner h2{
@@ -65,14 +82,16 @@ body, h1, h2, h3, p{
     transform: scale(1.07); 
   }
 /* Position the front and back side */
-.card.flipped{
+.card.flipped {
   background-color: transparent;
   width: 300px;
   height: 200px;
   border: 1px solid violet;
   perspective: 220px; /* Remove this if you don't want the 3D effect */
 }
-.card-front, .card-back {
+
+.card-front,
+.card-back {
   position: absolute;
   width: 155px;
   height: 330px;
@@ -85,7 +104,7 @@ body, h1, h2, h3, p{
   flex-wrap: wrap;
 }
 
-.card.flipped{
+.card.flipped {
   border-color: violet;
   width: 170px;
   height: 350px;
@@ -95,12 +114,11 @@ body, h1, h2, h3, p{
   transform-style: preserve-3d;
 }
 
-.card-inner{
+.card-inner {
   width: 165px;
   height: 330px;
   transform-style: preserve-3d;
   transition: transform .7s;
-  /* transform: rotateY(180deg); */
 }
 .card-back {
   background-color: rgb(255, 0, 255);
@@ -218,13 +236,27 @@ border-radius: 5px;
   overflow-x: hidden;
   transition: 0.5s;
   /* 0.5 second transition effect to slide in the sidebar */
+.navbar {
+  height: 200px;
+  width: 75px;
+  position: fixed;
+  z-index: 1;
+  /* Stay on top */
+  margin-top: 25px;
+  padding-top: 5px;
+  top: 10px;
+  left: 10px;
+  background-color: #68001a;
+  overflow-x: hidden;
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidebar */
 }
 
 .link {
   padding: 8px 8px 8px 8px;
   text-decoration: none;
   font-size: 15px;
-  color: #818181;
+  color: #802020;
   display: block;
   transition: 0.3s;
 }
@@ -238,50 +270,75 @@ border-radius: 5px;
   border: none;
 }
 
-#showPasswrd{
-  font-size: 12px;
+.login-butt {
+  border: solid thin;
+  background-color: grey;
+  height: 50px;
+  width: 80px;
+}
+
+.login-butt:hover {
+  background-color: rgb(231, 213, 213);
+  background-image: none;
+  color: rgb(11, 52, 13);
+  cursor: pointer;
+  height: 55px;
+  margin-right: 30px;
+  transition: 0.3s;
+}
+#register {
   cursor: pointer;
 }
 
-#register{
-  cursor: pointer;
+#regform{
+  color: white;
 }
-/* nav {
-    width: 25vw;
-    height: 100vh;
-  } */
-  /* #navbar{
-    margin: 0 auto;
-    border: thin 2px;
-    width: 50%;
-    text-align: center;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  } */
-  /* #container-1{
-    border: solid blue;
-    height: 500px;
-    width: 200px
-  }
 
-  #container-2{
-    border: dashed green;
-    height: 500px;
-    width: 200px
-  }
+#register {
+  width: 130px;
+  position: flex;
+  top: 100px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+.reginput {
+  background-image: none;
+  background-color: rgb(202, 154, 95);
+  margin-top: 5px;
+  color: black;
+}
+.reginput::placeholder {
+  color: rgba(63, 59, 59, 0.685);
+  font-style: italic;
+}
 
-  #container-3{
-    border: double red 20px;
-    height: 200px;
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap-reverse;
-  }
+#showPasswrd {
+  width: 130px;
+  position: flex;
+  top: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
 
-  #container-4{
-    border: dotted yellow;
-    height: 500px;
-    width: 200px
-  } */
+
+.loginform {
+  background-color: blue;
+  padding: 100px;
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered-content {
+  background-image: none;
+  display: flex;
+  flex-direction: column; /* or row, depending on your layout */
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* For text centering within input elements */
+}

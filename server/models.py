@@ -25,7 +25,7 @@ class Item(db.Model, SerializerMixin):
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
 
     # relationships
-    # cart = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
+    cart = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
     store = db.relationship('Store', back_populates = 'items')
 
     # association proxy
@@ -36,10 +36,10 @@ class Item(db.Model, SerializerMixin):
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        if 3 <= len(name):
+        if name:
             return name
         else:
-            raise ValueError('name must be between 3 and 50 characters, inclusive!')
+            raise ValueError('name must be between 3 and 50 characters, incusive!')
     
     @validates('type')
     def validates_type(self, key, type):
@@ -69,15 +69,13 @@ class Cart(db.Model, SerializerMixin):
 
     # relationships
     customer = db.relationship('Customer', back_populates = 'carts')
-    items = db.relationship('Item', secondary=cart_items, backref = 'carts')
+    items = db.relationship('Item', back_populates = 'cart')
     checkout = db.relationship('Checkout', back_populates = 'cart', cascade ='all, delete-orphan')
 
     # association proxy
 
     # serialization
-    serialize_rules = ('-customer.carts',
-                        #'-items.cart', 
-                        '-checkout.cart')
+    serialize_rules = ('-customer.carts', '-items.cart', '-checkout.cart')
     
     # validations
 
@@ -103,7 +101,7 @@ class Customer(db.Model, SerializerMixin):
     items = association_proxy('Cart', 'items')
 
     # serialization
-    serialize_rules = ('-carts.customer', )
+    serialize_rules = ('-carts.customer')
 
     # validations
     @validates('name')
@@ -111,14 +109,7 @@ class Customer(db.Model, SerializerMixin):
         if 3 <= len(name):
             return name
         else:
-            raise ValueError('name must be between 3 and 15 characters, inclusive!')
-        
-    @validates('user_name')
-    def validates_username(self, key, user_name):
-        if 2 < len(user_name):
-            return user_name
-        else:
-            raise ValueError('Username must be more than 2 Characters!')
+            raise ValueError('name must be between 3 and 15 characters, incusive!')
         
     @validates('password')
     def validates_password(self, key, password):
@@ -132,17 +123,17 @@ class Customer(db.Model, SerializerMixin):
             return password
     @validates('email')
     def validates_email(self, key, email):
-        if 3 <= len(email) and '@' in email:
+        if 3 <= len(email):
             return email
         else:
-            raise ValueError('email must be between 3 and 15 characters, inclusive!')
+            raise ValueError('email must be between 3 and 15 characters, incusive!')
         
     @validates('age')
     def validates_age(self, key, age):
-        if 13 <= age:
+        if 13 <= age <= 80:
             return age
         else:
-            raise ValueError('age must be between 3 and 80, inclusive!')
+            raise ValueError('age must be between 3 and 80, incusive!')
     
 
     def __repr__(self):
@@ -158,6 +149,8 @@ class Store(db.Model, SerializerMixin):
     password = db.Column(db.String)
     email = db.Column(db.String, unique = True)
     location = db.Column(db.String)
+    hours = db.Column(db.Integer)
+
     # relationships
     items = db.relationship('Item', back_populates = 'store', cascade ='all, delete-orphan')
     checkouts = db.relationship('Checkout', back_populates = 'store', cascade ='all, delete-orphan')
@@ -170,7 +163,7 @@ class Store(db.Model, SerializerMixin):
     # validations
     @validates('name')
     def validates_name(self, key, name):
-        if 3 <= len(name):
+        if 3 <= len(name) :
             return name
         else:
             raise ValueError('name must be between 3 and 15 characters, inclusive!')
@@ -185,7 +178,7 @@ class Store(db.Model, SerializerMixin):
             raise ValueError("Make sure your password has a capital letter in it")
         else:
             return password
-        
+    
     @validates('email')
     def validates_email(self, key, email):
         if 3 <= len(email):
@@ -221,4 +214,3 @@ class Checkout(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f''
-

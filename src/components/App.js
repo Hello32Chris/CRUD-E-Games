@@ -7,6 +7,9 @@ import StoreFront from './StoreFront';
 import Inventory from './Inventory';
 import Cart from './Cart';
 import GameDetails from './GameDetails';
+import RegistrationForm from './RegistrationForm';
+import StoreLogForm from './StoreLogForm';
+import LoginForm from './LoginForm';
 
 
 function App() {
@@ -55,6 +58,9 @@ function App() {
                     <Route exact path="/"><StoreFront gamesArr = {games}/></Route>
                     <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
+                    <Route exact path="/Register" component={RegistrationForm} />
+                    <Route exact path="/CustomerLogin" component={LoginForm} />
+                    <Route exact path="/StoreLogin" component={StoreLogForm} />
                 </Switch>
             </div>
         </>

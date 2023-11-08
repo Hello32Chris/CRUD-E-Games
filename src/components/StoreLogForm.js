@@ -26,21 +26,31 @@ function StoreLogForm() {
     };
 
     return (
-        <div>
-            <input
-                type="text"
-                placeholder="Enter valid email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={handleLogin}>Login</button>
-            {validLogin && <p>{validLogin}</p>}
+        <div className="loginform">
+            <div className="centered-content">
+                <h1>Store Login</h1>
+                <br />
+                <div id="regform">
+                    Email: <input
+                        className="reginput"
+                        type="text"
+                        placeholder="Enter valid email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <br />
+                    Password:<input
+                        className="reginput"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <br />
+                    <button id="register" onClick={handleLogin}>Login</button>
+                    {validLogin && <p>{validLogin}</p>}
+                </div>
+            </div>
         </div>
     )
 }

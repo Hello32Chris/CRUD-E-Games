@@ -23,9 +23,9 @@ function Login() {
     return (
         <div id='login-container'>
             <span >
-                <Link customers={customers}  to="/CustomerLogin"><button className="login-button" >Login</button></Link>
-                <Link stores={stores} to="/StoreLogin"><button className="login-button" >StoreLogin</button></Link>
-                <Link to="/Register" ><button className="login-button">Register New Account</button></Link>
+                <Link customers={customers}  to="/CustomerLogin"><button className="login-butt" >Login</button></Link>
+                <Link stores={stores} to="/StoreLogin"><button className="login-butt" >StoreLogin</button></Link>
+                <Link to="/Register" ><button className="login-butt">Register New Account</button></Link>
             </span>
         </div>
 )};
