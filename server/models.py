@@ -126,7 +126,7 @@ class Customer(db.Model, SerializerMixin):
             return password
     @validates('email')
     def validates_email(self, key, email):
-        if 3 <= len(email):
+        if 3 <= len(email) and '@' in email:
             return email
         else:
             raise ValueError('email must be between 3 and 15 characters, inclusive!')

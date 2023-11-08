@@ -4,46 +4,6 @@ from models import Item, Cart, Customer, Store #, checkout
 from config import db, app
 
 
-# login_manager = LoginManager(app)
-# login_manager.login_view = 'login'
-
-
-# @app.route('/', endpoint='home')
-# def home():
-#     return '<h1 align="center">Welcome!!</h1>'
-
-
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return Customer.query.get(int(user_id))
-
-# @app.route("/login", methods=["GET", "POST"])
-# def login():
-#     if current_user.is_authenticated:
-#         return redirect(url_for("home"))
-#     if request.method == 'GET':
-#         username = request.form.get('username')
-#         password = request.form.get('password')
-#         user = Customer.query.filter_by(username=username).first()
-
-#         if user and user.check_password(password):
-#             login_user(user)
-#             return redirect(url_for("storefront"))
-#         else:
-#             return flash("Invalid Username or Password", "danger")
-        
-
-# @app.route("/logout")
-# @login_required
-# def logout():
-#     logout_user()
-#     return redirect(url_for("home"))
-
-
-
-
-
 #----------------------------------------
 # ALL ITEMS
 #----------------------------------------
@@ -153,21 +113,21 @@ def customer_by_id(id):
             resp = make_response(customer.to_dict(), 200)
 
 #----------------- POST-----------------------
-        elif request.method == 'POST':
-            form_data = request.get_json()
-            try:
-                new_customer_obj = Customer(
-                    name = form_data['name'],
-                    password = form_data['password'],
-                    email = form_data['email'],
-                    age = form_data['age'],
-                    membership = form_data['membership']
-                )
-                db.session.add(new_customer_obj)
-                db.session.commit()
-                resp = make_response(new_customer_obj.to_dict(), 201)
-            except ValueError:
-                resp = make_response({ "errors": ["Validation Errors!"]}, 400)
+        # elif request.method == 'POST':
+        #     form_data = request.get_json()
+        #     try:
+        #         new_customer_obj = Customer(
+        #             name = form_data['name'],
+        #             password = form_data['password'],
+        #             email = form_data['email'],
+        #             age = form_data['age'],
+        #             membership = form_data['membership']
+        #         )
+        #         db.session.add(new_customer_obj)
+        #         db.session.commit()
+        #         resp = make_response(new_customer_obj.to_dict(), 201)
+        #     except ValueError:
+        #         resp = make_response({ "errors": ["Validation Errors!"]}, 400)
 
 #---------------- PATCH-----------------------
         elif request.method == 'PATCH':
