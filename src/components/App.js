@@ -5,9 +5,7 @@ import Navbar from './Navbar';
 import Login from './Login';
 import StoreFront from './StoreFront';
 import Inventory from './Inventory';
-import RegistrationForm from './RegistrationForm';
-import StoreLogForm from './StoreLogForm';
-import LoginForm from './LoginForm';
+import Cart from './Cart';
 
 
 function App() {
@@ -16,6 +14,7 @@ function App() {
     const [games, setGames] = useState([]);
     const [stores, setStores] = useState([])
     const [customerArr, setCustomer] = useState([]);
+    const [loggedInID, setLoggedInID] = useState(1)
 
     useEffect(() => {
         fetch('/customers')
@@ -35,24 +34,30 @@ function App() {
             .then(setStores)
     }, [])
 
+    const filteredCustomerIDs = customerArr.filter((customer) => customer.id === loggedInID).map((customer) => customer.id);
+
+    console.log(filteredCustomerIDs)
+
 
 
     return (
-        <div>
-            <h1>We Out Here</h1>
-            <Navbar />
-            <Login />
-            <Switch>
-                <Route exact path="/"><Login /></Route>
-                <Route exact path="/storefront"><StoreFront/></Route>
-                <Route exact path="/games" ><Inventory gamesArr = {games}/></Route>
-                <Route exact path="/customers"><Account customerArr = {customerArr} stores = {stores} /></ Route> 
-                <Route path="/Register" component={RegistrationForm}/>
-                <Route path="/StoreLogin" component={StoreLogForm}/>
-                <Route path="/CustomerLogin" component={LoginForm}/>
-            </Switch>
-        </div>
-
+        <>
+            <header>
+                <img src="./images/updatedheader.png" alt=''></img>
+            </header>
+            <div>
+                <h1>We Out Here</h1>
+                <Navbar />
+                <Login />
+                <Cart customer_id = {filteredCustomerIDs}/>
+                <Switch>
+                    <Route exact path="/"><Login /></Route>
+                    <Route exact path="/storefront"><StoreFront /></Route>
+                    <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
+                    <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
+                </Switch>
+            </div>
+        </>
     )
 };
 

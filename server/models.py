@@ -5,6 +5,11 @@ import re
 
 from config import db
 
+cart_items = db.Table(
+    'cart_items',
+    db.Column('cart_id', db.Integer, db.ForeignKey('carts.id'), primary_key=True),
+    db.Column('item_id', db.Integer, db.ForeignKey('items.id'), primary_key=True)
+)
 
 #------------------------------------------------------------- CLASS ITEM-----------------------------------------
 class Item(db.Model, SerializerMixin):
@@ -63,7 +68,7 @@ class Cart(db.Model, SerializerMixin):
 
     # relationships
     customer = db.relationship('Customer', back_populates = 'carts')
-    # items = db.relationship('Item', back_populates = 'cart')
+    items = db.relationship('Item', secondary=cart_items, backref = 'carts')
     checkout = db.relationship('Checkout', back_populates = 'cart', cascade ='all, delete-orphan')
 
     # association proxy
@@ -216,3 +221,4 @@ class Checkout(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f''
+
