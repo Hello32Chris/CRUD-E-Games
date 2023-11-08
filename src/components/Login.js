@@ -29,8 +29,6 @@ function Login() {
     const storeLogin = () => {
         setLoginStore(!loginStore)
     }
-    console.log(customers)
-
     const storeLog = (loginStore ? <StoreLogins stores={stores} /> : null)
 
     const logMeIn = (loginState ? <LoginStatus customers={customers} /> : null)

@@ -19,15 +19,12 @@ function App() {
             .then((resp) => resp.json())
             .then(setCustomer);
     }, []);
-    // console.log(customerArr)
-    console.log(customerArr)
 
     useEffect(() => {
         fetch('/items')
             .then((resp) => resp.json())
             .then(setGames);
     }, []);
-    console.log(games)
 
     useEffect(() => {
         fetch('/stores')
@@ -35,7 +32,6 @@ function App() {
             .then(setStores)
     }, [])
 
-    console.log(stores)
 
 
     return (

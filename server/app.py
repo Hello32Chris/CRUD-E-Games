@@ -112,7 +112,7 @@ def item_by_id(id):
 #----------------------------------------
 # ALL CUSTOMERS
 #----------------------------------------
-@app.route('/customers', methods=['GET'])
+@app.route('/customers', methods=['GET', 'POST'])
 def customers():
     customers = Customer.query.all()
 
@@ -120,6 +120,23 @@ def customers():
     if request.method == 'GET':
         return make_response([customer.to_dict(rules=('-carts', )) for customer in customers], 200)
     
+    elif request.method == 'POST':
+        form_data = request.get_json()
+        try:
+            new_customer_obj = Customer(
+                name = form_data['name'],
+                user_name = form_data['username'],
+                password = form_data['password'],
+                email = form_data['email'],
+                age = form_data['age']
+            )
+            db.session.add(new_customer_obj)
+            db.session.commit()
+            resp = make_response(new_customer_obj.to_dict(), 201)
+            return resp
+        except ValueError:
+            resp = make_response({ "errors": ["Validation Errors!"]}, 400)
+    return resp
 
 
 
