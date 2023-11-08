@@ -25,7 +25,7 @@ function GameDetails( { description, name, price, quantity, store, type, addItem
             <p>{type}</p>
             {/* <p>{store}</p> Uncomment this line to display the store information */}
             {inCart ? (
-                <p>Item is in the cart</p>
+                <button onClick={addToCart}>Remove from Cart</button>
             ) : (
                 <button onClick={addToCart}>Add to Cart</button>
             )}

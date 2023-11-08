@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Login from './Login';
 import StoreFront from './StoreFront';
 import Inventory from './Inventory';
+import RegistrationForm from './RegistrationForm';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                 <Route exact path="/storefront"><StoreFront/></Route>
                 <Route exact path="/games" ><Inventory gamesArr = {games}/></Route>
                 <Route exact path="/customers"><Account customerArr = {customerArr} stores = {stores} /></ Route> 
+                <Route path="/Register" component={RegistrationForm}/>
             </Switch>
         </div>
 

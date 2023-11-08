@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import LoginStatus from "./LoginStatus";
 import StoreLogins from "./StoreLogins"
 import RegistrationForm from "./RegistrationForm";
+import { Link } from "react-router-dom";
 
 
 function Login() {
@@ -10,7 +11,7 @@ function Login() {
     const [loginStore, setLoginStore] = useState(false)
     const [customers, setCustomer] = useState([]);
     const [stores, setStores] = useState([]);
-    const [showRegistrationForm, setShowRegistrationForm] = useState(false)
+    // const [showRegistrationForm, setShowRegistrationForm] = useState(false)
 
     useEffect(() => {
         fetch('/customers')
@@ -33,11 +34,10 @@ function Login() {
 
     const logMeIn = (loginState ? <LoginStatus customers={customers} /> : null)
 
-    const registrationForm = showRegistrationForm ? <RegistrationForm /> : null;
+    // const registrationForm = showRegistrationForm ? <RegistrationForm /> : null;
 
-    const enterRegister = () => {
-        setShowRegistrationForm(!showRegistrationForm)
-    }
+    // const enterRegister = () => {
+    //     setShowRegistrationForm(!showRegistrationForm)}
 
     return (
         <div id='login-container'>
@@ -46,8 +46,7 @@ function Login() {
                 {logMeIn}
                 <button className="login-button" onClick={storeLogin}>StoreLogin</button>
                 {storeLog}
-                <button className="login-button" onClick={enterRegister}>Register New Account</button>
-                {registrationForm}
+                <Link to="/Register" ><button className="login-button">Register New Account</button></Link>
             </span>
         </div>
 )};

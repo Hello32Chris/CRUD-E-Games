@@ -46,10 +46,12 @@ function RegistrationForm() {
                 e.target.password.value = ""
                 e.target.email.value = ""
                 e.target.age.value = ""// You can reset the form or perform other actions here
-                alert('User added successfully!')
+                
+                // alert('User added successfully!')
+                setRegistrationStatus('User registration successful!');
             } else {
                 console.error('Failed to add user');
-                // alert('Password must contain a special character and number!\n\n Email must be proper format Username must be unique!')
+                alert('Password must contain a special character and number!\n\n Email must be proper format Username must be unique!')
             }
         } catch (error) {
             console.error('Error:', error);
