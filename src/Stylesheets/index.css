@@ -8,6 +8,10 @@ body, h1, h2, h3, p{
   header{
     text-align: center;
   }
+  .sharedbackground{
+    background-image: none;
+    background-image: url('https://npr.brightspotcdn.com/dims4/default/bff29af/2147483647/strip/true/crop/1916x1078+0+0/resize/880x495!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fkmuw%2Ffiles%2F202012%2Fcyberpunk.jpg');
+  }
   .card-container{
     margin: auto;
     padding-left: 20px;
