@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
-function GameDetails( { description, name, price, quantity, store, type, addItemToCart, gId } ){
+function GameDetails( { description, name, price, quantity, store, type} ){
 
     const [inCart, setInCart] = useState(false);
-    // console.log(store)
+  
 
 
-    const addToCart = () => {
-        // Call the 'addItemToCart' function to add the item to the cart ---- passed this function as a prop from cart
-        addItemToCart(gId === gId ? name : null);
-        setInCart(true);
+    const addToCart = () => { 
+        setInCart(!inCart);
     }
 
 

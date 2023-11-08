@@ -46,7 +46,7 @@ function RegistrationForm() {
                 e.target.password.value = ""
                 e.target.email.value = ""
                 e.target.age.value = ""// You can reset the form or perform other actions here
-                
+                setShowPassword(false);
                 // alert('User added successfully!')
                 setRegistrationStatus('User registration successful!');
             } else {
@@ -58,12 +58,6 @@ function RegistrationForm() {
         }
 
     };
-
-
-
-    // function handleShowPassword() {
-    //     setShowPassword(!showPassword)
-    // }
 
 
     return (
@@ -90,7 +84,7 @@ function RegistrationForm() {
                     value={newUser.password}
                     onChange={handleChange}
                 />
-                <button id="showPasswrd" onClick={() => setShowPassword(!showPassword)}>show password</button>
+                <button type='button' id="showPasswrd" onClick={() => setShowPassword(!showPassword)}>show password</button>
                 <input
                     type="text"
                     name="email"
@@ -106,7 +100,7 @@ function RegistrationForm() {
                     onChange={handleChange}
                 />
                 <input id="register" type="submit" name="Register" ></input>
-                {registrationStatus && <p>{registrationStatus}</p>}
+                {registrationStatus && <h3>{registrationStatus}</h3>}
             </form>
         </div>
     )

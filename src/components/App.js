@@ -6,6 +6,8 @@ import Login from './Login';
 import StoreFront from './StoreFront';
 import Inventory from './Inventory';
 import RegistrationForm from './RegistrationForm';
+import StoreLogForm from './StoreLogForm';
+import LoginForm from './LoginForm';
 
 
 function App() {
@@ -46,6 +48,8 @@ function App() {
                 <Route exact path="/games" ><Inventory gamesArr = {games}/></Route>
                 <Route exact path="/customers"><Account customerArr = {customerArr} stores = {stores} /></ Route> 
                 <Route path="/Register" component={RegistrationForm}/>
+                <Route path="/StoreLogin" component={StoreLogForm}/>
+                <Route path="/CustomerLogin" component={LoginForm}/>
             </Switch>
         </div>
 

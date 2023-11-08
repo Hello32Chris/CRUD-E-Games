@@ -1,50 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 
+function Cart() {
 
 
-function Cart({ cart, setCart }) {
-
-    const [isCartOpen, setIsCartOpen] = useState(false);
-    const [getItemsId, setItemsId] = useState([])
-
-    useEffect(() => {
-        // Fetch the list of items from the Flask API.
-        fetch('/items')
-            .then(resp => resp.json())
-            .then(data => {
-                setItemsId(data.map(item => item.id));
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, []);
-
-    console.log(getItemsId)
-
-    const toggleCart = () => {
-        setIsCartOpen(!isCartOpen)
-    }
-
-    return (
-        <div>
-            <button className="cart-toggle" onClick={toggleCart}>
-                {isCartOpen ? 'Close Cart' : 'Open Cart'}
-            </button>
-            {isCartOpen && (
-                <div className="cart-container">
-                    <h2>Cart</h2>
-                    <ul>
-                        {getItemsId.map(itemId => (
-                            <li key={itemId}>
-                                {getItemsId.find(item => item.id === itemId)?.name() || "Item not found"}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-        </div>
-    );
-}
+    return <></>
+};
 
 export default Cart;
