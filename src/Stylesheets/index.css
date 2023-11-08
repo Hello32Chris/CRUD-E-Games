@@ -16,7 +16,12 @@ body, h1, h2, h3, p{
     flex-wrap: wrap;
     justify-content: space-between;
   } */
-
+  *{
+    background-image: url('https://wallpapertag.com/wallpaper/full/a/1/8/116102-popular-dark-grey-background-1920x1200-for-tablet.jpg');
+  }
+  header{
+    text-align: center;
+  }
   .card-container{
     margin: auto;
     padding-left: 20px;
@@ -94,7 +99,7 @@ body, h1, h2, h3, p{
 
 .card-inner{
   width: 165px;
-  height: 365px;
+  height: 330px;
   transform-style: preserve-3d;
   transition: transform .7s;
   /* transform: rotateY(180deg); */

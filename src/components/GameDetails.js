@@ -15,7 +15,6 @@ function GameDetails( {description, name, price, quantity, store, type, img } ){
 
 
     return (
-    <div>
         <div className={`card ${cardToggle}`} onClick={flipCard}>
             <div className="card-inner">
                 <div className="card-front">
@@ -33,7 +32,6 @@ function GameDetails( {description, name, price, quantity, store, type, img } ){
             {/* <p>{store}</p> Uncomment this line to display the store information */}
             </div>
         </div>
-    </div>
     );
 }
 

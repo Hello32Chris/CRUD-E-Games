@@ -39,6 +39,10 @@ function App() {
 
 
     return (
+        <>
+        <header>
+            <img src="./images/updatedheader.png"></img>
+        </header>
         <div>
             <h1>We Out Here</h1>
             <Navbar />
@@ -54,7 +58,7 @@ function App() {
             <div id='container-3'></div>
             <div id='container-4'></div>
         </div>
-
+        </>
     )
 };
 
