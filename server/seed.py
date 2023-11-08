@@ -181,9 +181,7 @@ with app.app_context():
     if __name__ == '__main__':
         with app.app_context():
             seed_items(10)  # Create 10 random items
-            seed_carts(5)   # Create 5 random carts
             seed_customers(5)  # Create 5 random customers
             seed_stores(3)   # Create 3 random stores
-            seed_checkouts(5)  # Create 5 random checkouts
 
         print('Data has been seeded.')
