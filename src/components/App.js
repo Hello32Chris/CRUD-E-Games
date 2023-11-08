@@ -51,8 +51,7 @@ function App() {
                 <Login />
                 <Cart customer_id = {filteredCustomerIDs}/>
                 <Switch>
-                    <Route exact path="/"><Login /></Route>
-                    <Route exact path="/storefront"><StoreFront /></Route>
+                    <Route exact path="/"><StoreFront /></Route>
                     <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                 </Switch>

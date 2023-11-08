@@ -21,7 +21,7 @@ with app.app_context():
 
     def seed_items():
             items = [
-                Item(
+            Item(
                 name="Apex Legends",
                 type="Action",
                 description="Apex Legends is the award-winning, free-to-play Hero Shooter from Respawn Entertainment. Master an ever-growing roster of legendary characters with powerful abilities, and experience strategic squad play and innovative gameplay in the next evolution of Hero Shooter and Battle Royale.",
