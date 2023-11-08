@@ -62,46 +62,60 @@ function RegistrationForm() {
 
     return (
         <div>
-            <h2>Register New Account!</h2>
-            <form name='form' onSubmit={handleRegister}>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder='Name'
-                    value={newUser.name}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="username"
-                    placeholder='Username'
-                    value={newUser.user_name}
-                    onChange={handleChange} />
-                <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder='Password'
-                    value={newUser.password}
-                    onChange={handleChange}
-                />
-                <button type='button' id="showPasswrd" onClick={() => setShowPassword(!showPassword)}>show password</button>
-                <input
-                    type="text"
-                    name="email"
-                    placeholder='Email'
-                    value={newUser.email}
-                    onChange={handleChange} />
-
-                <input
-                    type="number"
-                    name="age"
-                    placeholder='Age'
-                    value={newUser.age}
-                    onChange={handleChange}
-                />
-                <input id="register" type="submit" name="Register" ></input>
-                {registrationStatus && <h3>{registrationStatus}</h3>}
-            </form>
+            <div className="loginform" >
+                <div className="centered-content">
+                <h2>Register New Account!</h2>
+                <br/>
+                    <form id="regform" name='form' onSubmit={handleRegister}>
+                            Name:<input
+                            className="reginput"
+                            type="text"
+                            name="name"
+                            placeholder='Name'
+                            value={newUser.name}
+                            onChange={handleChange}
+                        />
+                        <br/>
+                        Username:<input
+                            className="reginput"
+                            type="text"
+                            name="username"
+                            placeholder='Username'
+                            value={newUser.user_name}
+                            onChange={handleChange} />
+                        Password: <input
+                            className="reginput"
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            placeholder='Password'
+                            value={newUser.password}
+                            onChange={handleChange}
+                        />
+                        <br/>
+                        <button type='button' id="showPasswrd" onClick={() => setShowPassword(!showPassword)}>show password</button>
+                        <br/>
+                        Email: <input
+                            className="reginput"
+                            type="text"
+                            name="email"
+                            placeholder='Email'
+                            value={newUser.email}
+                            onChange={handleChange} />
+                        <br/>
+                        Age: <input
+                            className="reginput"
+                            type="number"
+                            name="age"
+                            placeholder='Age'
+                            value={newUser.age}
+                            onChange={handleChange}
+                        />
+                        <br/> 
+                        <input id="register" type="submit" name="Register" ></input>
+                        {registrationStatus && <h3>{registrationStatus}</h3>}
+                    </form>
+                </div>
+            </div>
         </div>
     )
 }
