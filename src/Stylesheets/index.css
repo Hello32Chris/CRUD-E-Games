@@ -2,23 +2,6 @@ body, h1, h2, h3, p{
     margin: 0;
     padding: 0;
   }
-<<<<<<<<< Temporary merge branch 1
-
-=========
-  /* nav {
-    width: 25vw;
-    height: 100vh;
-  } */
-  /* #navbar{
-    margin: 0 auto;
-    border: thin 2px;
-    width: 50%;
-    text-align: center;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  } */
   *{
     background-image: url('https://wallpapertag.com/wallpaper/full/a/1/8/116102-popular-dark-grey-background-1920x1200-for-tablet.jpg');
   }
