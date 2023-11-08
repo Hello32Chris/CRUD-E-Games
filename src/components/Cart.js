@@ -6,51 +6,59 @@ function Cart({ customer_id }) {
 
     const [cart, setCart] = useState([])
     const [isCart, setIsCart] = useState(false)
+    const customerID = parseInt(customer_id)
 
     useEffect(() => {
-        fetch(`/carts/customer_${customer_id}`)
-            .then((resp) => {
+        const fetchData = async () => {
+            try {
+                const resp = await fetch(`/carts/customer_${customerID}`);
                 if (resp.status === 404) {
+                    // Cart doesn't exist, create a new one
                     setIsCart(true);
-                    return {};
-                } return resp.json()
-            })
-            .then((data) => {
-                setCart(data)
-            })
-    }, [customer_id])
+                    const createResponse = await createNewCart(customerID);
+                    setCart(createResponse);
+                } else {
+                    const data = await resp.json();
+                    setCart(data);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, [customerID]);
 
-   const createNewCart = async (customer_id) => {
-    try {
-        const resp = await fetch('/carts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ customer_id }),
-        });
-        if (resp.ok) {
-            const data = await resp.json();
-            console.log(data)
-        } else {
-            console.error('Failed to create a new cart')
+    const createNewCart = async (customerID) => {
+        try {
+            const resp = await fetch('/carts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({customer_id : customerID }),
+            });
+            if (resp.ok) {
+                const data = await resp.json();
+                console.log(data)
+            } else {
+                console.error('Failed to create a new cart')
+            }
+        } catch (error) {
+            console.error(error)
         }
-    } catch (error) {
-        console.error(error)
     }
-   }
 
     console.log(cart)
+    console.log(isCart)
 
 
     return (
         <div>
-            {isCart && <p>New cart has been created.</p>}
             <button>View Cart</button>
-            <CartItems
+            {/* <CartItems
                 items={cart.items}
                 customer={cart.customer}
-            />
+            /> */}
         </div>
     )
 }
