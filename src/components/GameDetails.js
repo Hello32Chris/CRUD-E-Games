@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function GameDetails( {key, description, name, price, quantity, store, type, addItemToCart } ){
+function GameDetails( {key, description, name, price, quantity, store, type, addItemToCart, itemId } ){
 
     const [inCart, setInCart] = useState(false);
     // console.log(store)
@@ -8,7 +8,7 @@ function GameDetails( {key, description, name, price, quantity, store, type, add
 
     const addToCart = () => {
         // Call the 'addItemToCart' function to add the item to the cart ---- passed this function as a prop from cart
-        addItemToCart(key);
+        addItemToCart(itemId === key ? key : null);
         setInCart(true);
     }
 

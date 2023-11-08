@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GameDetails from "./GameDetails";
 import Cart from "./Cart";
 
-function Inventory( { gamesArr } ) {
+export default function Inventory( { gamesArr } ) {
     const mappedGamesArr = gamesArr.map((game) => {
         return <GameDetails 
         key={game.id}
@@ -22,14 +22,15 @@ function Inventory( { gamesArr } ) {
 
 
 
-    function addItemToCart(key)  {
+    function addItemToCart(itemId)  {
         // Check if the item is already in the cart using cartItems.
-        if (!cartItems[key]) {
+        if (!cartItems[itemId]) {
             // Update the cart state locally.
-            const updatedCart = [...cart, key];
+            const updatedCart = [...cart, itemId];
             setCart(updatedCart);
-            setCartItems({ ...cartItems, [key]: true });
+            setCartItems({ ...cartItems, [itemId]: true });
             return cartItems;
+            //write a code that increments the quantity up if item does exist in cart
         }
     }
     return(
@@ -43,4 +44,3 @@ function Inventory( { gamesArr } ) {
     )
 }
 
-export default Inventory
