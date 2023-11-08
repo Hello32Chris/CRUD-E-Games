@@ -6,6 +6,7 @@ import Login from './Login';
 import StoreFront from './StoreFront';
 import Inventory from './Inventory';
 import Cart from './Cart';
+import GameDetails from './GameDetails';
 
 
 function App() {
@@ -42,6 +43,12 @@ function App() {
 
     return (
         <>
+        <header>
+            <img src="./images/updatedheader.png"></img>
+        </header>
+        <div>
+            <h1>We Out Here</h1>
+        </div>
             <header>
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
@@ -51,7 +58,7 @@ function App() {
                 <Login />
                 <Cart customer_id = {filteredCustomerIDs}/>
                 <Switch>
-                    <Route exact path="/"><StoreFront /></Route>
+                    <Route exact path="/"><StoreFront gamesArr = {games}/></Route>
                     <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                 </Switch>

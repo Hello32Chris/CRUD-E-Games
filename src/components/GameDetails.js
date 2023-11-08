@@ -17,9 +17,10 @@ function GameDetails( {description, name, price, quantity, store, type, img } ){
 
 
     return (
-        <div className={"card-container"}>
-            <div className="card">
-                <div className="card-info">
+        <div className={`card ${cardToggle}`} onClick={flipCard}>
+            <div className="card-inner">
+                <div className="card-front">
+                    <img src ={img} alt = {name}/>
                     <h2>{name}</h2>
                     <img src={img} alt="" />
                     <p>{description}</p>
