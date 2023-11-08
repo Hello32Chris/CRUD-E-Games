@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 function RegistrationForm() {
-
-    // const [name, setName] = useState('')
-    // const [username, setUsername] = useState('')
-    // const [password, setPassword] = useState('')
-    // const [email, setEmail] = useState('')
-    // const [age, setAge] = useState('')
     const [registrationStatus, setRegistrationStatus] = useState(null)
 
     const [showPassword, setShowPassword] = useState(false);
@@ -35,19 +29,7 @@ function RegistrationForm() {
     }
 
     const handleRegister = async (e) => {
-        // const userData = { name, username, password, email, age };
         e.preventDefault()
-        // fetch('/customers', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(newUser),
-        // })
-        //     .then((resp) => (resp.json())
-        //     )
-        //     .then(newUser => setCustomers([...customers, newUser]))
-        // // .then(newUser => setNewUser([...customers, newUser]))
         try {
             const response = await fetch('/customers', {
                 method: 'POST',
@@ -64,8 +46,10 @@ function RegistrationForm() {
                 e.target.password.value = ""
                 e.target.email.value = ""
                 e.target.age.value = ""// You can reset the form or perform other actions here
+                alert('User added successfully!')
             } else {
                 console.error('Failed to add user');
+                // alert('Password must contain a special character and number!\n\n Email must be proper format Username must be unique!')
             }
         } catch (error) {
             console.error('Error:', error);
@@ -75,14 +59,14 @@ function RegistrationForm() {
 
 
 
-    function handleShowPassword() {
-        setShowPassword(!showPassword)
-    }
+    // function handleShowPassword() {
+    //     setShowPassword(!showPassword)
+    // }
 
 
     return (
         <div>
-            <h2>Reister New Account!</h2>
+            <h2>Register New Account!</h2>
             <form name='form' onSubmit={handleRegister}>
                 <input
                     type="text"
@@ -104,7 +88,7 @@ function RegistrationForm() {
                     value={newUser.password}
                     onChange={handleChange}
                 />
-                <button id="showPasswrd" onClick={handleShowPassword}>show password</button>
+                <button id="showPasswrd" onClick={() => setShowPassword(!showPassword)}>show password</button>
                 <input
                     type="text"
                     name="email"

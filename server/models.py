@@ -6,7 +6,7 @@ import re
 from config import db
 
 
-
+#------------------------------------------------------------- CLASS ITEM-----------------------------------------
 class Item(db.Model, SerializerMixin):
     __tablename__ = 'items'
 
@@ -52,7 +52,7 @@ class Item(db.Model, SerializerMixin):
     def __repr__(self):
         return f''
 
-
+#------------------------------------------------------------- CLASS CART-----------------------------------------
 class Cart(db.Model, SerializerMixin):
     __tablename__ = 'carts'
 
@@ -78,7 +78,7 @@ class Cart(db.Model, SerializerMixin):
     def __repr__(self):
         return f''
 
-
+#------------------------------------------------------------- CLASS CUSTOMER-----------------------------------------
 class Customer(db.Model, SerializerMixin):
     __tablename__ = 'customers'
 
@@ -143,6 +143,7 @@ class Customer(db.Model, SerializerMixin):
         return f''
 
 
+#------------------------------------------------------------- CLASS STORE-----------------------------------------
 class Store(db.Model, SerializerMixin):
     __tablename__ = 'stores'
 
@@ -191,6 +192,7 @@ class Store(db.Model, SerializerMixin):
     def __repr__(self):
         return f''
 
+#------------------------------------------------------------- CLASS CHECKOUT-----------------------------------------
 class Checkout(db.Model, SerializerMixin):
     __tablename__ = 'checkouts'
 
