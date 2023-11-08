@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-function GameDetails({ description, name, price, quantity, store, type }) {
+function GameDetails( {description, name, price, quantity, store, type, img } ){
 
-    const [inCart, setInCart] = useState(false);
+    // console.log(store)
+    const [isFlipped, setIsFlipped] = useState(false);
 
-
-
-    const addToCart = () => {
-        setInCart(!inCart);
+    const flipCard = () => {
+        setIsFlipped(!isFlipped)
     }
+
+    const cardToggle = isFlipped ? "flipped" : ''
+
 
 
     return (
