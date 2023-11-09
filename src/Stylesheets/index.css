@@ -38,22 +38,22 @@ body, h1, h2, h3, p{
   }
 
 .card {
-  width: 170px;
+  width: 250px;
   border: 1px solid violet;
   border-radius: 15px;
   padding: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
-  height: 350px;
+  height: 250px;
   padding: 5px;
   background-color: rgb(70, 57, 70);
   transition: transform .7s;
   /* Animation */
   perspective: 220px;
   cursor: pointer;
-  background-color: #e5e5f7;
+  /* background-color: #e5e5f7;
   opacity: 1;
-  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 4px ), repeating-linear-gradient( #5f226e55, #5f226e );
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 4px ), repeating-linear-gradient( #5f226e55, #5f226e ); */
 }
 
 .card-inner {
@@ -62,6 +62,9 @@ body, h1, h2, h3, p{
   flex-direction: column;
   margin-right: 10px;
   margin-left: 10px;
+  /* background-color: #e5e5f7;
+  opacity: 1;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 4px ), repeating-linear-gradient( #5f226e55, #5f226e ); */
 }
 
 .card-inner p {
@@ -69,19 +72,28 @@ body, h1, h2, h3, p{
   flex-direction: column;
   margin-bottom: 10px;
   font-family: 'Courier New', Courier, monospace;
+  /* background-color: #2f0036;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
 }
 
 .card-inner img {
-  width: 150px;
-  height: 120px;
+  width: 230px;
+  height: 160px;
   border-radius: 5px;
+  /* background-color: #2f0036;
+  opacity: 0.8;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
   }
   .card-inner h2{
-    display: flex
+    display: flex;
+    /* background-color: #2f0036;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
   }
   /* ---------------enzo---testing---section------------------ */
   .card:hover {
-    box-shadow: 5px 5px 10px 5px rgba(71, 47, 82, 0.87);
+    box-shadow: 5px 5px 10px 5px rgba(112, 179, 218, 0.87);
     transform: scale(1.07); 
   }
 /* Position the front and back side */
@@ -97,29 +109,36 @@ body, h1, h2, h3, p{
   color: rgb(255, 255, 255);
   transform: rotateY(180deg);
   position: absolute;
-  height: 350px;
+  height: 250px;
   z-index: 100;
+  /* background-color: #2f0036;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
 }
 
 .card-front,.card-back {
   position: absolute;
-  width: 155px;
+  width: 240px;
   /* height: 330px; */
   backface-visibility: hidden;
   border-radius: 15px;
   height: auto;
+  /* background-color: #2f0036;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
 } 
 
 .card-front h2{
-  width: 55px;
+  width: 240px;
+  height: 50;
   background-color: transparent;
   flex-wrap: wrap;
 }
 
 .card.flipped {
   border-color: violet;
-  width: 170px;
-  height: 350px;
+  width: 250px;
+  height: 290px;
   background-color: rgb(250, 0, 0);
   transform: rotateY(180deg);
   perspective: 220px;
@@ -190,9 +209,13 @@ border-radius: 5px;
 .home-game-info h1{
   display: flex;
   height: 50px;
-  width: 70px;
+  width: 250px;
   align-self: top;
   padding-left: 30px;
+}
+.home-game-info h3{
+  align-content: center;
+  padding-top: 50px;
 }
 .home-game-info h4{
   display: flex;
@@ -204,11 +227,11 @@ border-radius: 5px;
 }
 .home-game-info h6{
   /* display: flex; */
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 12px;
   align-self: bottom;
-  /* padding-right: 100px;
-  text-orientation: mixed; */
+  /* padding-top: 100px; */
+  /* text-orientation: mixed; */
 }
 #login-container{
   width: 75px;
@@ -222,8 +245,9 @@ border-radius: 5px;
   width: 80px;
 }
 .login-button:hover{
-  background-color: rgb(216, 210, 210);
+  background-color: rgb(210, 216, 215);
 }
+
 
 #login-container{
   width: 125px;
@@ -264,6 +288,16 @@ border-radius: 5px;
   color: white;
   padding: 10px 15px;
   border: none;
+  
+}
+.navButton:hover{
+  transition: 0.3s;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #cc03f4,
+            0 0 15px #cc03f4,
+            0 0 20px #0363f4,
+            0 0 50px #03e9f4;
+
 }
 
 .login-butt {
@@ -281,6 +315,11 @@ border-radius: 5px;
   height: 55px;
   margin-right: 30px;
   transition: 0.3s;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #cc03f4,
+            0 0 15px #cc03f4,
+            0 0 20px #0363f4,
+            0 0 50px #03e9f4;
 }
 #register {
   cursor: pointer;
@@ -338,3 +377,14 @@ border-radius: 5px;
   justify-content: center;
   text-align: center; /* For text centering within input elements */
 }
+.searcher {
+  align-content: center;
+  /* padding-left:px; */
+}
+/* color: #fff;
+border-radius: 5px;
+box-shadow: 0 0 5px #03e9f4,
+            0 0 25px #03e9f4,
+            0 0 50px #03e9f4,
+            0 0 100px #03e9f4;
+} */

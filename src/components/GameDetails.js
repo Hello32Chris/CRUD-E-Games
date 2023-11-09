@@ -17,6 +17,7 @@ function GameDetails({ description, name, price, quantity, store, type, img }) {
         setInCart(!inCart);
 
     }
+    
 
     return (
         <div className={`card ${cardToggle}`} onClick={flipCard}>
@@ -28,7 +29,7 @@ function GameDetails({ description, name, price, quantity, store, type, img }) {
                 <div className="card-back">
                     <p>{name}</p>
                     <h5>{description}</h5>
-                    <p>{price}</p>
+                    <p>price: ${price.toFixed(2)}</p>
                     <p>{quantity}</p>
                     <p>{type}</p>
                     {inCart ? (
@@ -41,6 +42,7 @@ function GameDetails({ description, name, price, quantity, store, type, img }) {
         </div>
             );
 }
+
 
             export default GameDetails
 

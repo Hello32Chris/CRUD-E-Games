@@ -7,16 +7,21 @@ function StoreFront({gamesArr}) {
     // console.log(gamesArr)
 
     const [searchTerm, setSearchTerm] = useState("")
+
+
+    const filteredArr = gamesArr.filter(gameobj => {
+                
+        return  gameobj.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+                gameobj.price.toString().includes(searchTerm) ||
+                gameobj.type.toLowerCase().includes(searchTerm.toLowerCase())
+                // gameobj.quantitiy.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                // gameobj.store.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                // gameobj.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                
+    })
     
-    const filteredArr = mappedHomeGames.filter(gameobj => (
-            gameobj.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            gameobj.name.includes(searchTerm) ||
-            gameobj.price.toString().includes(searchTerm) ||
-            gameobj.quantitiy.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            gameobj.store.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            gameobj.type.toLowerCase().includes(searchTerm.toLowerCase())
-    ))
-    const mappedHomeGames = gamesArr.map((homeGameObj)=>{
+    
+    const mappedHomeGames = filteredArr.map((homeGameObj)=>{
         console.log(homeGameObj)
 
         return <HomeGames
@@ -29,6 +34,7 @@ function StoreFront({gamesArr}) {
         type={homeGameObj.type}
         img={homeGameObj.img}
         />
+
 })
 
     return(
