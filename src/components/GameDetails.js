@@ -27,7 +27,7 @@ function GameDetails({ description, name, price, quantity, store, type, img }) {
                 </div>
                 <div className="card-back">
                     <p>{name}</p>
-                    <p>{description}</p>
+                    <h5>{description}</h5>
                     <p>{price}</p>
                     <p>{quantity}</p>
                     <p>{type}</p>

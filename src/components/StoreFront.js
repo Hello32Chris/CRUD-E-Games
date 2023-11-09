@@ -8,6 +8,14 @@ function StoreFront({gamesArr}) {
 
     const [searchTerm, setSearchTerm] = useState("")
     
+    const filteredArr = mappedHomeGames.filter(gameobj => (
+            gameobj.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            gameobj.name.includes(searchTerm) ||
+            gameobj.price.toString().includes(searchTerm) ||
+            gameobj.quantitiy.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            gameobj.store.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            gameobj.type.toLowerCase().includes(searchTerm.toLowerCase())
+    ))
     const mappedHomeGames = gamesArr.map((homeGameObj)=>{
         console.log(homeGameObj)
 
@@ -22,14 +30,7 @@ function StoreFront({gamesArr}) {
         img={homeGameObj.img}
         />
 })
-// const filteredArr = mappedHomeGames.filter(gameobj=>(
-//         gameobj.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//         gameobj.name.includes(searchTerm) ||
-//         gameobj.price.toString().includes(searchTerm) ||
-//         gameobj.quantitiy.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//         gameobj.store.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//         gameobj.type.toLowerCase().includes(searchTerm.toLowerCase())
-//     ))
+
     return(
     <>
     <Search setSearchTerm={setSearchTerm}/>

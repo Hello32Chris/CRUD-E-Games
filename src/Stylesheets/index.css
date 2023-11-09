@@ -51,6 +51,9 @@ body, h1, h2, h3, p{
   /* Animation */
   perspective: 220px;
   cursor: pointer;
+  background-color: #e5e5f7;
+  opacity: 1;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 4px ), repeating-linear-gradient( #5f226e55, #5f226e );
 }
 
 .card-inner {
@@ -89,15 +92,24 @@ body, h1, h2, h3, p{
   border: 1px solid violet;
   perspective: 220px; /* Remove this if you don't want the 3D effect */
 }
-
-.card-front,
 .card-back {
+  background-color: rgb(255, 0, 255);
+  color: rgb(255, 255, 255);
+  transform: rotateY(180deg);
+  position: absolute;
+  height: 350px;
+  z-index: 100;
+}
+
+.card-front,.card-back {
   position: absolute;
   width: 155px;
-  height: 330px;
+  /* height: 330px; */
   backface-visibility: hidden;
   border-radius: 15px;
+  height: auto;
 } 
+
 .card-front h2{
   width: 55px;
   background-color: transparent;
@@ -112,20 +124,18 @@ body, h1, h2, h3, p{
   transform: rotateY(180deg);
   perspective: 220px;
   transform-style: preserve-3d;
+  
 }
 
 .card-inner {
   width: 165px;
-  height: 330px;
+  height: fit-content;
   transform-style: preserve-3d;
   transition: transform .7s;
+  z-index: 100;
+
 }
-.card-back {
-  background-color: rgb(255, 0, 255);
-  color: rgb(255, 255, 255);
-  transform: rotateY(180deg);
-  position: absolute;
-}
+
 .home-game-container{
   margin: auto;
   padding-left: 20px;
