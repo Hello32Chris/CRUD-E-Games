@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CartItems from "./CartItems";
 
 
@@ -57,7 +58,7 @@ function Cart({ customer_id }) {
 
     return (
         <div id="cartbutt">
-            <button className="login-butt">View Cart</button>
+            <Link to="/cart"><button className="login-butt">View Cart</button></Link>
             {/* <CartItems
                 items={cart.items}
                 customer={cart.customer}

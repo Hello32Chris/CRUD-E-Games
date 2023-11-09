@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function CustomerView( { id, name, email, age, membership } ) {
    
     const [customers, setCustomers] = useState([]);
+
+    const history = useHistory()
 
       console.log(customers.age)
       
@@ -12,7 +15,8 @@ function CustomerView( { id, name, email, age, membership } ) {
             setCustomers((customerArr) =>
               customerArr.filter((cust) => cust.id !== id)
             );
-            window.location.reload();
+            // window.location.reload();
+            history.push('/')
             alert(`Customer ${name} Deleted!`)
           }
         });

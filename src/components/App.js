@@ -12,6 +12,7 @@ import StoreLogForm from './StoreLogForm';
 import LoginForm from './LoginForm';
 import AccountManager from './AccountManager';
 import About from './About';
+import CartImage from './CartImage';
 
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID={setLoggedInID} setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> </Route>
                     <Route exact path="/StoreLogin"><StoreLogForm storeLogged={storeLogged} setStoreLoggedIn={setStoreLoggedIn} /></Route> 
                     <Route exact path="/About" component={About} />
+                    <Route exact path="/cart" component={CartImage} />
                 
                 </Switch>
             </div>
