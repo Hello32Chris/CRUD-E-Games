@@ -37,7 +37,7 @@ function LoginForm({setLoggedInID}) {
     return (
         <div className="loginform">
             <div className="centered-content">
-                <h1 id="login">Login</h1>
+                <h1 className="login">Login</h1>
                 <br />
                 <div id="regform">
                     Username: <input
