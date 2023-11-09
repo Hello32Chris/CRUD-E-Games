@@ -6,12 +6,10 @@ import HomeGames from "./HomeGames";
 function StoreFront({ gamesArr, searchTerm }) {
     // console.log(gamesArr)
 
-    const [searchTerm, setSearchTerm] = useState("")
-
 
     const filteredArr = gamesArr.filter(gameobj => {
                 
-        return  gameobj.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+        return  gameobj.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 gameobj.price.toString().includes(searchTerm) ||
                 gameobj.type.toLowerCase().includes(searchTerm.toLowerCase())
                 // gameobj.quantitiy.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -19,10 +17,6 @@ function StoreFront({ gamesArr, searchTerm }) {
                 // gameobj.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 
     })
-    
-    
-    const mappedHomeGames = filteredArr.map((homeGameObj)=>{
-        console.log(homeGameObj)
 
     const mappedHomeGames = filteredArr.map((homeGameObj) => {
         // console.log(homeGameObj)
