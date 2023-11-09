@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function StoreLogForm() {
+function StoreLogForm({ setStoreLoggedIn }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -15,6 +15,7 @@ function StoreLogForm() {
                 if (customer && customer.password === password) {
                     // Valid login
                     console.log('Login successful');
+                    alert('You Have Successfully Logged in!')
                 } else {
                     // Invalid login
                     setValidLogin('Invalid email or password');
@@ -49,6 +50,7 @@ function StoreLogForm() {
                     <br />
                     <button id="register" onClick={handleLogin}>Login</button>
                     {validLogin && <p>{validLogin}</p>}
+                    {validLogin && setStoreLoggedIn}
                 </div>
             </div>
         </div>

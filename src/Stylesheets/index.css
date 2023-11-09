@@ -257,8 +257,14 @@ border-radius: 5px;
 }
 
 .navbar {
-  height: 200px;
-  width: 75px;
+  background-image: none;
+  background-image: url('/public/images/gameCard.gif');
+  background-size: fill;
+  height: 800px;
+  width: 150px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: fixed;
   z-index: 1;
   /* Stay on top */
@@ -275,10 +281,20 @@ border-radius: 5px;
 .link {
   padding: 8px 8px 8px 8px;
   text-decoration: none;
-  font-size: 15px;
-  color: #802020;
+  font-size: 30px;
+  color: #58195d;
   display: block;
-  transition: 0.3s;
+  transition: 0.5s;
+}
+
+.link:hover{
+  font-size: 35px;
+  color: #c6a0c8;
+  box-shadow: 0 0 5px #cc03f4,
+            0 0 15px #cc03f4,
+            0 0 20px #0363f4,
+            0 0 50px #03e9f4;
+  z-index: 100;
 }
 
 #navbutton {
@@ -415,3 +431,4 @@ box-shadow: 0 0 5px #03e9f4,
             0 0 50px #03e9f4,
             0 0 100px #03e9f4;
 } */
+

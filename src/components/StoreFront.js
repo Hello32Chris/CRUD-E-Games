@@ -18,6 +18,8 @@ function StoreFront({ gamesArr, searchTerm }) {
                 // gameobj.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 
     })
+    
+
     const mappedHomeGames = filteredArr.map((homeGameObj) => {
         // console.log(homeGameObj)
         return <HomeGames
@@ -43,4 +45,4 @@ function StoreFront({ gamesArr, searchTerm }) {
 }
 
 
-export default StoreFront
+export default StoreFront;
