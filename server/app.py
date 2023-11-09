@@ -194,6 +194,7 @@ def carts():
 
 # ---------------- POST -----------------------
         elif request.method == 'POST':
+            print(request)
             form_data = request.get_json()
             print('Received form data:', form_data)
             try:
