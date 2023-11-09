@@ -238,7 +238,7 @@ def cart_by_id(id):
         elif request.method == 'POST':
             form_data = request.get_json()
             try:
-                new_cart_obj = Customer(
+                new_cart_obj = Cart(
                     customer_id = form_data['customer_id']
                 )
                 db.session.add(new_cart_obj)

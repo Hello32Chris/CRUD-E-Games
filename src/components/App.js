@@ -10,6 +10,7 @@ import GameDetails from './GameDetails';
 import RegistrationForm from './RegistrationForm';
 import StoreLogForm from './StoreLogForm';
 import LoginForm from './LoginForm';
+import AccountManager from './AccountManager';
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
 
     const filteredCustomerIDs = customerArr.filter((customer) => customer.id === loggedInID).map((customer) => customer.id);
 
-    console.log(filteredCustomerIDs)
+    console.log(loggedInID)
 
 
 
@@ -55,11 +56,12 @@ function App() {
                 <Login />
                 <Cart customer_id = {filteredCustomerIDs}/>
                 <Switch>
+                    <Route exact path='/Account_Manager'> <AccountManager loggedInID = {loggedInID}/> </Route>
                     <Route exact path="/"><StoreFront gamesArr = {games}/></Route>
                     <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                     <Route exact path="/Register" component={RegistrationForm} />
-                    <Route exact path="/CustomerLogin" component={LoginForm} />
+                    <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
                     <Route exact path="/StoreLogin" component={StoreLogForm} />
                 </Switch>
             </div>

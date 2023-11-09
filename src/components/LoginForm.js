@@ -1,29 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function LoginForm() {
+
+function LoginForm({setLoggedInID}) {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [validLogin, setValidLogin] = useState(false)
+    const history = useHistory()
 
-    const handleLogin = () => {
-        fetch('/customers') // Fetch customer data
-            .then((response) => response.json())
-            .then((customerData) => {
-                const customer = customerData.find((customer) => customer.user_name === username);
-
-                if (customer && customer.password === password) {
-                    // Valid login
-                    console.log('Login successful');
-                } else {
-                    // Invalid login
-                    setValidLogin('Invalid username or password');
-                }
-            })
-            .catch((error) => {
-                console.error('Error fetching customer data', error);
-            });
+    
+    const handleLogin = async () => {
+        try{
+            const response = await fetch('/customers') // Fetch customer data
+            const customerData = await response.json()
+            const customer = customerData.find((customer) => customer.user_name === username);
+            
+            
+            if (customer && customer.password === password) {
+                // Valid login
+                console.log('Login successful')
+                console.log(customer.id)
+                setLoggedInID(customer.id)
+                history.push('/Account_Manager')
+            } else {
+                // Invalid login
+                setValidLogin('Invalid username or password');
+            }
+            
+        } catch (error) {
+            console.error('Error fetching customer data', error);
+        };
     };
+
 
     return (
         <div className="loginform">
