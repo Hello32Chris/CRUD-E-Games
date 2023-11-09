@@ -19,14 +19,15 @@ function Navbar({ gamesArr, setSearchTerm }) {
     console.log('clicked')
   }
 
+
   const nav = (toggle ? <button className="login-butt" id="navButton" onClick={toggleNav}>Navigation</button> :
     <nav id="navbar" >
       <div className="navbar">
         <button id="closebtn" onClick={toggleNav}>X</button>
-        <NavLink className='link' to="/" activeClassName="active" >Home</NavLink>
+        <NavLink className='link' to="/" activeClassName="active">Home</NavLink>
         <NavLink className='link' to="/Games" activeClassName="active" >Games</NavLink>
         <NavLink className='link' to="/About" activeClassName="active" >About</NavLink>
-        <NavLink className='link' to="/customers" activeClassName="active" >Custys</NavLink>
+        {/* <NavLink className='link' to="/customers" activeClassName="active" >Custys</NavLink> */}
       </div>
     </nav>)
 

@@ -11,6 +11,7 @@ import RegistrationForm from './RegistrationForm';
 import StoreLogForm from './StoreLogForm';
 import LoginForm from './LoginForm';
 import AccountManager from './AccountManager';
+import About from './About';
 
 
 function App() {
@@ -50,10 +51,10 @@ function App() {
             <header>
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
-            <div>
                 <Navbar setSearchTerm={setSearchTerm} gamesArr={games} />
                 <Login />
                 <Cart customer_id = {filteredCustomerIDs}/>
+            <div id='maindiv'>
                 <Switch>
                     <Route exact path='/Account_Manager'> <AccountManager loggedInID = {loggedInID}/> </Route>
                     <Route exact path="/"><StoreFront searchTerm={searchTerm} gamesArr = {games}/></Route>
@@ -62,6 +63,8 @@ function App() {
                     <Route exact path="/Register" component={RegistrationForm} />
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
                     <Route exact path="/StoreLogin" component={StoreLogForm} />
+                    <Route exact path="/About" component={About} />
+                
                 </Switch>
             </div>
         </>
