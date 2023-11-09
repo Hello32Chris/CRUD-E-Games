@@ -6,11 +6,20 @@ function AccountManager({ loggedInID }) {
     const [makeChanges, setMakeChanges] = useState(true)
     const [showPassword, setShowPassword] = useState(false);
     const [newData, setNewData] = useState({
-        name: custData.name,
-        username: custData.user_name,
-        password: custData.password,
-        email: custData.email
-    })
+        name: "",
+        username: "",
+        password: "",
+        email: ""
+    });
+
+    useEffect(() => {
+        setNewData({
+            name: custData.name,
+            username: custData.user_name,
+            password: custData.password,
+            email: custData.email
+        });
+    }, [custData]);
 
     useEffect(() => {
         fetch(`customers/${loggedInID}`)
@@ -34,7 +43,7 @@ function AccountManager({ loggedInID }) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newData),
+                body: JSON.stringify(changedFields),
             });
 
             if (response.ok) {
