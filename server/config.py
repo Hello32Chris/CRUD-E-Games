@@ -14,7 +14,6 @@ DATABASE = os.environ.get(
 
 
 app = Flask(__name__)
-app.secret_key = 'CRUDboyz'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'

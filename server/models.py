@@ -25,7 +25,7 @@ class Item(db.Model, SerializerMixin):
     store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
 
     # relationships
-    cart = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
+    # carts = db.relationship('Cart', back_populates = 'items', cascade ='all, delete-orphan')
     store = db.relationship('Store', back_populates = 'items')
 
     # association proxy
@@ -69,7 +69,7 @@ class Cart(db.Model, SerializerMixin):
 
     # relationships
     customer = db.relationship('Customer', back_populates = 'carts')
-    items = db.relationship('Item', back_populates = 'cart')
+    # items = db.relationship('Item', back_populates = 'cart')
     checkout = db.relationship('Checkout', back_populates = 'cart', cascade ='all, delete-orphan')
 
     # association proxy
