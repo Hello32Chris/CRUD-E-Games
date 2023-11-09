@@ -11,8 +11,9 @@ return (
                     <img src={img} alt = {name}/>
                     <h1>{name}</h1>
                     <h6>Price: ${price.toFixed(2)}</h6>
-                    <p>{quantity}</p>
                     <h3>{type}</h3>
+                    <p>{quantity}</p>
+                    
                 </div>
             </div>
 )}
