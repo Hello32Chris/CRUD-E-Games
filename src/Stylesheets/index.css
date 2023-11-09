@@ -270,6 +270,11 @@ border-radius: 5px;
 #closebtn{
   width: 25px;
 }
+/* #maindiv{
+  background-image: none;
+  background-image: url('/public/images/codbkgrnd.gif');
+  background-size: cover;
+} */
 
 .navbar {
   background-image: none;
@@ -429,8 +434,14 @@ border-radius: 5px;
   display: flex;
   width: 300px;
 }
+#bannerdiv{
+  background-image: none;
+  background-image: url('/public/images/codbkgrnd.gif');
+  background-size: cover;
+  height: 500px;
+}
 #navarea{
-  width: 100px;
+  width: 80px;
 }
 #cartbutt{
   width: 80px;

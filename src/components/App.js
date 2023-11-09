@@ -54,7 +54,7 @@ function App() {
             <header>
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
-            <div>
+            <div id='bannerdiv'>
                 <Navbar storeLogged={storeLogged} setSearchTerm={setSearchTerm} gamesArr={games} />
                 <Login loggedIn={loggedIn} storeLogged={storeLogged} setStoreLoggedIn={setStoreLoggedIn} />
                 <Cart customer_id={filteredCustomerIDs[0]} />
