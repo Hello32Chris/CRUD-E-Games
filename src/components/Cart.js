@@ -7,7 +7,7 @@ function Cart({ customer_id }) {
     const [cart, setCart] = useState([])
     const [isCart, setIsCart] = useState(false)
     const customerID = parseInt(customer_id)
-
+    console.log(customer_id)
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -26,9 +26,9 @@ function Cart({ customer_id }) {
             }
         };
         fetchData();
-    }, [customerID]);
+    }, [customerID]);    
 
-    const createNewCart = async () => {
+    const createNewCart = async (customerID) => {
         try {
             const resp = await fetch('/carts', {
                 method: 'POST',

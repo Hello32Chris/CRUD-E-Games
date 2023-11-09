@@ -53,34 +53,24 @@ function App() {
             <header>
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
-<<<<<<< HEAD
             <div>
                 <Navbar setSearchTerm={setSearchTerm} gamesArr={games} />
                 <Login loggedIn={loggedIn} />
-                <Cart customer_id={filteredCustomerIDs} />
+                <Cart customer_id={filteredCustomerIDs[0]} />
             </div>
-            <div>
-=======
-                <Navbar storeLoggedIn={storeLoggedIn} setSearchTerm={setSearchTerm} gamesArr={games} />
-                <Login />
-                <Cart customer_id = {filteredCustomerIDs}/>
             <div id='maindiv'>
->>>>>>> 09410a77815a7f156f8120c7dbc12e09cb0488e2
                 <Switch>
                     <Route exact path='/Account_Manager'> <AccountManager loggedInID={loggedInID} setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> </Route>
                     <Route exact path="/"><StoreFront searchTerm={searchTerm} gamesArr={games} /></Route>
                     <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                     <Route exact path="/Register" component={RegistrationForm} />
-<<<<<<< HEAD
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID={setLoggedInID} setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> </Route>
                     <Route exact path="/StoreLogin" component={StoreLogForm} />
-=======
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
                     <Route exact path="/StoreLogin"><StoreLogForm setStoreLoggedIn={setStoreLoggedIn} /></Route> 
                     <Route exact path="/About" component={About} />
                 
->>>>>>> 09410a77815a7f156f8120c7dbc12e09cb0488e2
                 </Switch>
             </div>
         </>
