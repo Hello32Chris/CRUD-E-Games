@@ -64,7 +64,7 @@ function RegistrationForm() {
         <div>
             <div className="loginform" >
                 <div className="centered-content">
-                <h2>Register New Account!</h2>
+                <h2 className="login">Register New Account!</h2>
                 <br/>
                     <form id="regform" name='form' onSubmit={handleRegister}>
                             Name:<input

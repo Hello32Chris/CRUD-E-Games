@@ -28,7 +28,7 @@ function StoreLogForm() {
     return (
         <div className="loginform">
             <div className="centered-content">
-                <h1>Store Login</h1>
+                <h1 className="login">Store Login</h1>
                 <br />
                 <div id="regform">
                     Email: <input

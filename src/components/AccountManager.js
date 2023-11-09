@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function AccountManager({ loggedInID }) {
+function AccountManager({ loggedInID, loggedIn, setLoggedIn }) {
 
     const [custData, setCustData] = useState({})
     const [makeChanges, setMakeChanges] = useState(true)
@@ -11,6 +12,7 @@ function AccountManager({ loggedInID }) {
         password: "",
         email: ""
     });
+    const history = useHistory()
 
     useEffect(() => {
         setNewData({
@@ -67,26 +69,33 @@ function AccountManager({ loggedInID }) {
         const { name, value } = e.target
         setNewData({ ...newData, [name]: value })
     }
+    const logOut = (e) => {
+        setLoggedIn(!loggedIn)
+        history.push('/CustomerLogin')
+    }
 
     console.log(makeChanges)
     return (
         <div className="loginform">{makeChanges ?
             <div className="centered-content">
-                <h1>Name:</h1>
-                <p>{custData.name}</p>
+                <h1 className="login">Name:</h1>
+                <p className="login">{custData.name}</p>
                 <br />
-                <h1>Email:</h1>
-                <p>{custData.email}</p>
+                <h1 className="login">Email:</h1>
+                <p className="login">{custData.email}</p>
                 <br />
-                <h1>UserName:</h1>
-                <p>{custData.user_name}</p>
+                <h1 className="login">UserName:</h1>
+                <p className="login">{custData.user_name}</p>
                 <br />
-                <h1>Password</h1>
-                <p>{custData.password}</p>
-                <button onClick={() => setMakeChanges(!makeChanges)}>Make Changes</button>
+                <h1 className="login">Password</h1>
+                <p className="login">{custData.password}</p>
+                <button className="login" onClick={() => setMakeChanges(!makeChanges)}>Make Changes</button>
+                <br/>
+                <button className="login" onClick={logOut}>Logout</button>
             </div> :
             <div>
-                <form name="form" onSubmit={updateInfo}>
+                <h2 className="login" align = 'center'>Edit Account</h2>
+                <form id="regform" name="form" onSubmit={updateInfo}>
                     Name:<input
                         className="reginput"
                         type="text"
@@ -111,7 +120,7 @@ function AccountManager({ loggedInID }) {
                         value={newData.password}
                         onChange={handleChange}
                     />
-                    <button type='button' id="showPasswrd" onClick={() => setShowPassword(!showPassword)}>show password</button>
+                    <button className="login" type='button' id="showPasswrd" onClick={() => setShowPassword(!showPassword)}>show password</button>
                     <br />
                     Email: <input
                         className="reginput"
@@ -121,9 +130,9 @@ function AccountManager({ loggedInID }) {
                         value={newData.email}
                         onChange={handleChange} />
                     <br />
-                    <input id="register" type="submit" name="Register" ></input>
+                    <input className="login" id="register" type="submit" name="Register" ></input>
                     <br />
-                    <button type="button" onClick={() => setMakeChanges(!makeChanges)}>Return</button>
+                    <button className="login" type="button" onClick={() => setMakeChanges(!makeChanges)}>Return</button>
                 </form>
             </div>}
 

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-function Login() {
+
+function Login({loggedIn}) {
 
     const [customers, setCustomer] = useState([]);
     const [stores, setStores] = useState([]);
-
 
     useEffect(() => {
         fetch('/customers')
@@ -19,11 +19,15 @@ function Login() {
             .then(setStores);
     }, []);
 
+    console.log(loggedIn)
+
 
     return (
         <div id='login-container'>
             <span >
-                <Link customers={customers}  to="/CustomerLogin"><button className="login-butt" >Login</button></Link>
+                {loggedIn ? 
+                <Link customers={customers}  to="/Account_Manager"><button className="login-butt" >Account Manager</button></Link>:
+                <Link customers={customers}  to="/CustomerLogin"><button className="login-butt" >Login</button></Link>}
                 <Link stores={stores} to="/StoreLogin"><button className="login-butt" >StoreLogin</button></Link>
                 <Link to="/Register" ><button className="login-butt">Register New Account</button></Link>
             </span>

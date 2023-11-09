@@ -28,29 +28,32 @@ function Cart({ customer_id }) {
         fetchData();
     }, [customerID]);
 
-    const createNewCart = async (customerID) => {
+    const createNewCart = async () => {
         try {
             const resp = await fetch('/carts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({customer_id : customerID }),
+                body: JSON.stringify({customer_id : customerID}),
             });
+            console.log('Response status', resp.status)
+            console.log(customer_id)
+            const data = await resp.json();
+            console.log('Received data:', data)
             if (resp.ok) {
-                const data = await resp.json();
-                console.log(data)
+                setCart(data)
             } else {
-                console.error('Failed to create a new cart')
+                console.error('Failed to create a new cart', resp.status, resp.statusText)
             }
         } catch (error) {
             console.error(error)
         }
     }
 
-    console.log(cart)
-    console.log(isCart)
 
+    console.log(cart)
+    console.log(customerID)
 
     return (
         <div id="cartbutt">

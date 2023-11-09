@@ -20,6 +20,7 @@ function App() {
     const [stores, setStores] = useState([])
     const [customerArr, setCustomer] = useState([]);
     const [loggedInID, setLoggedInID] = useState(1)
+    const [loggedIn, setLoggedIn] = useState(false)
 
     useEffect(() => {
         fetch('/customers')
@@ -52,15 +53,17 @@ function App() {
             </header>
             <div>
                 <Navbar setSearchTerm={setSearchTerm} gamesArr={games} />
-                <Login />
-                <Cart customer_id = {filteredCustomerIDs}/>
+                <Login loggedIn={loggedIn} />
+                <Cart customer_id={filteredCustomerIDs} />
+            </div>
+            <div>
                 <Switch>
-                    <Route exact path='/Account_Manager'> <AccountManager loggedInID = {loggedInID}/> </Route>
-                    <Route exact path="/"><StoreFront searchTerm={searchTerm} gamesArr = {games}/></Route>
+                    <Route exact path='/Account_Manager'> <AccountManager loggedInID={loggedInID} setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> </Route>
+                    <Route exact path="/"><StoreFront searchTerm={searchTerm} gamesArr={games} /></Route>
                     <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                     <Route exact path="/Register" component={RegistrationForm} />
-                    <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
+                    <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID={setLoggedInID} setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> </Route>
                     <Route exact path="/StoreLogin" component={StoreLogForm} />
                 </Switch>
             </div>
