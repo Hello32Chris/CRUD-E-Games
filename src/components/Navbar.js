@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
-function Navbar({ gamesArr, setSearchTerm }) {
+function Navbar({ gamesArr, setSearchTerm, storeLoggedIn }) {
 
   const [toggle, setToggle] = useState(true)
   const [searchToggle, setToggleSearch] = useState(false)
@@ -27,7 +27,8 @@ function Navbar({ gamesArr, setSearchTerm }) {
         <NavLink className='link' to="/" activeClassName="active">Home</NavLink>
         <NavLink className='link' to="/Games" activeClassName="active" >Games</NavLink>
         <NavLink className='link' to="/About" activeClassName="active" >About</NavLink>
-        {/* <NavLink className='link' to="/customers" activeClassName="active" >Custys</NavLink> */}
+        {storeLoggedIn &&
+        <NavLink className='link' to="/customers" activeClassName="active" >Custys</NavLink>}
       </div>
     </nav>)
 

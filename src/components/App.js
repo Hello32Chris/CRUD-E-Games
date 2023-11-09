@@ -45,13 +45,14 @@ function App() {
     console.log(loggedInID)
 
     const [searchTerm, setSearchTerm] = useState("")
+    const [storeLoggedIn, setStoreLoggedIn] = useState(false)
 
     return (
         <>
             <header>
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
-                <Navbar setSearchTerm={setSearchTerm} gamesArr={games} />
+                <Navbar storeLoggedIn={storeLoggedIn} setSearchTerm={setSearchTerm} gamesArr={games} />
                 <Login />
                 <Cart customer_id = {filteredCustomerIDs}/>
             <div id='maindiv'>
@@ -62,7 +63,7 @@ function App() {
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                     <Route exact path="/Register" component={RegistrationForm} />
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
-                    <Route exact path="/StoreLogin" component={StoreLogForm} />
+                    <Route exact path="/StoreLogin"><StoreLogForm setStoreLoggedIn={setStoreLoggedIn} /></Route> 
                     <Route exact path="/About" component={About} />
                 
                 </Switch>

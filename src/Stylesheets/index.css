@@ -253,8 +253,14 @@ border-radius: 5px;
 }
 
 .navbar {
+  background-image: none;
+  background-image: url('/public/images/gameCard.gif');
+  background-size: fill;
   height: 800px;
   width: 150px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: fixed;
   z-index: 1;
   /* Stay on top */
