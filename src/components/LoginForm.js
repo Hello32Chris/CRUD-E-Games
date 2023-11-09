@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 
-function LoginForm({setLoggedInID}) {
+function LoginForm({setLoggedInID, setLoggedIn, loggedIn}) {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -21,6 +21,7 @@ function LoginForm({setLoggedInID}) {
                 // Valid login
                 console.log('Login successful')
                 console.log(customer.id)
+                setLoggedIn(!loggedIn)
                 setLoggedInID(customer.id)
                 history.push('/Account_Manager')
             } else {

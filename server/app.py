@@ -194,14 +194,16 @@ def carts():
 
 # ---------------- POST -----------------------
         elif request.method == 'POST':
+            print(request)
             form_data = request.get_json()
+            print('Received form data:', form_data)
             try:
                 new_cart_obj = Cart(
                     customer_id = form_data['customer_id']
                 )
                 db.session.add(new_cart_obj)
                 db.session.commit()
-                resp = make_response(new_cart_obj.to_dict(), 201)
+                resp = make_response(new_cart_obj.to_dict(rules = ('-checkout.store.password','-customer.password', '-checkout.store.items')), 201)
             except ValueError:
                 resp = make_response({ "errors": ["Validation Errors"]}, 400)
 
@@ -213,7 +215,8 @@ def carts():
                     setattr(store_by_id, attr, form_data.get(attr))
                 db.session.commit()
                 resp = make_response(store_by_id.to_dict(), 202)
-            except ValueError:
+            except ValueError as e:
+                print('Validation error:', e)
                 resp = make_response({ "errors": ["Validation Errors"]}, 400)
                 
     else:
@@ -255,7 +258,8 @@ def cart_by_id(id):
                     setattr(store_by_id, attr, form_data.get(attr))
                 db.session.commit()
                 resp = make_response(store_by_id.to_dict(), 202)
-            except ValueError:
+            except ValueError as e:
+                print('Validation error:', e)
                 resp = make_response({ "errors": ["Validation Errors"]}, 400)
                 
     else:

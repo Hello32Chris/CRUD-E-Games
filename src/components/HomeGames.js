@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import StoreFront from "./StoreFront";
 
 function HomeGames( { description, name, price, quantity, store, type, img } ){
-    console.log(name)
 
 
 return (

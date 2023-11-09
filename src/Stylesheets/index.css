@@ -230,8 +230,12 @@ border-radius: 5px;
   height: 10px;
   width: 12px;
   align-self: bottom;
-  /* padding-top: 100px; */
-  /* text-orientation: mixed; */
+  /* padding-right: 100px;
+  text-orientation: mixed; */
+}
+#login-container{
+  width: 75px;
+  height: 140px;
 }
 
 .login-button{

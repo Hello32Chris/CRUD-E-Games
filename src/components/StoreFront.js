@@ -7,6 +7,7 @@ function StoreFront({ gamesArr, searchTerm }) {
     // console.log(gamesArr)
 
 
+
     const filteredArr = gamesArr.filter(gameobj => {
                 
         return  gameobj.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||

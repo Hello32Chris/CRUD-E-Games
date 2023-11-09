@@ -196,10 +196,19 @@ with app.app_context():
 
             db.session.commit()
 
+    def seed_carts():
+            cart = Cart(
+                customer_id = 1
+            )
+            db.session.add(cart)
+
+            db.session.commit()
+
     if __name__ == '__main__':
         with app.app_context():
-            seed_items()  # Create 10 random items
-            seed_customers()  # Create 5 random customers
-            seed_stores()   # Create 3 random stores
+            seed_items()  
+            seed_customers()  
+            seed_stores()
+            seed_carts()
 
         print('Data has been seeded.')
