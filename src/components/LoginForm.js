@@ -28,7 +28,8 @@ function LoginForm() {
     return (
         <div className="loginform">
             <div className="centered-content">
-                <h1 id="login">Login</h1>
+                {/* <h1 id="login">Login</h1> */}
+                <span id="trylogin">asdf</span>
                 <br />
                 <div id="regform">
                     Username: <input

@@ -353,3 +353,9 @@ border-radius: 5px;
   border: solid 2px black;
   border-radius: 15%;
 }
+#trylogin{
+  background-image: url('../Images/8049d30790b3ff0b9e8134fcfe00728e - Copy - Copy.png');
+  background-size: cover;
+  display: flex;
+  width: 300px;
+}
