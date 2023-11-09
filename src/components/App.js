@@ -29,7 +29,7 @@ function App() {
         fetch('/customers')
             .then((resp) => resp.json())
             .then(setCustomer);
-    }, []);
+    }, [storeLogged]);
 
     useEffect(() => {
         fetch('/items')
@@ -45,7 +45,7 @@ function App() {
 
     const filteredCustomerIDs = customerArr.filter((customer) => customer.id === loggedInID).map((customer) => customer.id);
 
-    console.log(loggedInID)
+    // console.log(loggedInID)
 
     console.log(storeLogged)
     return (
@@ -55,7 +55,7 @@ function App() {
             </header>
             <div>
                 <Navbar storeLogged={storeLogged} setSearchTerm={setSearchTerm} gamesArr={games} />
-                <Login loggedIn={loggedIn} />
+                <Login loggedIn={loggedIn} storeLogged={storeLogged} setStoreLoggedIn={setStoreLoggedIn} />
                 <Cart customer_id={filteredCustomerIDs[0]} />
             </div>
             <div id='maindiv'>
@@ -66,7 +66,6 @@ function App() {
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                     <Route exact path="/Register" component={RegistrationForm} />
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID={setLoggedInID} setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> </Route>
-                    <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
                     <Route exact path="/StoreLogin"><StoreLogForm storeLogged={storeLogged} setStoreLoggedIn={setStoreLoggedIn} /></Route> 
                     <Route exact path="/About" component={About} />
                 
