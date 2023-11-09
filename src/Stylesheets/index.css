@@ -243,7 +243,7 @@ border-radius: 5px;
   align-self: bottom;
   /* padding-right: 100px;
   text-orientation: mixed; */
-  color: white
+  color: rgb(65, 146, 139);
 }
 #login-container{
   width: 75px;
