@@ -1,7 +1,7 @@
 import React from "react";
 import StoreLogForm from "./StoreLogForm";
 
-function StoreLogins({stores}) {
+function StoreLogins({stores, }) {
     const user = JSON.parse(sessionStorage.getItem('user'))
 
     console.log(stores)

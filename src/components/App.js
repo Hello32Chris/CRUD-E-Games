@@ -11,6 +11,7 @@ import RegistrationForm from './RegistrationForm';
 import StoreLogForm from './StoreLogForm';
 import LoginForm from './LoginForm';
 import AccountManager from './AccountManager';
+import About from './About';
 
 
 function App() {
@@ -44,16 +45,17 @@ function App() {
     console.log(loggedInID)
 
     const [searchTerm, setSearchTerm] = useState("")
+    const [storeLoggedIn, setStoreLoggedIn] = useState(false)
 
     return (
         <>
             <header>
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
-            <div>
-                <Navbar setSearchTerm={setSearchTerm} gamesArr={games} />
+                <Navbar storeLoggedIn={storeLoggedIn} setSearchTerm={setSearchTerm} gamesArr={games} />
                 <Login />
                 <Cart customer_id = {filteredCustomerIDs}/>
+            <div id='maindiv'>
                 <Switch>
                     <Route exact path='/Account_Manager'> <AccountManager loggedInID = {loggedInID}/> </Route>
                     <Route exact path="/"><StoreFront searchTerm={searchTerm} gamesArr = {games}/></Route>
@@ -61,7 +63,9 @@ function App() {
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                     <Route exact path="/Register" component={RegistrationForm} />
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
-                    <Route exact path="/StoreLogin" component={StoreLogForm} />
+                    <Route exact path="/StoreLogin"><StoreLogForm setStoreLoggedIn={setStoreLoggedIn} /></Route> 
+                    <Route exact path="/About" component={About} />
+                
                 </Switch>
             </div>
         </>
