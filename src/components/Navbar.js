@@ -28,7 +28,7 @@ function Navbar({ gamesArr, setSearchTerm, storeLogged }) {
         <NavLink className='link' to="/Games" activeClassName="active" >Games</NavLink>
         <NavLink className='link' to="/About" activeClassName="active" >About</NavLink>
         {storeLogged &&
-        <NavLink className='link' to="/customers" activeClassName="active" >Custys</NavLink>}
+        <NavLink className='link' to="/customers" activeClassName="active" >Clients</NavLink>}
       </div>
     </nav>)
 

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function StoreLogForm({ setStoreLoggedIn, storeLogged }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [validLogin, setValidLogin] = useState(false)
+    const history = useHistory()
+
 
     const handleLogin = async () => {
         try {
@@ -17,6 +20,7 @@ function StoreLogForm({ setStoreLoggedIn, storeLogged }) {
                 console.log('Login successful');
                 setStoreLoggedIn(!storeLogged)
                 // && alert('You Have Successfully Logged in!')
+                history.push('/customers')
             } else {
                 // Invalid login
                 setValidLogin('Invalid email or password');
