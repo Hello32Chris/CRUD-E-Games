@@ -176,6 +176,13 @@ def store_by_id(id):
         resp = make_response({"error": "Store not found"}, 404)
     return resp
 
+
+
+
+#----------------------------------------
+# CARTS
+#----------------------------------------
+
 @app.route('/carts', methods = ['GET', 'POST', 'PATCH'])
 def carts():
     carts = Cart.query.all()
@@ -214,6 +221,10 @@ def carts():
     return resp
 
 
+
+#----------------------------------------
+# CARTS BY ID
+#----------------------------------------
 @app.route('/carts/<int:id>', methods=['GET', 'POST', 'PATCH'])
 def cart_by_id(id):
     cart_by_id = Cart.query.filter_by(id = id).first()
@@ -251,6 +262,11 @@ def cart_by_id(id):
         resp = make_response({ "error": "No Cart Found!"}, 404)
     return resp
 
+
+
+#----------------------------------------
+# CARTS BY CUSTOMER_ID
+#----------------------------------------
 @app.route('/carts/customer_<int:customer_id>', methods=['GET', 'POST', 'PATCH'])
 def cart_by_customer_id(customer_id):
     cart_by_customer_id = Cart.query.filter_by(customer_id = customer_id).first()
@@ -288,6 +304,11 @@ def cart_by_customer_id(customer_id):
         resp = make_response({ "error": "No Cart Found!"}, 404)
     return resp
 
+
+
+#----------------------------------------
+# CART_ITEMS
+#----------------------------------------
 @app.route('/cart_items', methods = ['POST'])
 def add_to_cart():
     try:
@@ -301,6 +322,12 @@ def add_to_cart():
         return make_response({'message': 'Item added to cart successfully'}, 201)
     except Exception as e:
         return make_response({'error': str(e)}, 400)
+    
+
+
+#----------------------------------------
+# REMOVE_FROM_CART
+#----------------------------------------
     
 @app.route('/remove_from_cart', methods=['POST'])
 def remove_from_cart():
