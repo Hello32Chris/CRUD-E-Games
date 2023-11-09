@@ -15,8 +15,7 @@ function StoreLogForm({ setStoreLoggedIn, storeLogged }) {
             if (store && store.password === password) {
                 // Valid login
                 console.log('Login successful');
-                setStoreLoggedIn(!storeLogged)
-                // && alert('You Have Successfully Logged in!')
+                setStoreLoggedIn(!storeLogged) 
             } else {
                 // Invalid login
                 setValidLogin('Invalid email or password');
