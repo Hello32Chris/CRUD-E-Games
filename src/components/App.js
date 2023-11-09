@@ -66,7 +66,6 @@ function App() {
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                     <Route exact path="/Register" component={RegistrationForm} />
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID={setLoggedInID} setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> </Route>
-                    <Route exact path="/StoreLogin" component={StoreLogForm} />
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
                     <Route exact path="/StoreLogin"><StoreLogForm storeLogged={storeLogged} setStoreLoggedIn={setStoreLoggedIn} /></Route> 
                     <Route exact path="/About" component={About} />

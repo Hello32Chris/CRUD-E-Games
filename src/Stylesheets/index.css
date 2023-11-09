@@ -255,13 +255,16 @@ border-radius: 5px;
   top: 70px;
   right: 1px;
 }
+#closebtn{
+  width: 25px;
+}
 
 .navbar {
   background-image: none;
   background-image: url('/public/images/gameCard.gif');
   background-size: fill;
-  height: 800px;
-  width: 150px;
+  height: 400px;
+  width: 120px;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
@@ -272,7 +275,6 @@ border-radius: 5px;
   padding-top: 5px;
   top: 10px;
   left: 10px;
-  background-color: #68001a;
   overflow-x: hidden;
   transition: 0.5s;
   /* 0.5 second transition effect to slide in the sidebar */
@@ -282,9 +284,11 @@ border-radius: 5px;
   padding: 8px 8px 8px 8px;
   text-decoration: none;
   font-size: 30px;
-  color: #58195d;
+  font-weight: bold;
+  color: #195d1a;
   display: block;
   transition: 0.5s;
+  text-shadow: 7px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .link:hover{
