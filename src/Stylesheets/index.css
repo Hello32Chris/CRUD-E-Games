@@ -25,6 +25,11 @@ body, h1, h2, h3, p{
   header{
     text-align: center;
   }
+  /* using this unholy css below you can make things scroll with the screen  */
+  footer{
+    position: fixed;
+    bottom: 10px;
+  }
   .card-container{
     margin: auto;
     padding-left: 20px;
@@ -270,6 +275,9 @@ border-radius: 5px;
 #closebtn{
   width: 25px;
 }
+#closebtn{
+  cursor: pointer;
+}
 /* #maindiv{
   background-image: none;
   background-image: url('/public/images/codbkgrnd.gif');
@@ -302,7 +310,7 @@ border-radius: 5px;
   text-decoration: none;
   font-size: 30px;
   font-weight: bold;
-  color: #195d1a;
+  color: #2d9499;
   display: block;
   transition: 0.5s;
   text-shadow: 7px 3px 3px rgba(0, 0, 0, 0.5);
@@ -338,7 +346,8 @@ border-radius: 5px;
 }
 .login-butt {
   border: solid thin;
-  background-color: grey;
+  background-image: none;
+  background-color: rgb(119, 148, 151);
   height: 50px;
   width: 80px;
 }
