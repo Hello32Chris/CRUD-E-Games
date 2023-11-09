@@ -21,7 +21,6 @@ function Inventory({ gamesArr }) {
     )
     return (
         <div>
-            <div id="cart"><Cart /></div>
             <div className="card-container">
                 {mappedGamesArr}
             </div>

@@ -43,7 +43,7 @@ function App() {
 
     console.log(loggedInID)
 
-
+    const [searchTerm, setSearchTerm] = useState("")
 
     return (
         <>
@@ -51,13 +51,12 @@ function App() {
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
             <div>
-                <h1>We Out Here</h1>
-                <Navbar />
+                <Navbar setSearchTerm={setSearchTerm} gamesArr={games} />
                 <Login />
                 <Cart customer_id = {filteredCustomerIDs}/>
                 <Switch>
                     <Route exact path='/Account_Manager'> <AccountManager loggedInID = {loggedInID}/> </Route>
-                    <Route exact path="/"><StoreFront gamesArr = {games}/></Route>
+                    <Route exact path="/"><StoreFront searchTerm={searchTerm} gamesArr = {games}/></Route>
                     <Route exact path="/games" ><Inventory gamesArr={games} /></Route>
                     <Route exact path="/customers"><Account customerArr={customerArr} stores={stores} /></ Route>
                     <Route exact path="/Register" component={RegistrationForm} />

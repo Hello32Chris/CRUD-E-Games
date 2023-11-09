@@ -19,9 +19,9 @@ body, h1, h2, h3, p{
   *{
     background-image: url('https://wallpapertag.com/wallpaper/full/a/1/8/116102-popular-dark-grey-background-1920x1200-for-tablet.jpg');
   }
-  h1{
-    width: 200px;
-  }
+  /* h1{
+    width: 200px; */
+  /* } */
   header{
     text-align: center;
   }
@@ -51,6 +51,9 @@ body, h1, h2, h3, p{
   /* Animation */
   perspective: 220px;
   cursor: pointer;
+  background-color: #e5e5f7;
+  opacity: 1;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 4px ), repeating-linear-gradient( #5f226e55, #5f226e );
 }
 
 .card-inner {
@@ -89,15 +92,24 @@ body, h1, h2, h3, p{
   border: 1px solid violet;
   perspective: 220px; /* Remove this if you don't want the 3D effect */
 }
-
-.card-front,
 .card-back {
+  background-color: rgb(255, 0, 255);
+  color: rgb(255, 255, 255);
+  transform: rotateY(180deg);
+  position: absolute;
+  height: 350px;
+  z-index: 100;
+}
+
+.card-front,.card-back {
   position: absolute;
   width: 155px;
-  height: 330px;
+  /* height: 330px; */
   backface-visibility: hidden;
   border-radius: 15px;
+  height: auto;
 } 
+
 .card-front h2{
   width: 55px;
   background-color: transparent;
@@ -112,20 +124,18 @@ body, h1, h2, h3, p{
   transform: rotateY(180deg);
   perspective: 220px;
   transform-style: preserve-3d;
+  
 }
 
 .card-inner {
   width: 165px;
-  height: 330px;
+  height: fit-content;
   transform-style: preserve-3d;
   transition: transform .7s;
+  z-index: 100;
+
 }
-.card-back {
-  background-color: rgb(255, 0, 255);
-  color: rgb(255, 255, 255);
-  transform: rotateY(180deg);
-  position: absolute;
-}
+
 .home-game-container{
   margin: auto;
   padding-left: 20px;
@@ -200,10 +210,6 @@ border-radius: 5px;
   /* padding-right: 100px;
   text-orientation: mixed; */
 }
-#login-container{
-  width: 75px;
-  height: 140px;
-}
 
 .login-button{
   border: solid thin;
@@ -216,10 +222,10 @@ border-radius: 5px;
 }
 
 #login-container{
-  width: 125px;
+  width: 80px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 70px;
+  right: 1px;
 }
 
 .navbar {
@@ -247,7 +253,7 @@ border-radius: 5px;
   transition: 0.3s;
 }
 
-.navbutton {
+#navbutton {
   font-size: 20px;
   cursor: pointer;
   background-color: #111;
@@ -277,7 +283,12 @@ border-radius: 5px;
 }
 
 #regform{
+  background-image: none;
+  background-color: rgb(32, 120, 32);
   color: white;
+  border: solid 6px orange;
+  border-radius: 5%;
+  box-shadow: 0 0 0 2px black; 
 }
 
 #register {
@@ -309,15 +320,19 @@ border-radius: 5px;
   color: white;
 }
 
-
 .loginform {
-  background-color: blue;
+  background-image: none;
+  background-image: url("/public/images/Login bkgrnd.png");
+  background-size: cover;
+  border: solid 4px orange;
+  border-radius: 5%;
   padding: 100px;
   width: 300px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px black; 
 }
 
 .centered-content {
@@ -327,4 +342,22 @@ border-radius: 5px;
   align-items: center;
   justify-content: center;
   text-align: center; /* For text centering within input elements */
+}
+#login{
+  background-image: none;
+  background-color: orange;
+  border: solid 2px black;
+  border-radius: 15%;
+}
+#trylogin{
+  background-image: url('../Images/8049d30790b3ff0b9e8134fcfe00728e - Copy - Copy.png');
+  background-size: cover;
+  display: flex;
+  width: 300px;
+}
+#navarea{
+  width: 100px;
+}
+#cartbutt{
+  width: 80px;
 }

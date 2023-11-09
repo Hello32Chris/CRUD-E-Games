@@ -1,42 +1,43 @@
-import React, {useState, useEffect}from "react";
+import React, { useState, useEffect } from "react";
 import HomeGames from "./HomeGames";
-import Search from "./Serach";
 
 
-function StoreFront({gamesArr}) {
+
+function StoreFront({ gamesArr, searchTerm }) {
     // console.log(gamesArr)
 
-    const [searchTerm, setSearchTerm] = useState("")
-    
-    const mappedHomeGames = gamesArr.map((homeGameObj)=>{
-        console.log(homeGameObj)
+  
 
+
+    const filteredArr = gamesArr.filter(gameobj => (
+        gameobj.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        // gameobj.name.includes(searchTerm) ||
+        gameobj.price.toString().includes(searchTerm) ||
+        // gameobj.quantitiy.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        // gameobj.store.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        gameobj.type.toLowerCase().includes(searchTerm.toLowerCase())
+    ))
+
+    const mappedHomeGames = filteredArr.map((homeGameObj) => {
+        // console.log(homeGameObj)
         return <HomeGames
-        key={homeGameObj.id}
-        description={homeGameObj.description}
-        name={homeGameObj.name}
-        price={homeGameObj.price}
-        quantitiy={homeGameObj.quantitiy}
-        store={homeGameObj.store}
-        type={homeGameObj.type}
-        img={homeGameObj.img}
+            key={homeGameObj.id}
+            description={homeGameObj.description}
+            name={homeGameObj.name}
+            price={homeGameObj.price}
+            quantitiy={homeGameObj.quantitiy}
+            store={homeGameObj.store}
+            type={homeGameObj.type}
+            img={homeGameObj.img}
         />
-})
-// const filteredArr = mappedHomeGames.filter(gameobj=>(
-//         gameobj.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//         gameobj.name.includes(searchTerm) ||
-//         gameobj.price.toString().includes(searchTerm) ||
-//         gameobj.quantitiy.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//         gameobj.store.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//         gameobj.type.toLowerCase().includes(searchTerm.toLowerCase())
-//     ))
-    return(
-    <>
-    <Search setSearchTerm={setSearchTerm}/>
-    <div className="home-game-container">
-        {mappedHomeGames}
-    </div>
-    </>
+    })
+
+    return (
+        <>
+            <div className="home-game-container">
+                {mappedHomeGames}
+            </div>
+        </>
     )
 }
 

@@ -53,8 +53,8 @@ function Cart({ customer_id }) {
 
 
     return (
-        <div>
-            <button>View Cart</button>
+        <div id="cartbutt">
+            <button className="login-butt">View Cart</button>
             {/* <CartItems
                 items={cart.items}
                 customer={cart.customer}

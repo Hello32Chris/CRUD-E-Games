@@ -10,7 +10,7 @@ return (
                 <div className="home-game-info">
                     <img src={img} alt = {name}/>
                     <h1>{name}</h1>
-                    <h6>{price}</h6>
+                    <h6>Price: ${price.toFixed(2)}</h6>
                     <p>{quantity}</p>
                     <h3>{type}</h3>
                 </div>

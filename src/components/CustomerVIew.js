@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function CustomerView( { id, name, email, age, membership } ) {
    
     const [customers, setCustomers] = useState([]);
 
+      console.log(customers.age)
       
       function handleDeleteCustomer(id) {
         fetch(`/customers/${id}`, { method: "DELETE" }).then((resp) => {
