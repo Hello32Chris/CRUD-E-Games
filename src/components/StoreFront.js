@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import HomeGames from "./HomeGames";
-import Search from "./Search";
 
 
-function StoreFront({ gamesArr }) {
+
+function StoreFront({ gamesArr, searchTerm }) {
     // console.log(gamesArr)
 
-    const [searchTerm, setSearchTerm] = useState("")
+  
 
 
     const filteredArr = gamesArr.filter(gameobj => (
@@ -34,7 +34,6 @@ function StoreFront({ gamesArr }) {
 
     return (
         <>
-            <Search setSearchTerm={setSearchTerm} />
             <div className="home-game-container">
                 {mappedHomeGames}
             </div>

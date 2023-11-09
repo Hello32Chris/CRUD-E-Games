@@ -210,10 +210,6 @@ border-radius: 5px;
   /* padding-right: 100px;
   text-orientation: mixed; */
 }
-#login-container{
-  width: 75px;
-  height: 140px;
-}
 
 .login-button{
   border: solid thin;
@@ -226,10 +222,10 @@ border-radius: 5px;
 }
 
 #login-container{
-  width: 125px;
+  width: 80px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 70px;
+  right: 1px;
 }
 
 .navbar {
@@ -257,7 +253,7 @@ border-radius: 5px;
   transition: 0.3s;
 }
 
-.navbutton {
+#navbutton {
   font-size: 20px;
   cursor: pointer;
   background-color: #111;
@@ -358,4 +354,10 @@ border-radius: 5px;
   background-size: cover;
   display: flex;
   width: 300px;
+}
+#navarea{
+  width: 100px;
+}
+#cartbutt{
+  width: 80px;
 }

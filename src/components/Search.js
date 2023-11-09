@@ -1,6 +1,9 @@
 import React, {useState, useEffect}from "react";
 
-function Search({setSearchTerm}){
+function Search({ gamesArr, setSearchTerm}){
+
+
+    
     return(
         <input className="searcher"
         type="text" 
