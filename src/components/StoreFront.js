@@ -6,8 +6,6 @@ import HomeGames from "./HomeGames";
 function StoreFront({ gamesArr, searchTerm }) {
     // console.log(gamesArr)
 
-    const [searchTerm, setSearchTerm] = useState("")
-
 
     const filteredArr = gamesArr.filter(gameobj => {
                 
@@ -20,9 +18,6 @@ function StoreFront({ gamesArr, searchTerm }) {
                 
     })
     
-    
-    const mappedHomeGames = filteredArr.map((homeGameObj)=>{
-        console.log(homeGameObj)
 
     const mappedHomeGames = filteredArr.map((homeGameObj) => {
         // console.log(homeGameObj)
@@ -49,4 +44,4 @@ function StoreFront({ gamesArr, searchTerm }) {
 }
 
 
-export default StoreFront
+export default StoreFront;

@@ -230,12 +230,8 @@ border-radius: 5px;
   height: 10px;
   width: 12px;
   align-self: bottom;
-  /* padding-right: 100px;
-  text-orientation: mixed; */
-}
-#login-container{
-  width: 75px;
-  height: 140px;
+  /* padding-top: 100px; */
+  /* text-orientation: mixed; */
 }
 
 .login-button{
@@ -386,6 +382,25 @@ border-radius: 5px;
   justify-content: center;
   text-align: center; /* For text centering within input elements */
 }
+<<<<<<< HEAD
+#login{
+  background-image: none;
+  background-color: orange;
+  border: solid 2px black;
+  border-radius: 15%;
+}
+#trylogin{
+  background-image: url('../Images/8049d30790b3ff0b9e8134fcfe00728e - Copy - Copy.png');
+  background-size: cover;
+  display: flex;
+  width: 300px;
+}
+#navarea{
+  width: 100px;
+}
+#cartbutt{
+  width: 80px;
+}
 .searcher {
   align-content: center;
   /* padding-left:px; */
@@ -397,3 +412,4 @@ box-shadow: 0 0 5px #03e9f4,
             0 0 50px #03e9f4,
             0 0 100px #03e9f4;
 } */
+
