@@ -1,30 +1,33 @@
 import React, { useState } from "react";
 
-function StoreLogForm({ setStoreLoggedIn }) {
+function StoreLogForm({ setStoreLoggedIn, storeLogged }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [validLogin, setValidLogin] = useState(false)
 
-    const handleLogin = () => {
-        fetch('/store') // Fetch customer data
-            .then((response) => response.json())
-            .then((storeData) => {
-                const customer = storeData.find((store) => store.email === email);
+    const handleLogin = async () => {
+        try {
+            const response = await fetch('/stores') // Fetch customer data
+            const storeData = await response.json()
+            const store = storeData.find((store) => store.email === email)
 
-                if (customer && customer.password === password) {
-                    // Valid login
-                    console.log('Login successful');
-                    alert('You Have Successfully Logged in!')
-                } else {
-                    // Invalid login
-                    setValidLogin('Invalid email or password');
-                }
-            })
-            .catch((error) => {
-                console.error('Error fetching store data', error);
-            });
+            if (store && store.password === password) {
+                // Valid login
+                console.log('Login successful');
+                setStoreLoggedIn(!storeLogged)
+                // && alert('You Have Successfully Logged in!')
+            } else {
+                // Invalid login
+                setValidLogin('Invalid email or password');
+            }
+        } catch (error) {
+            console.error('Error fetching store data', error);
+        };
     };
+    console.log(storeLogged)
+
+
 
     return (
         <div className="loginform">
@@ -50,7 +53,6 @@ function StoreLogForm({ setStoreLoggedIn }) {
                     <br />
                     <button id="register" onClick={handleLogin}>Login</button>
                     {validLogin && <p>{validLogin}</p>}
-                    {validLogin && setStoreLoggedIn}
                 </div>
             </div>
         </div>

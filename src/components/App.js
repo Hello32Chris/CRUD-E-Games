@@ -22,6 +22,8 @@ function App() {
     const [customerArr, setCustomer] = useState([]);
     const [loggedInID, setLoggedInID] = useState(1)
     const [loggedIn, setLoggedIn] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("")
+    const [storeLogged, setStoreLoggedIn] = useState(false)
 
     useEffect(() => {
         fetch('/customers')
@@ -45,16 +47,14 @@ function App() {
 
     console.log(loggedInID)
 
-    const [searchTerm, setSearchTerm] = useState("")
-    const [storeLoggedIn, setStoreLoggedIn] = useState(false)
-
+    console.log(storeLogged)
     return (
         <>
             <header>
                 <img src="./images/updatedheader.png" alt=''></img>
             </header>
             <div>
-                <Navbar setSearchTerm={setSearchTerm} gamesArr={games} />
+                <Navbar storeLogged={storeLogged} setSearchTerm={setSearchTerm} gamesArr={games} />
                 <Login loggedIn={loggedIn} />
                 <Cart customer_id={filteredCustomerIDs[0]} />
             </div>
@@ -68,7 +68,7 @@ function App() {
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID={setLoggedInID} setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> </Route>
                     <Route exact path="/StoreLogin" component={StoreLogForm} />
                     <Route exact path="/CustomerLogin" ><LoginForm setLoggedInID = {setLoggedInID} /> </Route>
-                    <Route exact path="/StoreLogin"><StoreLogForm setStoreLoggedIn={setStoreLoggedIn} /></Route> 
+                    <Route exact path="/StoreLogin"><StoreLogForm storeLogged={storeLogged} setStoreLoggedIn={setStoreLoggedIn} /></Route> 
                     <Route exact path="/About" component={About} />
                 
                 </Switch>

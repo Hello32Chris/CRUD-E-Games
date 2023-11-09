@@ -7,7 +7,7 @@ function Cart({ customer_id }) {
     const [cart, setCart] = useState([])
     const [isCart, setIsCart] = useState(false)
     const customerID = parseInt(customer_id)
-    console.log(customer_id)
+    // console.log(customer_id)
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -52,8 +52,8 @@ function Cart({ customer_id }) {
     }
 
 
-    console.log(cart)
-    console.log(customerID)
+    // console.log(cart)
+    // console.log(customerID)
 
     return (
         <div id="cartbutt">
