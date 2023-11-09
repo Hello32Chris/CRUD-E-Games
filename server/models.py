@@ -101,7 +101,7 @@ class Customer(db.Model, SerializerMixin):
     items = association_proxy('Cart', 'items')
 
     # serialization
-    serialize_rules = ('-carts.customer')
+    serialize_rules = ('-carts.customer', )
 
     # validations
     @validates('name')

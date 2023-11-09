@@ -19,11 +19,16 @@ body, h1, h2, h3, p{
   *{
     background-image: url('https://wallpapertag.com/wallpaper/full/a/1/8/116102-popular-dark-grey-background-1920x1200-for-tablet.jpg');
   }
-  h1{
-    width: 200px;
-  }
+  /* h1{
+    width: 200px; */
+  /* } */
   header{
     text-align: center;
+  }
+  /* using this unholy css below you can make things scroll with the screen  */
+  footer{
+    position: fixed;
+    bottom: 10px;
   }
   .card-container{
     margin: auto;
@@ -38,19 +43,22 @@ body, h1, h2, h3, p{
   }
 
 .card {
-  width: 170px;
+  width: 250px;
   border: 1px solid violet;
   border-radius: 15px;
   padding: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
-  height: 350px;
+  height: 250px;
   padding: 5px;
   background-color: rgb(70, 57, 70);
   transition: transform .7s;
   /* Animation */
   perspective: 220px;
   cursor: pointer;
+  /* background-color: #e5e5f7;
+  opacity: 1;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 4px ), repeating-linear-gradient( #5f226e55, #5f226e ); */
 }
 
 .card-inner {
@@ -59,6 +67,9 @@ body, h1, h2, h3, p{
   flex-direction: column;
   margin-right: 10px;
   margin-left: 10px;
+  /* background-color: #e5e5f7;
+  opacity: 1;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 4px ), repeating-linear-gradient( #5f226e55, #5f226e ); */
 }
 
 .card-inner p {
@@ -66,19 +77,31 @@ body, h1, h2, h3, p{
   flex-direction: column;
   margin-bottom: 10px;
   font-family: 'Courier New', Courier, monospace;
+  /* background-color: #2f0036;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
 }
 
 .card-inner img {
-  width: 150px;
-  height: 120px;
+  width: 230px;
+  height: 160px;
   border-radius: 5px;
+  /* background-color: #2f0036;
+  opacity: 0.8;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
   }
   .card-inner h2{
-    display: flex
+    display: flex;
+    /* background-color: #2f0036;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
   }
   /* ---------------enzo---testing---section------------------ */
   .card:hover {
-    box-shadow: 5px 5px 10px 5px rgba(71, 47, 82, 0.87);
+    box-shadow: 0 0 5px #cc03f4,
+    0 0 15px #cc03f4,
+    0 0 20px #0363f4,
+    0 0 50px #03e9f4;
     transform: scale(1.07); 
   }
 /* Position the front and back side */
@@ -89,49 +112,64 @@ body, h1, h2, h3, p{
   border: 1px solid violet;
   perspective: 220px; /* Remove this if you don't want the 3D effect */
 }
-
-.card-front,
-.card-back {
-  position: absolute;
-  width: 155px;
-  height: 330px;
-  backface-visibility: hidden;
-  border-radius: 15px;
-} 
-.card-front h2{
-  width: 55px;
-  background-color: transparent;
-  flex-wrap: wrap;
-}
-
-.card.flipped {
-  border-color: violet;
-  width: 170px;
-  height: 350px;
-  background-color: rgb(250, 0, 0);
-  transform: rotateY(180deg);
-  perspective: 220px;
-  transform-style: preserve-3d;
-}
-
-.card-inner {
-  width: 165px;
-  height: 330px;
-  transform-style: preserve-3d;
-  transition: transform .7s;
-}
 .card-back {
   background-color: rgb(255, 0, 255);
   color: rgb(255, 255, 255);
   transform: rotateY(180deg);
   position: absolute;
+  height: 250px;
+  z-index: 100;
+  /* background-color: #2f0036;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
 }
+
+.card-front,.card-back {
+  position: absolute;
+  width: 240px;
+  /* height: 330px; */
+  backface-visibility: hidden;
+  border-radius: 15px;
+  height: auto;
+  /* background-color: #2f0036;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #2f0036 4px ), repeating-linear-gradient( #00000055, #000000 ); */
+} 
+
+.card-front h2{
+  width: 240px;
+  height: 50;
+  background-color: transparent;
+  flex-wrap: wrap;
+  color: white
+}
+
+.card.flipped {
+  border-color: violet;
+  width: 250px;
+  height: 290px;
+  background-color: rgb(250, 0, 0);
+  transform: rotateY(180deg);
+  perspective: 220px;
+  transform-style: preserve-3d;
+  
+}
+
+.card-inner {
+  width: 165px;
+  height: fit-content;
+  transform-style: preserve-3d;
+  transition: transform .7s;
+  z-index: 100;
+
+}
+
 .home-game-container{
   margin: auto;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   background-color: transparent;
   /* border: 1px solid transparent; */
@@ -154,7 +192,10 @@ body, h1, h2, h3, p{
   cursor: pointer;
 } 
 .home-game-card:hover{
-  box-shadow: 5px 5px 10px 5px rgba(71, 47, 82, 0.87);
+  box-shadow: 0 0 5px #cc03f4,
+  0 0 15px #cc03f4,
+  0 0 20px #0363f4,
+  0 0 50px #03e9f4;
   transform: scale(1.07);
 }
 .home-game-info{
@@ -171,6 +212,7 @@ body, h1, h2, h3, p{
   margin-bottom: 10px;
   font-family: 'Courier New', Courier, monospace;
   height: 50px;
+  color: white
 }
 .home-game-info img{
 width:200px;
@@ -180,9 +222,15 @@ border-radius: 5px;
 .home-game-info h1{
   display: flex;
   height: 50px;
-  width: 70px;
+  width: 250px;
   align-self: top;
   padding-left: 30px;
+  color: white
+}
+.home-game-info h3{
+  align-content: center;
+  padding-top: 50px;
+  color: white
 }
 .home-game-info h4{
   display: flex;
@@ -191,14 +239,16 @@ border-radius: 5px;
   align-self: center;
   padding-right: 100px;
   text-orientation: mixed;
+  color: white
 }
 .home-game-info h6{
   /* display: flex; */
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 12px;
   align-self: bottom;
   /* padding-right: 100px;
   text-orientation: mixed; */
+  color: rgb(65, 146, 139);
 }
 #login-container{
   width: 75px;
@@ -212,19 +262,38 @@ border-radius: 5px;
   width: 80px;
 }
 .login-button:hover{
-  background-color: rgb(216, 210, 210);
+  background-color: rgb(210, 216, 215);
 }
+
 
 #login-container{
-  width: 125px;
+  width: 80px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 70px;
+  right: 1px;
 }
+#closebtn{
+  width: 25px;
+}
+#closebtn{
+  cursor: pointer;
+}
+/* #maindiv{
+  background-image: none;
+  background-image: url('/public/images/codbkgrnd.gif');
+  background-size: cover;
+} */
 
 .navbar {
-  height: 200px;
-  width: 75px;
+  background-image: none;
+  background-image: url('/public/images/gameCard.gif');
+  background-size: fill;
+  height: 400px;
+  width: 120px;
+  display:flex;
+  border-radius: 5%;
+  flex-direction: column;
+  justify-content: space-between;
   position: fixed;
   z-index: 1;
   /* Stay on top */
@@ -232,7 +301,6 @@ border-radius: 5px;
   padding-top: 5px;
   top: 10px;
   left: 10px;
-  background-color: #68001a;
   overflow-x: hidden;
   transition: 0.5s;
   /* 0.5 second transition effect to slide in the sidebar */
@@ -241,24 +309,46 @@ border-radius: 5px;
 .link {
   padding: 8px 8px 8px 8px;
   text-decoration: none;
-  font-size: 15px;
-  color: #802020;
+  font-size: 30px;
+  font-weight: bold;
+  color: #2d9499;
   display: block;
-  transition: 0.3s;
+  transition: 0.5s;
+  text-shadow: 7px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
-.navbutton {
+.link:hover{
+  font-size: 35px;
+  color: #c6a0c8;
+  box-shadow: 0 0 5px #cc03f4,
+            0 0 15px #cc03f4,
+            0 0 20px #0363f4,
+            0 0 50px #03e9f4;
+  z-index: 100;
+}
+
+#navbutton {
   font-size: 20px;
   cursor: pointer;
   background-color: #111;
   color: white;
   padding: 10px 15px;
   border: none;
+  
 }
+.navButton:hover{
+  transition: 0.3s;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #cc03f4,
+            0 0 15px #cc03f4,
+            0 0 20px #0363f4,
+            0 0 50px #03e9f4;
 
+}
 .login-butt {
   border: solid thin;
-  background-color: grey;
+  background-image: none;
+  background-color: rgb(119, 148, 151);
   height: 50px;
   width: 80px;
 }
@@ -271,13 +361,23 @@ border-radius: 5px;
   height: 55px;
   margin-right: 30px;
   transition: 0.3s;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #cc03f4,
+            0 0 15px #cc03f4,
+            0 0 20px #0363f4,
+            0 0 50px #03e9f4;
 }
 #register {
   cursor: pointer;
 }
 
 #regform{
+  background-image: none;
+  background-color: rgb(32, 120, 32);
   color: white;
+  border: solid 6px orange;
+  border-radius: 5%;
+  box-shadow: 0 0 0 2px black; 
 }
 
 #register {
@@ -309,15 +409,19 @@ border-radius: 5px;
   color: white;
 }
 
-
 .loginform {
-  background-color: blue;
+  background-image: none;
+  background-image: url("/public/images/Login bkgrnd.png");
+  background-size: cover;
+  border: solid 4px orange;
+  border-radius: 5%;
   padding: 100px;
   width: 300px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px black; 
 }
 
 .centered-content {
@@ -328,3 +432,39 @@ border-radius: 5px;
   justify-content: center;
   text-align: center; /* For text centering within input elements */
 }
+.login{
+  background-image: none;
+  background-color: orange;
+  border: solid 2px black;
+  border-radius: 15%;
+}
+#trylogin{
+  background-image: url('../Images/8049d30790b3ff0b9e8134fcfe00728e - Copy - Copy.png');
+  background-size: cover;
+  display: flex;
+  width: 300px;
+}
+#bannerdiv{
+  background-image: none;
+  background-image: url('/public/images/codbkgrnd.gif');
+  background-size: cover;
+  height: 500px;
+}
+#navarea{
+  width: 80px;
+}
+#cartbutt{
+  width: 80px;
+}
+.searcher {
+  align-content: center;
+  /* padding-left:px; */
+}
+/* color: #fff;
+border-radius: 5px;
+box-shadow: 0 0 5px #03e9f4,
+            0 0 25px #03e9f4,
+            0 0 50px #03e9f4,
+            0 0 100px #03e9f4;
+} */
+

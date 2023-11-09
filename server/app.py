@@ -176,6 +176,13 @@ def store_by_id(id):
         resp = make_response({"error": "Store not found"}, 404)
     return resp
 
+
+
+
+#----------------------------------------
+# CARTS
+#----------------------------------------
+
 @app.route('/carts', methods = ['GET', 'POST', 'PATCH'])
 def carts():
     carts = Cart.query.all()
@@ -184,6 +191,51 @@ def carts():
 # ---------------- GET -----------------------
         if request.method == 'GET':
             resp = make_response([cart.to_dict(rules = ('-checkout.store.password','-customer.password', '-checkout.store.items')) for cart in carts], 200)
+
+# ---------------- POST -----------------------
+        elif request.method == 'POST':
+            print(request)
+            form_data = request.get_json()
+            print('Received form data:', form_data)
+            try:
+                new_cart_obj = Cart(
+                    customer_id = form_data['customer_id']
+                )
+                db.session.add(new_cart_obj)
+                db.session.commit()
+                resp = make_response(new_cart_obj.to_dict(rules = ('-checkout.store.password','-customer.password', '-checkout.store.items')), 201)
+            except ValueError:
+                resp = make_response({ "errors": ["Validation Errors"]}, 400)
+
+# ---------------- PATCH -----------------------
+        elif request.method == 'PATCH':
+            form_data = request.get_json()
+            try:
+                for attr in form_data:
+                    setattr(store_by_id, attr, form_data.get(attr))
+                db.session.commit()
+                resp = make_response(store_by_id.to_dict(), 202)
+            except ValueError as e:
+                print('Validation error:', e)
+                resp = make_response({ "errors": ["Validation Errors"]}, 400)
+                
+    else:
+        resp = make_response({ "error": "No Cart Found!"}, 404)
+    return resp
+
+
+
+#----------------------------------------
+# CARTS BY ID
+#----------------------------------------
+@app.route('/carts/<int:id>', methods=['GET', 'POST', 'PATCH'])
+def cart_by_id(id):
+    cart_by_id = Cart.query.filter_by(id = id).first()
+    if cart_by_id:
+
+# ---------------- GET -----------------------
+        if request.method == 'GET':
+            resp = make_response(cart_by_id.to_dict(rules = ('-checkout.store.password','-customer.password', '-checkout.store.items')), 200)
 
 # ---------------- POST -----------------------
         elif request.method == 'POST':
@@ -206,7 +258,8 @@ def carts():
                     setattr(store_by_id, attr, form_data.get(attr))
                 db.session.commit()
                 resp = make_response(store_by_id.to_dict(), 202)
-            except ValueError:
+            except ValueError as e:
+                print('Validation error:', e)
                 resp = make_response({ "errors": ["Validation Errors"]}, 400)
                 
     else:
@@ -214,43 +267,10 @@ def carts():
     return resp
 
 
-@app.route('/carts/<int:id>', methods=['GET', 'POST', 'PATCH'])
-def cart_by_id(id):
-    cart_by_id = Cart.query.filter_by(id = id).first()
-    if cart_by_id:
 
-# ---------------- GET -----------------------
-        if request.method == 'GET':
-            resp = make_response(cart_by_id.to_dict(rules = ('-checkout.store.password','-customer.password', '-checkout.store.items')), 200)
-
-# ---------------- POST -----------------------
-        elif request.method == 'POST':
-            form_data = request.get_json()
-            try:
-                new_cart_obj = Customer(
-                    customer_id = form_data['customer_id']
-                )
-                db.session.add(new_cart_obj)
-                db.session.commit()
-                resp = make_response(new_cart_obj.to_dict(), 201)
-            except ValueError:
-                resp = make_response({ "errors": ["Validation Errors"]}, 400)
-
-# ---------------- PATCH -----------------------
-        elif request.method == 'PATCH':
-            form_data = request.get_json()
-            try:
-                for attr in form_data:
-                    setattr(store_by_id, attr, form_data.get(attr))
-                db.session.commit()
-                resp = make_response(store_by_id.to_dict(), 202)
-            except ValueError:
-                resp = make_response({ "errors": ["Validation Errors"]}, 400)
-                
-    else:
-        resp = make_response({ "error": "No Cart Found!"}, 404)
-    return resp
-
+#----------------------------------------
+# CARTS BY CUSTOMER_ID
+#----------------------------------------
 @app.route('/carts/customer_<int:customer_id>', methods=['GET', 'POST', 'PATCH'])
 def cart_by_customer_id(customer_id):
     cart_by_customer_id = Cart.query.filter_by(customer_id = customer_id).first()
@@ -288,6 +308,11 @@ def cart_by_customer_id(customer_id):
         resp = make_response({ "error": "No Cart Found!"}, 404)
     return resp
 
+
+
+#----------------------------------------
+# CART_ITEMS
+#----------------------------------------
 @app.route('/cart_items', methods = ['POST'])
 def add_to_cart():
     try:
@@ -301,6 +326,12 @@ def add_to_cart():
         return make_response({'message': 'Item added to cart successfully'}, 201)
     except Exception as e:
         return make_response({'error': str(e)}, 400)
+    
+
+
+#----------------------------------------
+# REMOVE_FROM_CART
+#----------------------------------------
     
 @app.route('/remove_from_cart', methods=['POST'])
 def remove_from_cart():

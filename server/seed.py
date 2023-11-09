@@ -139,17 +139,8 @@ with app.app_context():
                 store_id = 1,
             ),
             Item(
-                name = 'Madden NFL 24',
-                type = 'Sports',
-                description = 'Experience the newest iteration of FieldSENSE™ in Madden NFL 24. More realistic character movement and smarter AI gives you control to play out your gameplay strategy with the confidence to dominate any opponent.',
-                quantity = 20,
-                price = 70,
-                img = 'https://image.api.playstation.com/vulcan/ap/rnd/202307/1222/609e9a7cba2efa5084585bbc4d6da809d3d444e6da87612c.jpg',
-                store_id = 1,
-            ),
-            Item(
                 name = 'Slime Rancher 2',
-                type = 'Advneture',
+                type = 'Adventure',
                 description = 'Slime Rancher is the tale of Beatrix LeBeau, a plucky, young rancher who sets out for a life a thousand light years away from Earth on the ‘Far, Far Range’ where she tries her hand at making a living wrangling slimes.',
                 quantity = 20,
                 price = 30,
@@ -196,10 +187,19 @@ with app.app_context():
 
             db.session.commit()
 
+    def seed_carts():
+            cart = Cart(
+                customer_id = 1
+            )
+            db.session.add(cart)
+
+            db.session.commit()
+
     if __name__ == '__main__':
         with app.app_context():
-            seed_items()  # Create 10 random items
-            seed_customers()  # Create 5 random customers
-            seed_stores()   # Create 3 random stores
+            seed_items()  
+            seed_customers()  
+            seed_stores()
+            seed_carts()
 
         print('Data has been seeded.')

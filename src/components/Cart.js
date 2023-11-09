@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CartItems from "./CartItems";
 
 
@@ -7,7 +8,7 @@ function Cart({ customer_id }) {
     const [cart, setCart] = useState([])
     const [isCart, setIsCart] = useState(false)
     const customerID = parseInt(customer_id)
-
+    // console.log(customer_id)
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -26,7 +27,7 @@ function Cart({ customer_id }) {
             }
         };
         fetchData();
-    }, [customerID]);
+    }, [customerID]);    
 
     const createNewCart = async (customerID) => {
         try {
@@ -35,26 +36,29 @@ function Cart({ customer_id }) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({customer_id : customerID }),
+                body: JSON.stringify({customer_id : customerID}),
             });
+            console.log('Response status', resp.status)
+            console.log(customer_id)
+            const data = await resp.json();
+            console.log('Received data:', data)
             if (resp.ok) {
-                const data = await resp.json();
-                console.log(data)
+                setCart(data)
             } else {
-                console.error('Failed to create a new cart')
+                console.error('Failed to create a new cart', resp.status, resp.statusText)
             }
         } catch (error) {
             console.error(error)
         }
     }
 
-    console.log(cart)
-    console.log(isCart)
 
+    // console.log(cart)
+    // console.log(customerID)
 
     return (
-        <div>
-            <button>View Cart</button>
+        <div id="cartbutt">
+            <Link to="/cart"><button className="login-butt">View Cart</button></Link>
             {/* <CartItems
                 items={cart.items}
                 customer={cart.customer}
