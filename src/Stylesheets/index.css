@@ -291,6 +291,7 @@ border-radius: 5px;
   height: 400px;
   width: 120px;
   display:flex;
+  border-radius: 5%;
   flex-direction: column;
   justify-content: space-between;
   position: fixed;
